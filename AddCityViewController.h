@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddCityViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate>
+@interface AddCityViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate, UIAlertViewDelegate>
 
 @property (nonatomic) NSArray *products;
 

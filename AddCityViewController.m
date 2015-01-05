@@ -36,13 +36,18 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self dismissViewControllerAnimated:YES completion:nil];
+
     //[ViewController addNewCity:[NSString stringWithFormat:@"%@, %@", [[[tableView cellForRowAtIndexPath:indexPath].textLabel.text componentsSeparatedByString:@","] objectAtIndex:0], [USLocation infofromcity:[tableView cellForRowAtIndexPath:indexPath].textLabel.text]]];
     [ViewController addNewCity:[NSString stringWithFormat:@"%@, %@", [tableView cellForRowAtIndexPath:indexPath].textLabel.text, [USLocation infofromcity:[tableView cellForRowAtIndexPath:indexPath].textLabel.text]]];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[tableView cellForRowAtIndexPath:indexPath].textLabel.text  message:@"New city added! Check Menu to check pants-friendliness." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
+ 
 }
 
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+       [self dismissViewControllerAnimated:YES completion:nil];
+}
 #pragma mark - UITableView data source and delegate methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

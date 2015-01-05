@@ -143,8 +143,8 @@ static NSMutableArray* savedLinks = nil;
 - (void)setBackground:(NSString *)boundingbox intofweather:(int)typeofweather {
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
     CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
-    NSArray *d1 = [[[NSString alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: [NSString stringWithFormat:@"%@%@%@", @"http://api.flickr.com/services/rest/?method=flickr.photos.search&media=photo&api_key=5340419091b235b4158194d4b71dd8dc&has_geo=1&extras=geo,url_m&bbox=", boundingbox, @"&min_taken_date=2005-01-01%2000:00:00&group_id=1463451@N25&per_page=5"]]] encoding: NSASCIIStringEncoding] componentsSeparatedByString:@"url_m=\""];
-    NSLog(@"Flickr Pictures URL: %@%@%@", @"http://api.flickr.com/services/rest/?method=flickr.photos.search&media=photo&api_key=5340419091b235b4158194d4b71dd8dc&has_geo=1&extras=geo,url_m&bbox=", boundingbox, @"&min_taken_date=2005-01-01%2000:00:00&group_id=1463451@N25&per_page=5");
+    NSArray *d1 = [[[NSString alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: [NSString stringWithFormat:@"%@%@%@", @"https://api.flickr.com/services/rest/?method=flickr.photos.search&media=photo&api_key=5340419091b235b4158194d4b71dd8dc&has_geo=1&extras=geo,url_m&bbox=", boundingbox, @"&min_taken_date=2005-01-01%2000:00:00&group_id=1463451@N25&per_page=5"]]] encoding: NSASCIIStringEncoding] componentsSeparatedByString:@"url_m=\""];
+    NSLog(@"Flickr Pictures URL: %@%@%@", @"https://api.flickr.com/services/rest/?method=flickr.photos.search&media=photo&api_key=5340419091b235b4158194d4b71dd8dc&has_geo=1&extras=geo,url_m&bbox=", boundingbox, @"&min_taken_date=2005-01-01%2000:00:00&group_id=1463451@N25&per_page=5");
     UIImageView *bkgndimage;
     UIImage *back;
     if([d1 count] != 1) {
@@ -405,16 +405,25 @@ static NSMutableArray* savedLinks = nil;
 
 #pragma mark - Other
 
+
 - (void)viewDidLoad {
     [self startVariables];
     [self startInterface];
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     
     //Naviagtion Bar Setup
-    [[UINavigationBar appearance] setTitleTextAttributes: @{ UITextAttributeTextColor: [UIColor whiteColor], UITextAttributeTextShadowColor: [UIColor blackColor], UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 0.7f)], UITextAttributeFont: [UIFont fontWithName:@"Roboto-Medium" size:20.0f]}];
+   // [[UINavigationBar appearance] setTitleTextAttributes: @{ UITextAttributeTextColor: [UIColor whiteColor], UITextAttributeTextShadowColor: [UIColor blackColor], UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 0.7f)], UITextAttributeFont: [UIFont fontWithName:@"Roboto-Medium" size:20.0f]}];
+  //  self.navigationController.navigationBar.translucent = YES;
+  //  const CGFloat colorMask[6] = {222, 255, 222, 255, 222, 255};
+  //  [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithCGImage: CGImageCreateWithMaskingColors([[UIImage alloc] init].CGImage, colorMask)] forBarMetrics:UIBarMetricsDefault];
+    
+
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
-    const float colorMask[6] = {222, 255, 222, 255, 222, 255};
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithCGImage: CGImageCreateWithMaskingColors([[UIImage alloc] init].CGImage, colorMask)] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
     UIImage *menubuttonimage = [UIImage imageNamed:@"MenuButton.png"];
     CGRect menubuttonframe = CGRectMake(0, 0, menubuttonimage.size.width, menubuttonimage.size.height);
     UIButton *menubutton = [[UIButton alloc] initWithFrame:menubuttonframe];
