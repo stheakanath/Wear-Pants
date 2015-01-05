@@ -88,7 +88,7 @@
         CGPoint pressPoint = [longPress locationInView:self.tableView];
         NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:pressPoint];
         if(indexPath.row != 0) {
-            [ViewController deleteCity:indexPath.row];
+            [ViewController deleteCity:(int)indexPath.row];
             [self.tableView reloadData];
         }
     }

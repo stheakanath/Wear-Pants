@@ -332,6 +332,8 @@
 				EB39DE2C1770E28600442F3A /* AddCityViewController.m */,
 				EB72370F176416710041BD39 /* MMExampleSideDrawerViewController.h */,
 				EB723710176416710041BD39 /* MMExampleSideDrawerViewController.m */,
+				EB723711176416710041BD39 /* MMExampleLeftSideDrawerViewController.h */,
+				EB723712176416710041BD39 /* MMExampleLeftSideDrawerViewController.m */,
 				EB723698176414310041BD39 /* ViewController_iPhone.xib */,
 				EB72369B176414310041BD39 /* ViewController_iPad.xib */,
 				EBE2898917714AB000E0CFB0 /* MainStoryboard.storyboard */,
@@ -385,8 +387,6 @@
 				EB7D378D17722C4F00D331C7 /* MMTableViewCell.m */,
 				EB7236FB176416670041BD39 /* UIViewController+MMDrawerController.h */,
 				EB7236FC176416670041BD39 /* UIViewController+MMDrawerController.m */,
-				EB723711176416710041BD39 /* MMExampleLeftSideDrawerViewController.h */,
-				EB723712176416710041BD39 /* MMExampleLeftSideDrawerViewController.m */,
 				EB72371B176416710041BD39 /* MMSideDrawerSectionHeaderView.h */,
 				EB72371C176416710041BD39 /* MMSideDrawerSectionHeaderView.m */,
 				EB723717176416710041BD39 /* MMSideDrawerTableViewCell.h */,
@@ -680,7 +680,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kuriakose Theakanath";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kuriakose Theakanath";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -712,9 +713,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kuriakose Theakanath";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kuriakose Theakanath";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
