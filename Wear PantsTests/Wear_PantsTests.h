@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Sony Theakanath. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface Wear_PantsTests : SenTestCase
+@interface Wear_PantsTests : XCTestCase
 
 @end

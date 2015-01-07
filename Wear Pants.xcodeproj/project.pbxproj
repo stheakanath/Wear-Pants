@@ -53,7 +53,6 @@
 		EB723697176414310041BD39 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB723696176414310041BD39 /* ViewController.m */; };
 		EB72369A176414310041BD39 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB723698176414310041BD39 /* ViewController_iPhone.xib */; };
 		EB72369D176414310041BD39 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB72369B176414310041BD39 /* ViewController_iPad.xib */; };
-		EB7236A5176414310041BD39 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7236A4176414310041BD39 /* SenTestingKit.framework */; };
 		EB7236A6176414310041BD39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB72367D176414310041BD39 /* UIKit.framework */; };
 		EB7236A7176414310041BD39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB72367F176414310041BD39 /* Foundation.framework */; };
 		EB7236AF176414310041BD39 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB7236AD176414310041BD39 /* InfoPlist.strings */; };
@@ -160,7 +159,6 @@
 		EB723699176414310041BD39 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
 		EB72369C176414310041BD39 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
 		EB7236A3176414310041BD39 /* Wear PantsTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wear PantsTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB7236A4176414310041BD39 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		EB7236AC176414310041BD39 /* Wear PantsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Wear PantsTests-Info.plist"; sourceTree = "<group>"; };
 		EB7236AE176414310041BD39 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EB7236B0176414310041BD39 /* Wear_PantsTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Wear_PantsTests.h; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB7236A5176414310041BD39 /* SenTestingKit.framework in Frameworks */,
 				EB7236A6176414310041BD39 /* UIKit.framework in Frameworks */,
 				EB7236A7176414310041BD39 /* Foundation.framework in Frameworks */,
 			);
@@ -315,7 +312,6 @@
 				EB72367D176414310041BD39 /* UIKit.framework */,
 				EB72367F176414310041BD39 /* Foundation.framework */,
 				EB723681176414310041BD39 /* CoreGraphics.framework */,
-				EB7236A4176414310041BD39 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -464,7 +460,7 @@
 			name = "Wear PantsTests";
 			productName = "Wear PantsTests";
 			productReference = EB7236A3176414310041BD39 /* Wear PantsTests.octest */;
-			productType = "com.apple.product-type.bundle.ocunit-test";
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -472,7 +468,7 @@
 		EB723672176414310041BD39 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastTestingUpgradeCheck = 0600;
+				LastTestingUpgradeCheck = 0610;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Sony Theakanath";
 				TargetAttributes = {
@@ -766,13 +762,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wear Pants/Wear Pants-Prefix.pch";
 				INFOPLIST_FILE = "Wear PantsTests/Wear PantsTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -783,13 +779,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wear Pants/Wear Pants-Prefix.pch";
 				INFOPLIST_FILE = "Wear PantsTests/Wear PantsTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
