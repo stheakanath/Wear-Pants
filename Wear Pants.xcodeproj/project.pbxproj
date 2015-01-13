@@ -36,10 +36,6 @@
 		EB3FD77B177373D600237B54 /* fog1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD77A177373D600237B54 /* fog1.html */; };
 		EB3FD77D177373FD00237B54 /* snow1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD77C177373FD00237B54 /* snow1.html */; };
 		EB3FD77F1773741C00237B54 /* sun1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD77E1773741C00237B54 /* sun1.html */; };
-		EB3FD787177396C800237B54 /* iPhone_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD786177396C800237B54 /* iPhone_icon@2x.png */; };
-		EB3FD789177396CB00237B54 /* iPhone_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD788177396CB00237B54 /* iPhone_icon.png */; };
-		EB3FD78B177396D400237B54 /* iPad_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD78A177396D400237B54 /* iPad_icon@2x.png */; };
-		EB3FD78D177396D700237B54 /* iPad_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD78C177396D700237B54 /* iPad_icon.png */; };
 		EB3FD78F1773A7AE00237B54 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD78E1773A7AE00237B54 /* Default-Portrait@2x~ipad.png */; };
 		EB3FD7911773A7B300237B54 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD7901773A7B200237B54 /* Default-Portrait~ipad.png */; };
 		EB3FD7951773A81500237B54 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD7941773A81500237B54 /* Default.png */; };
@@ -77,6 +73,7 @@
 		EB7D37A11772AF2900D331C7 /* PredictButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB7D379F1772AF2900D331C7 /* PredictButton@2x.png */; };
 		EB7D37A21772AF2900D331C7 /* PredictButton_Selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB7D37A01772AF2900D331C7 /* PredictButton_Selected@2x.png */; };
 		EB7D37A51772BA7A00D331C7 /* BackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7D37A41772BA7A00D331C7 /* BackgroundLayer.m */; };
+		EB87E3F51A649824004F6B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB87E3F41A649824004F6B9A /* Images.xcassets */; };
 		EB8CA01A176D1A1300BAD349 /* sun.html in Resources */ = {isa = PBXBuildFile; fileRef = EB8CA018176D1A1300BAD349 /* sun.html */; };
 		EBC1C403176E949400518D77 /* snow.html in Resources */ = {isa = PBXBuildFile; fileRef = EBC1C3FB176E949400518D77 /* snow.html */; };
 		EBC1C404176E949400518D77 /* wind.html in Resources */ = {isa = PBXBuildFile; fileRef = EBC1C3FC176E949400518D77 /* wind.html */; };
@@ -135,10 +132,6 @@
 		EB3FD77A177373D600237B54 /* fog1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = fog1.html; sourceTree = "<group>"; };
 		EB3FD77C177373FD00237B54 /* snow1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = snow1.html; sourceTree = "<group>"; };
 		EB3FD77E1773741C00237B54 /* sun1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sun1.html; sourceTree = "<group>"; };
-		EB3FD786177396C800237B54 /* iPhone_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPhone_icon@2x.png"; path = "../iPhone_icon@2x.png"; sourceTree = "<group>"; };
-		EB3FD788177396CB00237B54 /* iPhone_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhone_icon.png; path = ../iPhone_icon.png; sourceTree = "<group>"; };
-		EB3FD78A177396D400237B54 /* iPad_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad_icon@2x.png"; path = "../iPad_icon@2x.png"; sourceTree = "<group>"; };
-		EB3FD78C177396D700237B54 /* iPad_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPad_icon.png; path = ../iPad_icon.png; sourceTree = "<group>"; };
 		EB3FD78E1773A7AE00237B54 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "../Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		EB3FD7901773A7B200237B54 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		EB3FD7921773A80800237B54 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
@@ -158,7 +151,7 @@
 		EB723696176414310041BD39 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		EB723699176414310041BD39 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
 		EB72369C176414310041BD39 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
-		EB7236A3176414310041BD39 /* Wear PantsTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wear PantsTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB7236A3176414310041BD39 /* Wear PantsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wear PantsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB7236AC176414310041BD39 /* Wear PantsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Wear PantsTests-Info.plist"; sourceTree = "<group>"; };
 		EB7236AE176414310041BD39 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EB7236B0176414310041BD39 /* Wear_PantsTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Wear_PantsTests.h; sourceTree = "<group>"; };
@@ -189,6 +182,7 @@
 		EB7D37A01772AF2900D331C7 /* PredictButton_Selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PredictButton_Selected@2x.png"; sourceTree = "<group>"; };
 		EB7D37A31772BA7A00D331C7 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		EB7D37A41772BA7A00D331C7 /* BackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundLayer.m; sourceTree = "<group>"; };
+		EB87E3F41A649824004F6B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EB8CA017176D1A1300BAD349 /* skycons.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = skycons.js; sourceTree = "<group>"; };
 		EB8CA018176D1A1300BAD349 /* sun.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sun.html; sourceTree = "<group>"; };
 		EBC1C3FB176E949400518D77 /* snow.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = snow.html; sourceTree = "<group>"; };
@@ -246,10 +240,6 @@
 				EB723693176414310041BD39 /* Default-568h@2x.png */,
 				EB3FD7901773A7B200237B54 /* Default-Portrait~ipad.png */,
 				EB3FD78E1773A7AE00237B54 /* Default-Portrait@2x~ipad.png */,
-				EB3FD78C177396D700237B54 /* iPad_icon.png */,
-				EB3FD78A177396D400237B54 /* iPad_icon@2x.png */,
-				EB3FD788177396CB00237B54 /* iPhone_icon.png */,
-				EB3FD786177396C800237B54 /* iPhone_icon@2x.png */,
 				EB7D379F1772AF2900D331C7 /* PredictButton@2x.png */,
 				EBD0218E1774081B00FED304 /* PredictButton_Selected.png */,
 				EBD021901774082900FED304 /* PredictButton.png */,
@@ -294,7 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				EB72367A176414310041BD39 /* Wear Pants.app */,
-				EB7236A3176414310041BD39 /* Wear PantsTests.octest */,
+				EB7236A3176414310041BD39 /* Wear PantsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -337,6 +327,7 @@
 				EB136879176784450073F530 /* Other Classes */,
 				EB136878176784300073F530 /* Images+Fonts */,
 				EB7236BB176414C30041BD39 /* DrawerClasses */,
+				EB87E3F41A649824004F6B9A /* Images.xcassets */,
 				EB723684176414310041BD39 /* Supporting Files */,
 			);
 			path = "Wear Pants";
@@ -459,7 +450,7 @@
 			);
 			name = "Wear PantsTests";
 			productName = "Wear PantsTests";
-			productReference = EB7236A3176414310041BD39 /* Wear PantsTests.octest */;
+			productReference = EB7236A3176414310041BD39 /* Wear PantsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -525,6 +516,7 @@
 				EB7D37A21772AF2900D331C7 /* PredictButton_Selected@2x.png in Resources */,
 				EB3FD76B1773732B00237B54 /* nightclear1.html in Resources */,
 				EB3FD772177373B000237B54 /* cloudy1.html in Resources */,
+				EB87E3F51A649824004F6B9A /* Images.xcassets in Resources */,
 				EB3FD773177373B000237B54 /* partlycloudyday1.html in Resources */,
 				EB3FD774177373B000237B54 /* rain1.html in Resources */,
 				EB3FD775177373B000237B54 /* sleet1.html in Resources */,
@@ -533,10 +525,6 @@
 				EB3FD77B177373D600237B54 /* fog1.html in Resources */,
 				EB3FD77D177373FD00237B54 /* snow1.html in Resources */,
 				EB3FD77F1773741C00237B54 /* sun1.html in Resources */,
-				EB3FD787177396C800237B54 /* iPhone_icon@2x.png in Resources */,
-				EB3FD789177396CB00237B54 /* iPhone_icon.png in Resources */,
-				EB3FD78B177396D400237B54 /* iPad_icon@2x.png in Resources */,
-				EB3FD78D177396D700237B54 /* iPad_icon.png in Resources */,
 				EB3FD78F1773A7AE00237B54 /* Default-Portrait@2x~ipad.png in Resources */,
 				EB3FD7911773A7B300237B54 /* Default-Portrait~ipad.png in Resources */,
 				EB3FD7951773A81500237B54 /* Default.png in Resources */,
@@ -728,12 +716,14 @@
 		EB7236B6176414310041BD39 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wear Pants/Wear Pants-Prefix.pch";
 				INFOPLIST_FILE = "Wear Pants/Wear Pants-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -743,12 +733,14 @@
 		EB7236B7176414310041BD39 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wear Pants/Wear Pants-Prefix.pch";
 				INFOPLIST_FILE = "Wear Pants/Wear Pants-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

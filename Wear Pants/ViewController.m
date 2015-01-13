@@ -185,6 +185,8 @@ static NSMutableArray* savedLinks = nil;
 
 - (void)reloadFrame:(NSString*) saveddata {
     NSLog(@"-----------");
+    [[interfaceArray objectAtIndex:1] setText:@"Should I Wear Pants Today?"];
+    [[interfaceArray objectAtIndex:2] setFont:[UIFont fontWithName:@"Roboto-Medium" size:50]];
     int type = [self getCurrentTemperature:[[[saveddata componentsSeparatedByString:@","] objectAtIndex:2] stringByReplacingOccurrencesOfString:@" " withString:@""]];
     [self setBackground:[self getBoundingBox:[NSString stringWithFormat:@"%@%@",[[saveddata componentsSeparatedByString:@","] objectAtIndex:0], [[saveddata componentsSeparatedByString:@","] objectAtIndex:1]]] intofweather:type];
     [self.navigationItem setTitle:[[saveddata componentsSeparatedByString:@","] objectAtIndex:0]];
@@ -198,6 +200,7 @@ static NSMutableArray* savedLinks = nil;
     [self.view setBackgroundColor:[UIColor blackColor]];
     [[interfaceArray objectAtIndex:3] setFrame:CGRectMake(-150, screenHeight/3+60, 140, 35)];
     [[interfaceArray objectAtIndex:4] setFrame:CGRectMake(screenWidth+110, screenHeight/3+60, 140, 35)];
+    [[interfaceArray objectAtIndex:2] setText:@"Should I Wear Pants Today?"];
     [[interfaceArray objectAtIndex:2] setText:@"Please Wait"];
     [[interfaceArray objectAtIndex:9] setText:@"Loading"];
     [[interfaceArray objectAtIndex:10] setText:@"Loading"];
@@ -234,9 +237,13 @@ static NSMutableArray* savedLinks = nil;
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if ([alertView tag] == 12)
-        if (buttonIndex != 123)
-            [self getZipCode];
+    if ([alertView tag] == 12) {
+        if (buttonIndex != 123) {
+           [self setLocationDisabledScreen];
+        }
+    } else if ([alertView tag] == 0) {
+        [self setLocationDisabledScreen];
+    }
 }
 
 - (NSString*) getBoundingBox:(NSString *)localzipcode {
@@ -250,14 +257,24 @@ static NSMutableArray* savedLinks = nil;
 
 - (void) reloadCurrentLocation {
     if([CLLocationManager authorizationStatus]) {
+        [[interfaceArray objectAtIndex:1] setText:@"Should I Wear Pants Today?"];
+        [[interfaceArray objectAtIndex:2] setFont:[UIFont fontWithName:@"Roboto-Medium" size:50]];
         [self getZipCode];
     } else {
         if(![CLLocationManager authorizationStatus]) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Service Disabled" message:@"To re-enable, please go to Settings and turn on Location Service for this app." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Service Disabled" message:@"To re-enable, please go to Settings and turn on Location Service for this feature." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert setTag:12];
             [alert show];
         }
     }
+}
+
+- (void) setLocationDisabledScreen {
+    [self.navigationItem setTitle:@"Feature Unavailable"];
+
+    [[interfaceArray objectAtIndex:1] setText:@"To re-enable current location feature, go to Settings > Privacy."];
+    [[interfaceArray objectAtIndex:2] setText:@"Check Sidebar!"];
+    [[interfaceArray objectAtIndex:2] setFont:[UIFont fontWithName:@"Roboto-Medium" size:40]];
 }
 
 - (BOOL)connectedToInternet {
@@ -288,89 +305,80 @@ static NSMutableArray* savedLinks = nil;
 
 - (int) getCurrentTemperature: (NSString*)desiredcity {
     if([self connectedToInternet]) {
-        if([CLLocationManager authorizationStatus]) {
-            [[interfaceArray objectAtIndex:5] loadHTMLString:@"" baseURL:nil];
-            int type;
-            NSURL* url = [NSURL URLWithString: [NSString stringWithFormat:@"%@%@", @"http://xml.weather.yahoo.com/forecastrss?p=", desiredcity]];
-            NSLog(@"Pulling Temperature URL: %@", url);
-            NSString *blork = [[NSString alloc] initWithData:[NSData dataWithContentsOfURL:url] encoding: NSASCIIStringEncoding];
-            NSString *typeofweather = [[[[[[[blork componentsSeparatedByString:@"<yweather:forecast"] objectAtIndex:1] componentsSeparatedByString:@"code=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-            NSString *filepath;
-            if([typeofweather isEqualToString:@"32"] || [typeofweather isEqualToString:@"34"] || [typeofweather isEqualToString:@"36"] || [typeofweather isEqualToString:@"3200"]) {
-                filepath = @"sun";
-                type = 1;
-            } else if ([typeofweather isEqualToString:@"31"] || [typeofweather isEqualToString:@"33"]  ) {
-                filepath = @"nightclear";
-                type = 2;
-            } else if ([typeofweather isEqualToString:@"28"] || [typeofweather isEqualToString:@"30"]  ||  [typeofweather isEqualToString:@"44"]) {
-                filepath = @"partlycloudyday";
-                type = 3;
-            } else if ([typeofweather isEqualToString:@"27"] || [typeofweather isEqualToString:@"29"]) {
-                filepath = @"partlycloudynight";
-                type = 3;
-            } else if ([typeofweather isEqualToString:@"26"]) {
-                filepath = @"cloudy";
-                type = 3;
-            } else if ([typeofweather isEqualToString:@"5"] || [typeofweather isEqualToString:@"6"] || [typeofweather isEqualToString:@"8"] || [typeofweather isEqualToString:@"9"] || [typeofweather isEqualToString:@"11"] || [typeofweather isEqualToString:@"12"]|| [typeofweather isEqualToString:@"40"]|| [typeofweather isEqualToString:@"4"]|| [typeofweather isEqualToString:@"45"]|| [typeofweather isEqualToString:@"47"]) {
-                filepath = @"rain";
-                type = 4;
-            } else if ([typeofweather isEqualToString:@"7"] || [typeofweather isEqualToString:@"10"] || [typeofweather isEqualToString:@"35"] || [typeofweather isEqualToString:@"37"] || [typeofweather isEqualToString:@"17"] || [typeofweather isEqualToString:@"18"]|| [typeofweather isEqualToString:@"38"]|| [typeofweather isEqualToString:@"39"]) {
-                filepath = @"sleet";
-                type = 5;
-            } else if ([typeofweather isEqualToString:@"13"] || [typeofweather isEqualToString:@"14"] || [typeofweather isEqualToString:@"15"] || [typeofweather isEqualToString:@"16"] || [typeofweather isEqualToString:@"41"] || [typeofweather isEqualToString:@"42"]|| [typeofweather isEqualToString:@"43"] || [typeofweather isEqualToString:@"46"]) {
-                filepath = @"snow";
-                type = 5;
-            } else if ([typeofweather isEqualToString:@"0"] || [typeofweather isEqualToString:@"1"] || [typeofweather isEqualToString:@"2"] || [typeofweather isEqualToString:@"3"] || [typeofweather isEqualToString:@"19"] || [typeofweather isEqualToString:@"23"] || [typeofweather isEqualToString:@"24"] || [typeofweather isEqualToString:@"25"]) {
-                filepath = @"wind";
-                type = 6;
-            } else if ([typeofweather isEqualToString:@"20"] || [typeofweather isEqualToString:@"21"] || [typeofweather isEqualToString:@"22"]) {
-                filepath = @"fog";
-                type = 6;
-            } else {
-                filepath = @"sun";
-                type = 1;
-            }
-            if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0)) {
-                filepath = [filepath stringByAppendingString:@"1"];
-                [[[interfaceArray objectAtIndex:5] scrollView] setMinimumZoomScale:0.5];
-                [[[interfaceArray objectAtIndex:5] scrollView] setMaximumZoomScale:0.5];
-                [[[interfaceArray objectAtIndex:5] scrollView] setZoomScale:0.5];
-            }
-            NSString *finalpath = [[NSBundle mainBundle] pathForResource:filepath ofType: @"html"];
-            [[interfaceArray objectAtIndex:5] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:finalpath]]];
-
-            //Pulling Data
-            int windtemperature = [[[[[[[[[blork componentsSeparatedByString:@"<yweather:wind"] objectAtIndex:1] componentsSeparatedByString:@"/>"] objectAtIndex:0] componentsSeparatedByString:@"chill=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] intValue];
-            double humidity = [[[[[[[[[blork componentsSeparatedByString:@"<yweather:atmosphere"] objectAtIndex:1] componentsSeparatedByString:@"/>"] objectAtIndex:0]componentsSeparatedByString:@"humidity=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] intValue]/100;
-            int integerhumdity = (int)[[[[[[[[[blork componentsSeparatedByString:@"<yweather:atmosphere"] objectAtIndex:1] componentsSeparatedByString:@"/>"] objectAtIndex:0]componentsSeparatedByString:@"humidity=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] intValue];
-            hum = [NSString stringWithFormat:@"%i%@", integerhumdity, @"%"];
-            //int windspeed = [[[[[[[[[blork componentsSeparatedByString:@"<yweather:wind"] objectAtIndex:1] componentsSeparatedByString:@"/>"] objectAtIndex:0] componentsSeparatedByString:@"speed=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] intValue];
-            int lowtemp = [[[[[[[[[blork componentsSeparatedByString:@"<yweather:forecast"] objectAtIndex:1] componentsSeparatedByString:@"/>"] objectAtIndex:0] componentsSeparatedByString:@"low=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] intValue];
-            int hightemp = [[[[[[[[[blork componentsSeparatedByString:@"<yweather:forecast"] objectAtIndex:1] componentsSeparatedByString:@"/>"] objectAtIndex:0] componentsSeparatedByString:@"high=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] intValue];
-            double averagetemp = (hightemp+lowtemp)/2;
-            self.avgtemp = [NSString stringWithFormat:@"%i%@", (int)averagetemp, @" F"];
-            double heatindex = -42.379 + 2.04901523*averagetemp + 10.14333127*humidity - 0.22475541*averagetemp*humidity - .00683783* pow(averagetemp, 2) - .05481717*pow(humidity, 2) + 1.22874*pow(10, -3)*pow(averagetemp, 2)*humidity + 8.5282*pow(humidity, 2)*pow(10, -4)*averagetemp - 1.99*pow(10, -6)*pow(humidity, 2)*pow(averagetemp, 2);
-            NSLog(@"Heat Index: %f", heatindex);
-            //Measu ring and Relaying Information
-            if(heatindex < [[savedLinks objectAtIndex:0] intValue]) {
-                [[interfaceArray objectAtIndex:2] setText:@"YES"];
-                [self.view setBackgroundColor:[UIColor whiteColor]];
-            } else {
-                [[interfaceArray objectAtIndex:2] setText:@"NO"];
-                [self.view setBackgroundColor:[UIColor blackColor]];
-            }
-            [[interfaceArray objectAtIndex:9] setText:hum];
-            [[interfaceArray objectAtIndex:10] setText:[NSString stringWithFormat:@"%i %@", windtemperature, @"F"]];
-            [[interfaceArray objectAtIndex:11] setText:avgtemp];
-            return type;
+        [[interfaceArray objectAtIndex:5] loadHTMLString:@"" baseURL:nil];
+        int type;
+        NSURL* url = [NSURL URLWithString: [NSString stringWithFormat:@"%@%@", @"http://xml.weather.yahoo.com/forecastrss?p=", desiredcity]];
+        NSLog(@"Pulling Temperature URL: %@", url);
+        NSString *blork = [[NSString alloc] initWithData:[NSData dataWithContentsOfURL:url] encoding: NSASCIIStringEncoding];
+        NSString *typeofweather = [[[[[[[blork componentsSeparatedByString:@"<yweather:forecast"] objectAtIndex:1] componentsSeparatedByString:@"code=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+        NSString *filepath;
+        if([typeofweather isEqualToString:@"32"] || [typeofweather isEqualToString:@"34"] || [typeofweather isEqualToString:@"36"] || [typeofweather isEqualToString:@"3200"]) {
+            filepath = @"sun";
+            type = 1;
+        } else if ([typeofweather isEqualToString:@"31"] || [typeofweather isEqualToString:@"33"]  ) {
+            filepath = @"nightclear";
+            type = 2;
+        } else if ([typeofweather isEqualToString:@"28"] || [typeofweather isEqualToString:@"30"]  ||  [typeofweather isEqualToString:@"44"]) {
+            filepath = @"partlycloudyday";
+            type = 3;
+        } else if ([typeofweather isEqualToString:@"27"] || [typeofweather isEqualToString:@"29"]) {
+            filepath = @"partlycloudynight";
+            type = 3;
+        } else if ([typeofweather isEqualToString:@"26"]) {
+            filepath = @"cloudy";
+            type = 3;
+        } else if ([typeofweather isEqualToString:@"5"] || [typeofweather isEqualToString:@"6"] || [typeofweather isEqualToString:@"8"] || [typeofweather isEqualToString:@"9"] || [typeofweather isEqualToString:@"11"] || [typeofweather isEqualToString:@"12"]|| [typeofweather isEqualToString:@"40"]|| [typeofweather isEqualToString:@"4"]|| [typeofweather isEqualToString:@"45"]|| [typeofweather isEqualToString:@"47"]) {
+            filepath = @"rain";
+            type = 4;
+        } else if ([typeofweather isEqualToString:@"7"] || [typeofweather isEqualToString:@"10"] || [typeofweather isEqualToString:@"35"] || [typeofweather isEqualToString:@"37"] || [typeofweather isEqualToString:@"17"] || [typeofweather isEqualToString:@"18"]|| [typeofweather isEqualToString:@"38"]|| [typeofweather isEqualToString:@"39"]) {
+            filepath = @"sleet";
+            type = 5;
+        } else if ([typeofweather isEqualToString:@"13"] || [typeofweather isEqualToString:@"14"] || [typeofweather isEqualToString:@"15"] || [typeofweather isEqualToString:@"16"] || [typeofweather isEqualToString:@"41"] || [typeofweather isEqualToString:@"42"]|| [typeofweather isEqualToString:@"43"] || [typeofweather isEqualToString:@"46"]) {
+            filepath = @"snow";
+            type = 5;
+        } else if ([typeofweather isEqualToString:@"0"] || [typeofweather isEqualToString:@"1"] || [typeofweather isEqualToString:@"2"] || [typeofweather isEqualToString:@"3"] || [typeofweather isEqualToString:@"19"] || [typeofweather isEqualToString:@"23"] || [typeofweather isEqualToString:@"24"] || [typeofweather isEqualToString:@"25"]) {
+            filepath = @"wind";
+            type = 6;
+        } else if ([typeofweather isEqualToString:@"20"] || [typeofweather isEqualToString:@"21"] || [typeofweather isEqualToString:@"22"]) {
+            filepath = @"fog";
+            type = 6;
         } else {
-            if(![CLLocationManager authorizationStatus]) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Service Disabled" message:@"To re-enable, please go to Settings and turn on Location Service for this app." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alert setTag:12];
-                [alert show];
-                return -1;
-            }
+            filepath = @"sun";
+            type = 1;
         }
+        if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0)) {
+            filepath = [filepath stringByAppendingString:@"1"];
+            [[[interfaceArray objectAtIndex:5] scrollView] setMinimumZoomScale:0.5];
+            [[[interfaceArray objectAtIndex:5] scrollView] setMaximumZoomScale:0.5];
+            [[[interfaceArray objectAtIndex:5] scrollView] setZoomScale:0.5];
+        }
+        NSString *finalpath = [[NSBundle mainBundle] pathForResource:filepath ofType: @"html"];
+        [[interfaceArray objectAtIndex:5] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:finalpath]]];
+
+        //Pulling Data
+        int windtemperature = [[[[[[[[[blork componentsSeparatedByString:@"<yweather:wind"] objectAtIndex:1] componentsSeparatedByString:@"/>"] objectAtIndex:0] componentsSeparatedByString:@"chill=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] intValue];
+        double humidity = [[[[[[[[[blork componentsSeparatedByString:@"<yweather:atmosphere"] objectAtIndex:1] componentsSeparatedByString:@"/>"] objectAtIndex:0]componentsSeparatedByString:@"humidity=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] intValue]/100;
+        int integerhumdity = (int)[[[[[[[[[blork componentsSeparatedByString:@"<yweather:atmosphere"] objectAtIndex:1] componentsSeparatedByString:@"/>"] objectAtIndex:0]componentsSeparatedByString:@"humidity=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] intValue];
+        hum = [NSString stringWithFormat:@"%i%@", integerhumdity, @"%"];
+        //int windspeed = [[[[[[[[[blork componentsSeparatedByString:@"<yweather:wind"] objectAtIndex:1] componentsSeparatedByString:@"/>"] objectAtIndex:0] componentsSeparatedByString:@"speed=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] intValue];
+        int lowtemp = [[[[[[[[[blork componentsSeparatedByString:@"<yweather:forecast"] objectAtIndex:1] componentsSeparatedByString:@"/>"] objectAtIndex:0] componentsSeparatedByString:@"low=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] intValue];
+        int hightemp = [[[[[[[[[blork componentsSeparatedByString:@"<yweather:forecast"] objectAtIndex:1] componentsSeparatedByString:@"/>"] objectAtIndex:0] componentsSeparatedByString:@"high=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] intValue];
+        double averagetemp = (hightemp+lowtemp)/2;
+        self.avgtemp = [NSString stringWithFormat:@"%i%@", (int)averagetemp, @" F"];
+        double heatindex = -42.379 + 2.04901523*averagetemp + 10.14333127*humidity - 0.22475541*averagetemp*humidity - .00683783* pow(averagetemp, 2) - .05481717*pow(humidity, 2) + 1.22874*pow(10, -3)*pow(averagetemp, 2)*humidity + 8.5282*pow(humidity, 2)*pow(10, -4)*averagetemp - 1.99*pow(10, -6)*pow(humidity, 2)*pow(averagetemp, 2);
+        NSLog(@"Heat Index: %f", heatindex);
+        //Measu ring and Relaying Information
+        if(heatindex < [[savedLinks objectAtIndex:0] intValue]) {
+            [[interfaceArray objectAtIndex:2] setText:@"YES"];
+            [self.view setBackgroundColor:[UIColor whiteColor]];
+        } else {
+            [[interfaceArray objectAtIndex:2] setText:@"NO"];
+            [self.view setBackgroundColor:[UIColor blackColor]];
+        }
+        [[interfaceArray objectAtIndex:9] setText:hum];
+        [[interfaceArray objectAtIndex:10] setText:[NSString stringWithFormat:@"%i %@", windtemperature, @"F"]];
+        [[interfaceArray objectAtIndex:11] setText:avgtemp];
+        return type;
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!" message:@"Not Connected to the Internet!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
@@ -456,11 +464,32 @@ static NSMutableArray* savedLinks = nil;
     
     //Other
     locationManager.delegate=self;
-    [locationManager startUpdatingLocation];
-    
+    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        [locationManager requestWhenInUseAuthorization];
+        NSLog(@"TEST");
+    } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled" message:@"To re-enable, please go to Settings and turn on Location Service for this app." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert setTag:0];
+        [alert show];
+    } else {
+        [locationManager startUpdatingLocation];
+        [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(getZipCode) userInfo:nil repeats:NO];
+    }
     //For Testing, uncomment next line for final release
-    [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(getZipCode) userInfo:nil repeats:NO];
     //[self reloadFrame:@"New York City, NY, 10001"];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+  //  NSLog(@"%@", [CLLocationManager authorizationStatus]);
+    NSLog(@"Test");
+    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        [locationManager startUpdatingLocation];
+        [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(getZipCode) userInfo:nil repeats:NO];
+    } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled" message:@"To re-enable, please go to Settings and turn on Location Service for this app." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert setTag:0];
+       [alert show];
+    }
 }
 
 - (void) viewDidUnload {
