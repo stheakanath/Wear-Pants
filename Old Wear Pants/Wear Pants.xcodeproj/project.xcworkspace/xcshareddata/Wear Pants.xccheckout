@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>59FB9D47-3891-41E7-914F-C61654A57E08</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Wear Pants</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>81558ACCC352BAD3BB5026229419EBC2B7F2300A</key>
+		<string>https://github.com/stheakanath/Wear-Pants.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Wear Pants.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>81558ACCC352BAD3BB5026229419EBC2B7F2300A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/stheakanath/Wear-Pants.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>81558ACCC352BAD3BB5026229419EBC2B7F2300A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>81558ACCC352BAD3BB5026229419EBC2B7F2300A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Wear%20Pants</string>
+		</dict>
+	</array>
+</dict>
+</plist>
