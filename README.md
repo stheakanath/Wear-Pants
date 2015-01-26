@@ -1,5 +1,6 @@
 Wear-Pants
 ==========
+This app is being recoded from the bottom up. In the folder repository you can see New Wear Pants and Old Wear Pants. Old Wear Pants contains a single view containing all the code for the project. This folder is no deprecrated and not supported. I recommend NOT looking at this folder, this is just there for history purposes. The new folder you should be looking at is "New Wear Pants". This will have subclassing and categories in order to organize the code. In addition to this there are several speed improvements to the code, in addition to adding world support. The new code will also make use of REST APIs, instead of using HTML scraping, allowing for the response times to be faster than usual. 
 
 Featured on the Front Page of San Jose Mercury News. Featured on AM 1590 Radio.
 
