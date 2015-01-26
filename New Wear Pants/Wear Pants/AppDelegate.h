@@ -2,8 +2,8 @@
 //  AppDelegate.h
 //  Wear Pants
 //
-//  Created by Sony Theakanath on 6/8/13.
-//  Copyright (c) 2013 Sony Theakanath. All rights reserved.
+//  Created by Sony Theakanath on 1/26/15.
+//  Copyright (c) 2015 Sony Theakanath. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
