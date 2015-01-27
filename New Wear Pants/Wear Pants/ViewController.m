@@ -169,7 +169,7 @@ static NSMutableArray* savedLinks = nil;
         NSData* imageData = [NSData dataWithContentsOfURL:imageURL];
         bkgndimage =  [[UIImageView alloc] initWithImage:[[UIImage imageWithData:imageData] stackBlur:0]];
     } else {
-        back = [UIImage imageNamed:@"cloud.jpg"];
+        back = [UIImage imageNamed:@"DefaultBackground.jpg"];
         bkgndimage =  [[UIImageView alloc] initWithImage:[back stackBlur:1]];
     }
     UIView *v = [self.view viewWithTag:900];
