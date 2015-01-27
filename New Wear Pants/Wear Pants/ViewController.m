@@ -157,7 +157,7 @@ static NSMutableArray* savedLinks = nil;
     [self moveScreenToNormal];
 }
 
-- (void)setBackground:(NSString *)boundingbox intofweather:(int)typeofweather {
+- (void)setBackground:(NSString *)boundingbox {
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
     CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
     NSArray *d1 = [[[NSString alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: [NSString stringWithFormat:@"%@%@%@", @"https://api.flickr.com/services/rest/?method=flickr.photos.search&media=photo&api_key=5340419091b235b4158194d4b71dd8dc&has_geo=1&extras=geo,url_m&bbox=", boundingbox, @"&min_taken_date=2005-01-01%2000:00:00&group_id=1463451@N25&per_page=5"]]] encoding: NSASCIIStringEncoding] componentsSeparatedByString:@"url_m=\""];
@@ -205,8 +205,8 @@ static NSMutableArray* savedLinks = nil;
     NSLog(@"-----------");
     [[interfaceArray objectAtIndex:1] setText:@"Should I Wear Pants Today?"];
     [[interfaceArray objectAtIndex:2] setFont:[UIFont fontWithName:@"Roboto-Medium" size:50]];
-    int type = [self getCurrentTemperature:[[[saveddata componentsSeparatedByString:@","] objectAtIndex:2] stringByReplacingOccurrencesOfString:@" " withString:@""]];
-    [self setBackground:[WeatherData getBoundingBox:[NSString stringWithFormat:@"%@%@",[[saveddata componentsSeparatedByString:@","] objectAtIndex:0], [[saveddata componentsSeparatedByString:@","] objectAtIndex:1]]] intofweather:type];
+    [self getCurrentTemperature:[[[saveddata componentsSeparatedByString:@","] objectAtIndex:2] stringByReplacingOccurrencesOfString:@" " withString:@""]];
+    [self setBackground:[WeatherData getBoundingBox:[NSString stringWithFormat:@"%@%@",[[saveddata componentsSeparatedByString:@","] objectAtIndex:0], [[saveddata componentsSeparatedByString:@","] objectAtIndex:1]]]];
     [self.navigationItem setTitle:[[saveddata componentsSeparatedByString:@","] objectAtIndex:0]];
 }
 
@@ -236,8 +236,8 @@ static NSMutableArray* savedLinks = nil;
         NSString* currstate = [placemark.addressDictionary valueForKey:@"State"];
         city = currcity;
         self.zipcode = locatedAt;
-        int type = [self getCurrentTemperature:zipcode];
-        [self setBackground:[WeatherData getBoundingBox:[NSString stringWithFormat:@"%@ %@", city, currstate]] intofweather:type];
+        [self getCurrentTemperature:zipcode];
+        [self setBackground:[WeatherData getBoundingBox:[NSString stringWithFormat:@"%@ %@", city, currstate]]];
         [self.navigationItem setTitle:city];
 
     }];
@@ -296,48 +296,52 @@ static NSMutableArray* savedLinks = nil;
 
 #pragma mark - Pulling Weather Information
 
-- (int) getCurrentTemperature: (NSString*)desiredcity {
+- (void) getCurrentTemperature: (NSString*)desiredcity {
     if([self connectedToInternet]) {
         [[interfaceArray objectAtIndex:5] loadHTMLString:@"" baseURL:nil];
-        int type;
+
+       // NSLog(@"%@", city);
         NSURL* url = [NSURL URLWithString: [NSString stringWithFormat:@"%@%@", @"http://xml.weather.yahoo.com/forecastrss?p=", desiredcity]];
-        NSLog(@"Pulling Temperature URL: %@", url);
+        //NSLog(@"Pulling Temperature URL: %@", url);
         NSString *blork = [[NSString alloc] initWithData:[NSData dataWithContentsOfURL:url] encoding: NSASCIIStringEncoding];
         NSString *typeofweather = [[[[[[[blork componentsSeparatedByString:@"<yweather:forecast"] objectAtIndex:1] componentsSeparatedByString:@"code=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+        //NSLog(typeofweather);
+        [WeatherData getTemperatureData:city withZipCode:zipcode];
+        
         NSString *filepath;
         if([typeofweather isEqualToString:@"32"] || [typeofweather isEqualToString:@"34"] || [typeofweather isEqualToString:@"36"] || [typeofweather isEqualToString:@"3200"]) {
             filepath = @"sun";
-            type = 1;
+
         } else if ([typeofweather isEqualToString:@"31"] || [typeofweather isEqualToString:@"33"]  ) {
             filepath = @"nightclear";
-            type = 2;
+
         } else if ([typeofweather isEqualToString:@"28"] || [typeofweather isEqualToString:@"30"]  ||  [typeofweather isEqualToString:@"44"]) {
             filepath = @"partlycloudyday";
-            type = 3;
+ 
         } else if ([typeofweather isEqualToString:@"27"] || [typeofweather isEqualToString:@"29"]) {
             filepath = @"partlycloudynight";
-            type = 3;
+
         } else if ([typeofweather isEqualToString:@"26"]) {
             filepath = @"cloudy";
-            type = 3;
+
         } else if ([typeofweather isEqualToString:@"5"] || [typeofweather isEqualToString:@"6"] || [typeofweather isEqualToString:@"8"] || [typeofweather isEqualToString:@"9"] || [typeofweather isEqualToString:@"11"] || [typeofweather isEqualToString:@"12"]|| [typeofweather isEqualToString:@"40"]|| [typeofweather isEqualToString:@"4"]|| [typeofweather isEqualToString:@"45"]|| [typeofweather isEqualToString:@"47"]) {
             filepath = @"rain";
-            type = 4;
+       
         } else if ([typeofweather isEqualToString:@"7"] || [typeofweather isEqualToString:@"10"] || [typeofweather isEqualToString:@"35"] || [typeofweather isEqualToString:@"37"] || [typeofweather isEqualToString:@"17"] || [typeofweather isEqualToString:@"18"]|| [typeofweather isEqualToString:@"38"]|| [typeofweather isEqualToString:@"39"]) {
             filepath = @"sleet";
-            type = 5;
+          
         } else if ([typeofweather isEqualToString:@"13"] || [typeofweather isEqualToString:@"14"] || [typeofweather isEqualToString:@"15"] || [typeofweather isEqualToString:@"16"] || [typeofweather isEqualToString:@"41"] || [typeofweather isEqualToString:@"42"]|| [typeofweather isEqualToString:@"43"] || [typeofweather isEqualToString:@"46"]) {
             filepath = @"snow";
-            type = 5;
+  
         } else if ([typeofweather isEqualToString:@"0"] || [typeofweather isEqualToString:@"1"] || [typeofweather isEqualToString:@"2"] || [typeofweather isEqualToString:@"3"] || [typeofweather isEqualToString:@"19"] || [typeofweather isEqualToString:@"23"] || [typeofweather isEqualToString:@"24"] || [typeofweather isEqualToString:@"25"]) {
             filepath = @"wind";
-            type = 6;
+     
         } else if ([typeofweather isEqualToString:@"20"] || [typeofweather isEqualToString:@"21"] || [typeofweather isEqualToString:@"22"]) {
             filepath = @"fog";
-            type = 6;
+         
         } else {
             filepath = @"sun";
-            type = 1;
+      
         }
         if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0)) {
             filepath = [filepath stringByAppendingString:@"1"];
@@ -371,12 +375,12 @@ static NSMutableArray* savedLinks = nil;
         [[interfaceArray objectAtIndex:9] setText:hum];
         [[interfaceArray objectAtIndex:10] setText:[NSString stringWithFormat:@"%i %@", windtemperature, @"F"]];
         [[interfaceArray objectAtIndex:11] setText:avgtemp];
-        return type;
+
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!" message:@"Not Connected to the Internet!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
     }
-    return -1;
+
 }
 
 +(NSMutableArray*) saveddata {
