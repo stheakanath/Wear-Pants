@@ -9,8 +9,10 @@
 
 #import "ViewController.h"
 #import "RobotoFont.h"
+#import "MenuBarButton.h"
 
 @interface ViewController ()
+
 @end
 
 static NSMutableArray* savedLinks = nil;
@@ -28,7 +30,45 @@ static NSMutableArray* savedLinks = nil;
     geoCoder = [[CLGeocoder alloc] init];
 }
 
+- (void)viewDidLoad {
+    [self setUpLocationServices];
+    [self startVariables];
+    [self startInterface];
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+        
 
+    self.navigationItem.leftBarButtonItem = [[MenuBarButton alloc] init:@"MenuButton" target:self selector:@selector(leftDrawerButtonPress:)];
+    self.navigationItem.rightBarButtonItem = [[MenuBarButton alloc] init:@"PlusIcon" target:self selector:@selector(rightDrawerButtonPress:)];
+    
+    //Gestures
+    UITapGestureRecognizer * doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
+    [doubleTap setNumberOfTapsRequired:2];
+    [self.view addGestureRecognizer:doubleTap];
+    UITapGestureRecognizer * twoFingerDoubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(twoFingerDoubleTap:)];
+    [twoFingerDoubleTap setNumberOfTapsRequired:2];
+    [twoFingerDoubleTap setNumberOfTouchesRequired:2];
+    [self.view addGestureRecognizer:twoFingerDoubleTap];
+    
+    //Title and Rest
+    [self.navigationItem setTitle:@"Searching Location"];
+    [super viewDidLoad];
+    
+    //Other
+    locationManager.delegate=self;
+    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        [locationManager requestWhenInUseAuthorization];
+        NSLog(@"TEST");
+    } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled" message:@"To re-enable, please go to Settings and turn on Location Service for this app." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert setTag:0];
+        [alert show];
+    } else {
+        [locationManager startUpdatingLocation];
+        [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(getZipCode) userInfo:nil repeats:NO];
+    }
+    //For Testing, uncomment next line for final release
+    //[self reloadFrame:@"New York City, NY, 10001"];
+}
 
 
 
@@ -60,7 +100,7 @@ static NSMutableArray* savedLinks = nil;
                       [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-145, screenHeight/2+122.5, 140, 20)],
                       [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-145, screenHeight/2+165, 140, 20)],
                       nil];
-    [self setUpLocationServices];
+
 }
 
 - (void)startInterface {
@@ -425,70 +465,7 @@ static NSMutableArray* savedLinks = nil;
 #pragma mark - Other
 
 
-- (void)viewDidLoad {
-    [self startVariables];
-    [self startInterface];
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-    
-    //Naviagtion Bar Setup
-   // [[UINavigationBar appearance] setTitleTextAttributes: @{ UITextAttributeTextColor: [UIColor whiteColor], UITextAttributeTextShadowColor: [UIColor blackColor], UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 0.7f)], UITextAttributeFont: [UIFont fontWithName:@"Roboto-Medium" size:20.0f]}];
-  //  self.navigationController.navigationBar.translucent = YES;
-  //  const CGFloat colorMask[6] = {222, 255, 222, 255, 222, 255};
-  //  [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithCGImage: CGImageCreateWithMaskingColors([[UIImage alloc] init].CGImage, colorMask)] forBarMetrics:UIBarMetricsDefault];
-    
 
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                                  forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.navigationBar.translucent = YES;
-    self.navigationController.view.backgroundColor = [UIColor clearColor];
-    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
-    UIImage *menubuttonimage = [UIImage imageNamed:@"MenuButton.png"];
-    CGRect menubuttonframe = CGRectMake(0, 0, menubuttonimage.size.width, menubuttonimage.size.height);
-    UIButton *menubutton = [[UIButton alloc] initWithFrame:menubuttonframe];
-    [menubutton setBackgroundImage:menubuttonimage forState:UIControlStateNormal];
-    [menubutton addTarget:self action:@selector(leftDrawerButtonPress:) forControlEvents:UIControlEventTouchUpInside];
-    [menubutton setShowsTouchWhenHighlighted:YES];
-    UIBarButtonItem *menubarbutton = [[UIBarButtonItem alloc] initWithCustomView:menubutton];
-    self.navigationItem.leftBarButtonItem = menubarbutton;
-    UIImage *addbuttonimage = [UIImage imageNamed:@"plus_icon"];
-    CGRect addbuttonframe = CGRectMake(0, 0, addbuttonimage.size.width, addbuttonimage.size.height);
-    UIButton *addbutton = [[UIButton alloc] initWithFrame:addbuttonframe];
-    [addbutton setBackgroundImage:addbuttonimage forState:UIControlStateNormal];
-    [addbutton addTarget:self action:@selector(rightDrawerButtonPress:) forControlEvents:UIControlEventTouchUpInside];
-    [addbutton setShowsTouchWhenHighlighted:YES];
-    UIBarButtonItem *addbarbutton =[[UIBarButtonItem alloc] initWithCustomView:addbutton];
-    self.navigationItem.rightBarButtonItem = addbarbutton;
-    
-    //Gestures
-    UITapGestureRecognizer * doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
-    [doubleTap setNumberOfTapsRequired:2];
-    [self.view addGestureRecognizer:doubleTap];
-    UITapGestureRecognizer * twoFingerDoubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(twoFingerDoubleTap:)];
-    [twoFingerDoubleTap setNumberOfTapsRequired:2];
-    [twoFingerDoubleTap setNumberOfTouchesRequired:2];
-    [self.view addGestureRecognizer:twoFingerDoubleTap];
-
-    //Title and Rest
-    [self.navigationItem setTitle:@"Searching Location"];
-    [super viewDidLoad];
-    
-    //Other
-    locationManager.delegate=self;
-    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
-        [locationManager requestWhenInUseAuthorization];
-        NSLog(@"TEST");
-    } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled" message:@"To re-enable, please go to Settings and turn on Location Service for this app." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert setTag:0];
-        [alert show];
-    } else {
-        [locationManager startUpdatingLocation];
-        [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(getZipCode) userInfo:nil repeats:NO];
-    }
-    //For Testing, uncomment next line for final release
-    //[self reloadFrame:@"New York City, NY, 10001"];
-}
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
   //  NSLog(@"%@", [CLLocationManager authorizationStatus]);

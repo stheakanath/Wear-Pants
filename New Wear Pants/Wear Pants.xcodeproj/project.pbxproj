@@ -20,7 +20,7 @@
 		EB3A2D761764FF5100DC9F71 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB3A2D741764FF5000DC9F71 /* Roboto-Medium.ttf */; };
 		EB3A2DC21765055600DC9F71 /* MenuButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3A2DC11765055500DC9F71 /* MenuButton@2x.png */; };
 		EB3A2DC71765079D00DC9F71 /* UIImage+StackBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3A2DC61765079D00DC9F71 /* UIImage+StackBlur.m */; };
-		EB3A2DC91765084D00DC9F71 /* plus_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3A2DC81765084D00DC9F71 /* plus_icon@2x.png */; };
+		EB3A2DC91765084D00DC9F71 /* PlusIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3A2DC81765084D00DC9F71 /* PlusIcon@2x.png */; };
 		EB3FD76B1773732B00237B54 /* nightclear1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD76A1773732B00237B54 /* nightclear1.html */; };
 		EB3FD772177373B000237B54 /* cloudy1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD76C177373AF00237B54 /* cloudy1.html */; };
 		EB3FD773177373B000237B54 /* partlycloudyday1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD76D177373AF00237B54 /* partlycloudyday1.html */; };
@@ -65,7 +65,7 @@
 		EBC1C40C176E994900518D77 /* sleet.html in Resources */ = {isa = PBXBuildFile; fileRef = EBC1C40B176E994900518D77 /* sleet.html */; };
 		EBD0217D1773E90000FED304 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD7921773A80800237B54 /* Default@2x.png */; };
 		EBD02189177407B800FED304 /* cloud.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBD02188177407B800FED304 /* cloud.jpg */; };
-		EBD0218B177407C500FED304 /* plus_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD0218A177407C400FED304 /* plus_icon.png */; };
+		EBD0218B177407C500FED304 /* PlusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD0218A177407C400FED304 /* PlusIcon.png */; };
 		EBD0218D177407CB00FED304 /* MenuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD0218C177407CB00FED304 /* MenuButton.png */; };
 		EBD0218F1774081B00FED304 /* PredictButton_Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD0218E1774081B00FED304 /* PredictButton_Selected.png */; };
 		EBD021911774082900FED304 /* PredictButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD021901774082900FED304 /* PredictButton.png */; };
@@ -80,6 +80,8 @@
 		EBDDAF951A7716A5006EBA49 /* MMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF8A1A7716A5006EBA49 /* MMTableViewCell.m */; };
 		EBDDAF961A7716A5006EBA49 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF8C1A7716A5006EBA49 /* UIViewController+MMDrawerController.m */; };
 		EBDDAF991A771CBE006EBA49 /* RobotoFont.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF981A771CBE006EBA49 /* RobotoFont.m */; };
+		EBDDAF9D1A7722F7006EBA49 /* BooleanView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF9C1A7722F7006EBA49 /* BooleanView.m */; };
+		EBDDAFA01A772620006EBA49 /* MenuBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF9F1A772620006EBA49 /* MenuBarButton.m */; };
 		EBE2898A17714AB000E0CFB0 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE2898917714AB000E0CFB0 /* MainStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -111,7 +113,7 @@
 		EB3A2DC11765055500DC9F71 /* MenuButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuButton@2x.png"; sourceTree = "<group>"; };
 		EB3A2DC51765079C00DC9F71 /* UIImage+StackBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+StackBlur.h"; sourceTree = "<group>"; };
 		EB3A2DC61765079D00DC9F71 /* UIImage+StackBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+StackBlur.m"; sourceTree = "<group>"; };
-		EB3A2DC81765084D00DC9F71 /* plus_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus_icon@2x.png"; sourceTree = "<group>"; };
+		EB3A2DC81765084D00DC9F71 /* PlusIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PlusIcon@2x.png"; sourceTree = "<group>"; };
 		EB3FD76A1773732B00237B54 /* nightclear1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = nightclear1.html; sourceTree = "<group>"; };
 		EB3FD76C177373AF00237B54 /* cloudy1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = cloudy1.html; sourceTree = "<group>"; };
 		EB3FD76D177373AF00237B54 /* partlycloudyday1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = partlycloudyday1.html; sourceTree = "<group>"; };
@@ -163,7 +165,7 @@
 		EBC1C402176E949400518D77 /* rain.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = rain.html; sourceTree = "<group>"; };
 		EBC1C40B176E994900518D77 /* sleet.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sleet.html; sourceTree = "<group>"; };
 		EBD02188177407B800FED304 /* cloud.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cloud.jpg; sourceTree = "<group>"; };
-		EBD0218A177407C400FED304 /* plus_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus_icon.png; sourceTree = "<group>"; };
+		EBD0218A177407C400FED304 /* PlusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlusIcon.png; sourceTree = "<group>"; };
 		EBD0218C177407CB00FED304 /* MenuButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuButton.png; sourceTree = "<group>"; };
 		EBD0218E1774081B00FED304 /* PredictButton_Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PredictButton_Selected.png; sourceTree = "<group>"; };
 		EBD021901774082900FED304 /* PredictButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PredictButton.png; sourceTree = "<group>"; };
@@ -189,6 +191,10 @@
 		EBDDAF8C1A7716A5006EBA49 /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+MMDrawerController.m"; path = "Drawer Classes/UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
 		EBDDAF971A771CBE006EBA49 /* RobotoFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RobotoFont.h; path = "Interface Classes/RobotoFont.h"; sourceTree = "<group>"; };
 		EBDDAF981A771CBE006EBA49 /* RobotoFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RobotoFont.m; path = "Interface Classes/RobotoFont.m"; sourceTree = "<group>"; };
+		EBDDAF9B1A7722F7006EBA49 /* BooleanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BooleanView.h; path = "Interface Classes/BooleanView.h"; sourceTree = "<group>"; };
+		EBDDAF9C1A7722F7006EBA49 /* BooleanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BooleanView.m; path = "Interface Classes/BooleanView.m"; sourceTree = "<group>"; };
+		EBDDAF9E1A772620006EBA49 /* MenuBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuBarButton.h; path = "Interface Classes/MenuBarButton.h"; sourceTree = "<group>"; };
+		EBDDAF9F1A772620006EBA49 /* MenuBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuBarButton.m; path = "Interface Classes/MenuBarButton.m"; sourceTree = "<group>"; };
 		EBE2898917714AB000E0CFB0 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -233,13 +239,9 @@
 				EB7D379F1772AF2900D331C7 /* PredictButton@2x.png */,
 				EBD0218E1774081B00FED304 /* PredictButton_Selected.png */,
 				EBD021901774082900FED304 /* PredictButton.png */,
-				EBD0218C177407CB00FED304 /* MenuButton.png */,
 				EB7D37A01772AF2900D331C7 /* PredictButton_Selected@2x.png */,
 				EB3A2D731764FF4F00DC9F71 /* Roboto-Light.ttf */,
 				EB3A2D741764FF5000DC9F71 /* Roboto-Medium.ttf */,
-				EB3A2DC11765055500DC9F71 /* MenuButton@2x.png */,
-				EBD0218A177407C400FED304 /* plus_icon.png */,
-				EB3A2DC81765084D00DC9F71 /* plus_icon@2x.png */,
 				EBD02188177407B800FED304 /* cloud.jpg */,
 			);
 			name = "Images+Fonts";
@@ -306,6 +308,7 @@
 				EBDDAF9A1A771CC8006EBA49 /* Interface Classes */,
 				EB39DE2B1770E28600442F3A /* AddCityViewController.h */,
 				EB39DE2C1770E28600442F3A /* AddCityViewController.m */,
+				EBDDAFA11A772CE0006EBA49 /* Images */,
 				EBE2898917714AB000E0CFB0 /* MainStoryboard.storyboard */,
 				EB8CA016176D1A0300BAD349 /* Skycons */,
 				EB136879176784450073F530 /* Other Classes */,
@@ -406,10 +409,25 @@
 		EBDDAF9A1A771CC8006EBA49 /* Interface Classes */ = {
 			isa = PBXGroup;
 			children = (
+				EBDDAF9B1A7722F7006EBA49 /* BooleanView.h */,
+				EBDDAF9C1A7722F7006EBA49 /* BooleanView.m */,
+				EBDDAF9E1A772620006EBA49 /* MenuBarButton.h */,
+				EBDDAF9F1A772620006EBA49 /* MenuBarButton.m */,
 				EBDDAF971A771CBE006EBA49 /* RobotoFont.h */,
 				EBDDAF981A771CBE006EBA49 /* RobotoFont.m */,
 			);
 			name = "Interface Classes";
+			sourceTree = "<group>";
+		};
+		EBDDAFA11A772CE0006EBA49 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				EBD0218C177407CB00FED304 /* MenuButton.png */,
+				EB3A2DC11765055500DC9F71 /* MenuButton@2x.png */,
+				EBD0218A177407C400FED304 /* PlusIcon.png */,
+				EB3A2DC81765084D00DC9F71 /* PlusIcon@2x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -496,7 +514,7 @@
 				EB3A2D751764FF5100DC9F71 /* Roboto-Light.ttf in Resources */,
 				EB3A2D761764FF5100DC9F71 /* Roboto-Medium.ttf in Resources */,
 				EB3A2DC21765055600DC9F71 /* MenuButton@2x.png in Resources */,
-				EB3A2DC91765084D00DC9F71 /* plus_icon@2x.png in Resources */,
+				EB3A2DC91765084D00DC9F71 /* PlusIcon@2x.png in Resources */,
 				EB8CA01A176D1A1300BAD349 /* sun.html in Resources */,
 				EBC1C403176E949400518D77 /* snow.html in Resources */,
 				EBC1C404176E949400518D77 /* wind.html in Resources */,
@@ -526,7 +544,7 @@
 				EB3FD7951773A81500237B54 /* Default.png in Resources */,
 				EBD0217D1773E90000FED304 /* Default@2x.png in Resources */,
 				EBD02189177407B800FED304 /* cloud.jpg in Resources */,
-				EBD0218B177407C500FED304 /* plus_icon.png in Resources */,
+				EBD0218B177407C500FED304 /* PlusIcon.png in Resources */,
 				EBD0218D177407CB00FED304 /* MenuButton.png in Resources */,
 				EBD0218F1774081B00FED304 /* PredictButton_Selected.png in Resources */,
 				EBD021911774082900FED304 /* PredictButton.png in Resources */,
@@ -569,8 +587,10 @@
 				EBDDAF901A7716A5006EBA49 /* MMExampleDrawerVisualStateManager.m in Sources */,
 				EB72368E176414310041BD39 /* AppDelegate.m in Sources */,
 				EBDDAF931A7716A5006EBA49 /* MMSideDrawerSectionHeaderView.m in Sources */,
+				EBDDAFA01A772620006EBA49 /* MenuBarButton.m in Sources */,
 				EBDDAF8F1A7716A5006EBA49 /* MMDrawerVisualState.m in Sources */,
 				EBDDAF911A7716A5006EBA49 /* MMExampleLeftSideDrawerViewController.m in Sources */,
+				EBDDAF9D1A7722F7006EBA49 /* BooleanView.m in Sources */,
 				EB723697176414310041BD39 /* ViewController.m in Sources */,
 				EBDDAF991A771CBE006EBA49 /* RobotoFont.m in Sources */,
 				EB3A2D641764F51D00DC9F71 /* Reachability.m in Sources */,

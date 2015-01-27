@@ -27,6 +27,11 @@
      }];
     [drawerController setDrawerVisualStateBlock:[MMDrawerVisualState swingingDoorVisualStateBlock]];
     [navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],  NSForegroundColorAttributeName,[UIColor whiteColor], NSForegroundColorAttributeName,[NSValue valueWithUIOffset:UIOffsetMake(0, -1)], NSForegroundColorAttributeName,[UIFont fontWithName:@"Roboto-Medium" size:20.0], NSFontAttributeName,nil]];
+    [navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    navigationController.navigationBar.shadowImage = [UIImage new];
+    navigationController.navigationBar.translucent = YES;
+    navigationController.view.backgroundColor = [UIColor clearColor];
+    navigationController.navigationBar.backgroundColor = [UIColor clearColor];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setRootViewController:drawerController];
     [self.window makeKeyAndVisible];
