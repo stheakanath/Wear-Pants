@@ -12,18 +12,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIViewController *centerViewController = [[ViewController alloc] init];
-    /*
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-        centerViewController = [[ViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
-    else
-        centerViewController = [[ViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil];*/
-    
-    
     MMExampleLeftSideDrawerViewController *leftside = [[MMExampleLeftSideDrawerViewController alloc] init];
     leftside.delegate = centerViewController;
     UIViewController *leftSideDrawerViewController = leftside;
-    
-    //Setting up Multiview
     UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:centerViewController];
     MMDrawerController * drawerController = [[MMDrawerController alloc] initWithCenterViewController:navigationController leftDrawerViewController:leftSideDrawerViewController rightDrawerViewController:nil];
     [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
@@ -35,21 +26,9 @@
                 block(drawerController, drawerSide, percentVisible);
      }];
     [drawerController setDrawerVisualStateBlock:[MMDrawerVisualState swingingDoorVisualStateBlock]];
-    [navigationController.navigationBar setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIColor whiteColor],
-      NSForegroundColorAttributeName,
-      [UIColor whiteColor],
-      NSForegroundColorAttributeName,
-      [NSValue valueWithUIOffset:UIOffsetMake(0, -1)],
-      NSForegroundColorAttributeName,
-      [UIFont fontWithName:@"Roboto-Medium" size:20.0],
-      NSFontAttributeName,
-      nil]];
-    //Rest Set Up
+    [navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],  NSForegroundColorAttributeName,[UIColor whiteColor], NSForegroundColorAttributeName,[NSValue valueWithUIOffset:UIOffsetMake(0, -1)], NSForegroundColorAttributeName,[UIFont fontWithName:@"Roboto-Medium" size:20.0], NSFontAttributeName,nil]];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setRootViewController:drawerController];
-    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
