@@ -31,16 +31,12 @@
 		EB3FD77B177373D600237B54 /* fog1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD77A177373D600237B54 /* fog1.html */; };
 		EB3FD77D177373FD00237B54 /* snow1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD77C177373FD00237B54 /* snow1.html */; };
 		EB3FD77F1773741C00237B54 /* sun1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD77E1773741C00237B54 /* sun1.html */; };
-		EB3FD78F1773A7AE00237B54 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD78E1773A7AE00237B54 /* Default-Portrait@2x~ipad.png */; };
-		EB3FD7911773A7B300237B54 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD7901773A7B200237B54 /* Default-Portrait~ipad.png */; };
-		EB3FD7951773A81500237B54 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD7941773A81500237B54 /* Default.png */; };
 		EB72367E176414310041BD39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB72367D176414310041BD39 /* UIKit.framework */; };
 		EB723680176414310041BD39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB72367F176414310041BD39 /* Foundation.framework */; };
 		EB723682176414310041BD39 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB723681176414310041BD39 /* CoreGraphics.framework */; };
 		EB723688176414310041BD39 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB723686176414310041BD39 /* InfoPlist.strings */; };
 		EB72368A176414310041BD39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EB723689176414310041BD39 /* main.m */; };
 		EB72368E176414310041BD39 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EB72368D176414310041BD39 /* AppDelegate.m */; };
-		EB723694176414310041BD39 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB723693176414310041BD39 /* Default-568h@2x.png */; };
 		EB723697176414310041BD39 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB723696176414310041BD39 /* ViewController.m */; };
 		EB7236A6176414310041BD39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB72367D176414310041BD39 /* UIKit.framework */; };
 		EB7236A7176414310041BD39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB72367F176414310041BD39 /* Foundation.framework */; };
@@ -63,7 +59,6 @@
 		EBC1C409176E949400518D77 /* partlycloudynight.html in Resources */ = {isa = PBXBuildFile; fileRef = EBC1C401176E949400518D77 /* partlycloudynight.html */; };
 		EBC1C40A176E949400518D77 /* rain.html in Resources */ = {isa = PBXBuildFile; fileRef = EBC1C402176E949400518D77 /* rain.html */; };
 		EBC1C40C176E994900518D77 /* sleet.html in Resources */ = {isa = PBXBuildFile; fileRef = EBC1C40B176E994900518D77 /* sleet.html */; };
-		EBD0217D1773E90000FED304 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD7921773A80800237B54 /* Default@2x.png */; };
 		EBD02189177407B800FED304 /* cloud.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBD02188177407B800FED304 /* cloud.jpg */; };
 		EBD0218B177407C500FED304 /* PlusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD0218A177407C400FED304 /* PlusIcon.png */; };
 		EBD0218D177407CB00FED304 /* MenuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD0218C177407CB00FED304 /* MenuButton.png */; };
@@ -82,6 +77,7 @@
 		EBDDAF991A771CBE006EBA49 /* RobotoFont.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF981A771CBE006EBA49 /* RobotoFont.m */; };
 		EBDDAF9D1A7722F7006EBA49 /* BooleanView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF9C1A7722F7006EBA49 /* BooleanView.m */; };
 		EBDDAFA01A772620006EBA49 /* MenuBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF9F1A772620006EBA49 /* MenuBarButton.m */; };
+		EBDDAFA51A772EDB006EBA49 /* PredictionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAFA41A772EDB006EBA49 /* PredictionButton.m */; };
 		EBE2898A17714AB000E0CFB0 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE2898917714AB000E0CFB0 /* MainStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -124,10 +120,6 @@
 		EB3FD77A177373D600237B54 /* fog1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = fog1.html; sourceTree = "<group>"; };
 		EB3FD77C177373FD00237B54 /* snow1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = snow1.html; sourceTree = "<group>"; };
 		EB3FD77E1773741C00237B54 /* sun1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sun1.html; sourceTree = "<group>"; };
-		EB3FD78E1773A7AE00237B54 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "../Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
-		EB3FD7901773A7B200237B54 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../Default-Portrait~ipad.png"; sourceTree = "<group>"; };
-		EB3FD7921773A80800237B54 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
-		EB3FD7941773A81500237B54 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		EB72367A176414310041BD39 /* Wear Pants.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wear Pants.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB72367D176414310041BD39 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EB72367F176414310041BD39 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -138,7 +130,6 @@
 		EB72368B176414310041BD39 /* Wear Pants-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wear Pants-Prefix.pch"; sourceTree = "<group>"; };
 		EB72368C176414310041BD39 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EB72368D176414310041BD39 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		EB723693176414310041BD39 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		EB723695176414310041BD39 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		EB723696176414310041BD39 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		EB7236A3176414310041BD39 /* Wear PantsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wear PantsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,6 +186,8 @@
 		EBDDAF9C1A7722F7006EBA49 /* BooleanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BooleanView.m; path = "Interface Classes/BooleanView.m"; sourceTree = "<group>"; };
 		EBDDAF9E1A772620006EBA49 /* MenuBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuBarButton.h; path = "Interface Classes/MenuBarButton.h"; sourceTree = "<group>"; };
 		EBDDAF9F1A772620006EBA49 /* MenuBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuBarButton.m; path = "Interface Classes/MenuBarButton.m"; sourceTree = "<group>"; };
+		EBDDAFA31A772EDB006EBA49 /* PredictionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PredictionButton.h; path = "Interface Classes/PredictionButton.h"; sourceTree = "<group>"; };
+		EBDDAFA41A772EDB006EBA49 /* PredictionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PredictionButton.m; path = "Interface Classes/PredictionButton.m"; sourceTree = "<group>"; };
 		EBE2898917714AB000E0CFB0 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,11 +224,6 @@
 		EB136878176784300073F530 /* Images+Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				EB3FD7941773A81500237B54 /* Default.png */,
-				EB3FD7921773A80800237B54 /* Default@2x.png */,
-				EB723693176414310041BD39 /* Default-568h@2x.png */,
-				EB3FD7901773A7B200237B54 /* Default-Portrait~ipad.png */,
-				EB3FD78E1773A7AE00237B54 /* Default-Portrait@2x~ipad.png */,
 				EB7D379F1772AF2900D331C7 /* PredictButton@2x.png */,
 				EBD0218E1774081B00FED304 /* PredictButton_Selected.png */,
 				EBD021901774082900FED304 /* PredictButton.png */,
@@ -301,14 +289,10 @@
 		EB723683176414310041BD39 /* Wear Pants */ = {
 			isa = PBXGroup;
 			children = (
-				EB72368C176414310041BD39 /* AppDelegate.h */,
-				EB72368D176414310041BD39 /* AppDelegate.m */,
-				EB723695176414310041BD39 /* ViewController.h */,
-				EB723696176414310041BD39 /* ViewController.m */,
+				EBDDAFA21A772D60006EBA49 /* Main Classes */,
 				EBDDAF9A1A771CC8006EBA49 /* Interface Classes */,
 				EB39DE2B1770E28600442F3A /* AddCityViewController.h */,
 				EB39DE2C1770E28600442F3A /* AddCityViewController.m */,
-				EBDDAFA11A772CE0006EBA49 /* Images */,
 				EBE2898917714AB000E0CFB0 /* MainStoryboard.storyboard */,
 				EB8CA016176D1A0300BAD349 /* Skycons */,
 				EB136879176784450073F530 /* Other Classes */,
@@ -409,10 +393,13 @@
 		EBDDAF9A1A771CC8006EBA49 /* Interface Classes */ = {
 			isa = PBXGroup;
 			children = (
+				EBDDAFA11A772CE0006EBA49 /* Images */,
 				EBDDAF9B1A7722F7006EBA49 /* BooleanView.h */,
 				EBDDAF9C1A7722F7006EBA49 /* BooleanView.m */,
 				EBDDAF9E1A772620006EBA49 /* MenuBarButton.h */,
 				EBDDAF9F1A772620006EBA49 /* MenuBarButton.m */,
+				EBDDAFA31A772EDB006EBA49 /* PredictionButton.h */,
+				EBDDAFA41A772EDB006EBA49 /* PredictionButton.m */,
 				EBDDAF971A771CBE006EBA49 /* RobotoFont.h */,
 				EBDDAF981A771CBE006EBA49 /* RobotoFont.m */,
 			);
@@ -428,6 +415,17 @@
 				EB3A2DC81765084D00DC9F71 /* PlusIcon@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		EBDDAFA21A772D60006EBA49 /* Main Classes */ = {
+			isa = PBXGroup;
+			children = (
+				EB72368C176414310041BD39 /* AppDelegate.h */,
+				EB72368D176414310041BD39 /* AppDelegate.m */,
+				EB723695176414310041BD39 /* ViewController.h */,
+				EB723696176414310041BD39 /* ViewController.m */,
+			);
+			name = "Main Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -510,7 +508,6 @@
 				EB7D3790177249C600D331C7 /* ViewControllerDelegate.h in Resources */,
 				EB787EF2176E3A0D007BABF0 /* skycons.js in Resources */,
 				EB723688176414310041BD39 /* InfoPlist.strings in Resources */,
-				EB723694176414310041BD39 /* Default-568h@2x.png in Resources */,
 				EB3A2D751764FF5100DC9F71 /* Roboto-Light.ttf in Resources */,
 				EB3A2D761764FF5100DC9F71 /* Roboto-Medium.ttf in Resources */,
 				EB3A2DC21765055600DC9F71 /* MenuButton@2x.png in Resources */,
@@ -539,10 +536,6 @@
 				EB3FD77B177373D600237B54 /* fog1.html in Resources */,
 				EB3FD77D177373FD00237B54 /* snow1.html in Resources */,
 				EB3FD77F1773741C00237B54 /* sun1.html in Resources */,
-				EB3FD78F1773A7AE00237B54 /* Default-Portrait@2x~ipad.png in Resources */,
-				EB3FD7911773A7B300237B54 /* Default-Portrait~ipad.png in Resources */,
-				EB3FD7951773A81500237B54 /* Default.png in Resources */,
-				EBD0217D1773E90000FED304 /* Default@2x.png in Resources */,
 				EBD02189177407B800FED304 /* cloud.jpg in Resources */,
 				EBD0218B177407C500FED304 /* PlusIcon.png in Resources */,
 				EBD0218D177407CB00FED304 /* MenuButton.png in Resources */,
@@ -588,6 +581,7 @@
 				EB72368E176414310041BD39 /* AppDelegate.m in Sources */,
 				EBDDAF931A7716A5006EBA49 /* MMSideDrawerSectionHeaderView.m in Sources */,
 				EBDDAFA01A772620006EBA49 /* MenuBarButton.m in Sources */,
+				EBDDAFA51A772EDB006EBA49 /* PredictionButton.m in Sources */,
 				EBDDAF8F1A7716A5006EBA49 /* MMDrawerVisualState.m in Sources */,
 				EBDDAF911A7716A5006EBA49 /* MMExampleLeftSideDrawerViewController.m in Sources */,
 				EBDDAF9D1A7722F7006EBA49 /* BooleanView.m in Sources */,

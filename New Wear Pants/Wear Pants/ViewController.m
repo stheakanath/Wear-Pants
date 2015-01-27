@@ -10,6 +10,7 @@
 #import "ViewController.h"
 #import "RobotoFont.h"
 #import "MenuBarButton.h"
+#import "PredictionButton.h"
 
 @interface ViewController ()
 
@@ -28,37 +29,9 @@ static NSMutableArray* savedLinks = nil;
     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     [locationManager startUpdatingLocation];
     geoCoder = [[CLGeocoder alloc] init];
-}
-
-- (void)viewDidLoad {
-    [self setUpLocationServices];
-    [self startVariables];
-    [self startInterface];
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-        
-
-    self.navigationItem.leftBarButtonItem = [[MenuBarButton alloc] init:@"MenuButton" target:self selector:@selector(leftDrawerButtonPress:)];
-    self.navigationItem.rightBarButtonItem = [[MenuBarButton alloc] init:@"PlusIcon" target:self selector:@selector(rightDrawerButtonPress:)];
-    
-    //Gestures
-    UITapGestureRecognizer * doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
-    [doubleTap setNumberOfTapsRequired:2];
-    [self.view addGestureRecognizer:doubleTap];
-    UITapGestureRecognizer * twoFingerDoubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(twoFingerDoubleTap:)];
-    [twoFingerDoubleTap setNumberOfTapsRequired:2];
-    [twoFingerDoubleTap setNumberOfTouchesRequired:2];
-    [self.view addGestureRecognizer:twoFingerDoubleTap];
-    
-    //Title and Rest
-    [self.navigationItem setTitle:@"Searching Location"];
-    [super viewDidLoad];
-    
-    //Other
-    locationManager.delegate=self;
-    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)
         [locationManager requestWhenInUseAuthorization];
-        NSLog(@"TEST");
-    } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+    else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled" message:@"To re-enable, please go to Settings and turn on Location Service for this app." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert setTag:0];
         [alert show];
@@ -66,13 +39,20 @@ static NSMutableArray* savedLinks = nil;
         [locationManager startUpdatingLocation];
         [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(getZipCode) userInfo:nil repeats:NO];
     }
-    //For Testing, uncomment next line for final release
-    //[self reloadFrame:@"New York City, NY, 10001"];
 }
 
-
-
-
+- (void)viewDidLoad {
+    //modifiy code
+    [self setUpLocationServices];
+    [self startVariables];
+    [self startInterface];
+    
+    //code below is final
+    self.navigationItem.leftBarButtonItem = [[MenuBarButton alloc] init:@"MenuButton" target:self selector:@selector(leftDrawerButtonPress:)];
+    self.navigationItem.rightBarButtonItem = [[MenuBarButton alloc] init:@"PlusIcon" target:self selector:@selector(rightDrawerButtonPress:)];
+    [self.navigationItem setTitle:@"Searching Location"];
+    [super viewDidLoad];
+}
 
 
 
@@ -90,8 +70,8 @@ static NSMutableArray* savedLinks = nil;
                       [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)],
                       [[RobotoFont alloc] init:CGRectMake(0, screenHeight/6, screenWidth, 50) fontName:@"Roboto-Light" fontSize:20],
                       [[RobotoFont alloc] init:CGRectMake(0, screenHeight/3-25, screenWidth, 50) fontName:@"Roboto-Medium" fontSize:50],
-                      [UIButton buttonWithType:UIButtonTypeCustom],
-                      [UIButton buttonWithType:UIButtonTypeCustom],
+                      [[PredictionButton alloc] init:CGRectMake(-150, screenHeight/3+60, 140, 35) setTitle:@"Nice Prediction!" target:self selector:@selector(nicePredictionPressed)],
+                      [[PredictionButton alloc] init:CGRectMake(screenWidth+110, screenHeight/3+60, 140, 35) setTitle:@"Bad Prediction!" target:self selector:@selector(badPredictionPressed)],
                       [[UIWebView alloc] initWithFrame:CGRectMake(screenWidth/2-5, screenHeight/2+55 , 170, 170)],
                       [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-145, screenHeight/2+80, 150, 20)],
                       [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-145, screenHeight/2+122.5, 150, 20)],
@@ -104,26 +84,10 @@ static NSMutableArray* savedLinks = nil;
 }
 
 - (void)startInterface {
-    CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
-    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
     [[interfaceArray objectAtIndex:1] setText:@"Should I Wear Pants Today?"];
     [[interfaceArray objectAtIndex:2] setText:@"Checking."];
-    for(int x = 0; x < 2; x++) {
-        [[interfaceArray objectAtIndex:3+x] setFont:[UIFont fontWithName:@"Roboto-Light" size:16]];
-        [[interfaceArray objectAtIndex:3+x] setBackgroundColor:[UIColor clearColor]];
-        [[interfaceArray objectAtIndex:3+x] setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0] forState:UIControlStateNormal];
-        [[interfaceArray objectAtIndex:3+x] setTitleShadowColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [[interfaceArray objectAtIndex:3+x] setTitleColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0] forState:UIControlStateHighlighted];
-        [[interfaceArray objectAtIndex:3+x] setTitleShadowColor:[UIColor blackColor] forState:UIControlStateHighlighted];
-        [[interfaceArray objectAtIndex:3+x]  setBackgroundImage:[UIImage imageNamed:@"PredictButton.png"] forState:UIControlStateNormal];
-        [[interfaceArray objectAtIndex:3+x]  setBackgroundImage:[UIImage imageNamed:@"PredictButton_Selected.png"] forState:UIControlStateHighlighted];
-    }
-    [[interfaceArray objectAtIndex:3] setFrame:CGRectMake(-150, screenHeight/3+60, 140, 35)];
-    [[interfaceArray objectAtIndex:3] setTitle:@"Nice Prediction!" forState:UIControlStateNormal];
-    [[interfaceArray objectAtIndex:3] addTarget:self action:@selector(nicePredictionPressed) forControlEvents:UIControlEventTouchUpInside];
-    [[interfaceArray objectAtIndex:4] setFrame:CGRectMake(screenWidth+110, screenHeight/3+60, 140, 35)];
-    [[interfaceArray objectAtIndex:4] setTitle:@"Bad Prediction" forState:UIControlStateNormal];
-    [[interfaceArray objectAtIndex:4] addTarget:self action:@selector(badPredictionPressed) forControlEvents:UIControlEventTouchUpInside];    
+    
+    
     [[interfaceArray objectAtIndex:5] setBackgroundColor:[UIColor clearColor]];
     [[interfaceArray objectAtIndex:5] setOpaque:NO];
     [[interfaceArray objectAtIndex:5] setEnabled:NO];
@@ -454,13 +418,6 @@ static NSMutableArray* savedLinks = nil;
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
--(void)doubleTap:(UITapGestureRecognizer*)gesture{
-    [self.mm_drawerController bouncePreviewForDrawerSide:MMDrawerSideLeft completion:nil];
-}
-
--(void)twoFingerDoubleTap:(UITapGestureRecognizer*)gesture{
-    [self.mm_drawerController bouncePreviewForDrawerSide:MMDrawerSideLeft completion:nil];
-}
 
 #pragma mark - Other
 
