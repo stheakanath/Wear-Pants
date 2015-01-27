@@ -12,7 +12,6 @@
 #import "AddCityViewController.h"
 #import "UIViewController+MMDrawerController.h"
 #import "MMDrawerVisualState.h"
-#import "UIImage+StackBlur.h"
 #import "BackgroundLayer.h"
 #import "Reachability.h"
 #import "USLocation.h"

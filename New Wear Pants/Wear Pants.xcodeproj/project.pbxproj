@@ -17,16 +17,6 @@
 		EB3A2D6E1764F56200DC9F71 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3A2D6D1764F56200DC9F71 /* CoreLocation.framework */; };
 		EB3A2D701764F56600DC9F71 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3A2D6F1764F56600DC9F71 /* AddressBookUI.framework */; };
 		EB3A2DC71765079D00DC9F71 /* UIImage+StackBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3A2DC61765079D00DC9F71 /* UIImage+StackBlur.m */; };
-		EB3FD76B1773732B00237B54 /* nightclear1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD76A1773732B00237B54 /* nightclear1.html */; };
-		EB3FD772177373B000237B54 /* cloudy1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD76C177373AF00237B54 /* cloudy1.html */; };
-		EB3FD773177373B000237B54 /* partlycloudyday1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD76D177373AF00237B54 /* partlycloudyday1.html */; };
-		EB3FD774177373B000237B54 /* rain1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD76E177373AF00237B54 /* rain1.html */; };
-		EB3FD775177373B000237B54 /* sleet1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD76F177373AF00237B54 /* sleet1.html */; };
-		EB3FD777177373B000237B54 /* wind1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD771177373B000237B54 /* wind1.html */; };
-		EB3FD779177373BD00237B54 /* partlycloudynight1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD778177373BD00237B54 /* partlycloudynight1.html */; };
-		EB3FD77B177373D600237B54 /* fog1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD77A177373D600237B54 /* fog1.html */; };
-		EB3FD77D177373FD00237B54 /* snow1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD77C177373FD00237B54 /* snow1.html */; };
-		EB3FD77F1773741C00237B54 /* sun1.html in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD77E1773741C00237B54 /* sun1.html */; };
 		EB72367E176414310041BD39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB72367D176414310041BD39 /* UIKit.framework */; };
 		EB723680176414310041BD39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB72367F176414310041BD39 /* Foundation.framework */; };
 		EB723682176414310041BD39 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB723681176414310041BD39 /* CoreGraphics.framework */; };
@@ -39,20 +29,9 @@
 		EB7236AF176414310041BD39 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB7236AD176414310041BD39 /* InfoPlist.strings */; };
 		EB7236B2176414310041BD39 /* Wear_PantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7236B1176414310041BD39 /* Wear_PantsTests.m */; };
 		EB7236F5176415230041BD39 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7236F4176415230041BD39 /* QuartzCore.framework */; };
-		EB787EF2176E3A0D007BABF0 /* skycons.js in Resources */ = {isa = PBXBuildFile; fileRef = EB8CA017176D1A1300BAD349 /* skycons.js */; };
 		EB7D3790177249C600D331C7 /* ViewControllerDelegate.h in Resources */ = {isa = PBXBuildFile; fileRef = EB7D378F177248A700D331C7 /* ViewControllerDelegate.h */; };
 		EB7D37A51772BA7A00D331C7 /* BackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7D37A41772BA7A00D331C7 /* BackgroundLayer.m */; };
 		EB87E3F51A649824004F6B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB87E3F41A649824004F6B9A /* Images.xcassets */; };
-		EB8CA01A176D1A1300BAD349 /* sun.html in Resources */ = {isa = PBXBuildFile; fileRef = EB8CA018176D1A1300BAD349 /* sun.html */; };
-		EBC1C403176E949400518D77 /* snow.html in Resources */ = {isa = PBXBuildFile; fileRef = EBC1C3FB176E949400518D77 /* snow.html */; };
-		EBC1C404176E949400518D77 /* wind.html in Resources */ = {isa = PBXBuildFile; fileRef = EBC1C3FC176E949400518D77 /* wind.html */; };
-		EBC1C405176E949400518D77 /* fog.html in Resources */ = {isa = PBXBuildFile; fileRef = EBC1C3FD176E949400518D77 /* fog.html */; };
-		EBC1C406176E949400518D77 /* cloudy.html in Resources */ = {isa = PBXBuildFile; fileRef = EBC1C3FE176E949400518D77 /* cloudy.html */; };
-		EBC1C407176E949400518D77 /* nightclear.html in Resources */ = {isa = PBXBuildFile; fileRef = EBC1C3FF176E949400518D77 /* nightclear.html */; };
-		EBC1C408176E949400518D77 /* partlycloudyday.html in Resources */ = {isa = PBXBuildFile; fileRef = EBC1C400176E949400518D77 /* partlycloudyday.html */; };
-		EBC1C409176E949400518D77 /* partlycloudynight.html in Resources */ = {isa = PBXBuildFile; fileRef = EBC1C401176E949400518D77 /* partlycloudynight.html */; };
-		EBC1C40A176E949400518D77 /* rain.html in Resources */ = {isa = PBXBuildFile; fileRef = EBC1C402176E949400518D77 /* rain.html */; };
-		EBC1C40C176E994900518D77 /* sleet.html in Resources */ = {isa = PBXBuildFile; fileRef = EBC1C40B176E994900518D77 /* sleet.html */; };
 		EBDDAF8D1A7716A5006EBA49 /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF7A1A7716A5006EBA49 /* MMDrawerBarButtonItem.m */; };
 		EBDDAF8E1A7716A5006EBA49 /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF7C1A7716A5006EBA49 /* MMDrawerController.m */; };
 		EBDDAF8F1A7716A5006EBA49 /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF7E1A7716A5006EBA49 /* MMDrawerVisualState.m */; };
@@ -64,7 +43,6 @@
 		EBDDAF951A7716A5006EBA49 /* MMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF8A1A7716A5006EBA49 /* MMTableViewCell.m */; };
 		EBDDAF961A7716A5006EBA49 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF8C1A7716A5006EBA49 /* UIViewController+MMDrawerController.m */; };
 		EBDDAF991A771CBE006EBA49 /* RobotoFont.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF981A771CBE006EBA49 /* RobotoFont.m */; };
-		EBDDAF9D1A7722F7006EBA49 /* BooleanView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF9C1A7722F7006EBA49 /* BooleanView.m */; };
 		EBDDAFA01A772620006EBA49 /* MenuBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF9F1A772620006EBA49 /* MenuBarButton.m */; };
 		EBDDAFA51A772EDB006EBA49 /* PredictionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAFA41A772EDB006EBA49 /* PredictionButton.m */; };
 		EBDDAFB11A7737A5006EBA49 /* DefaultBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFA61A7737A5006EBA49 /* DefaultBackground.jpg */; };
@@ -78,6 +56,28 @@
 		EBDDAFB91A7737A5006EBA49 /* PredictButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFAE1A7737A5006EBA49 /* PredictButton@2x.png */; };
 		EBDDAFBA1A7737A5006EBA49 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFAF1A7737A5006EBA49 /* Roboto-Light.ttf */; };
 		EBDDAFBB1A7737A5006EBA49 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFB01A7737A5006EBA49 /* Roboto-Medium.ttf */; };
+		EBDDAFD21A773D6C006EBA49 /* cloudy.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFBD1A773D6C006EBA49 /* cloudy.html */; };
+		EBDDAFD31A773D6C006EBA49 /* cloudy1.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFBE1A773D6C006EBA49 /* cloudy1.html */; };
+		EBDDAFD41A773D6C006EBA49 /* fog.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFBF1A773D6C006EBA49 /* fog.html */; };
+		EBDDAFD51A773D6C006EBA49 /* fog1.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFC01A773D6C006EBA49 /* fog1.html */; };
+		EBDDAFD61A773D6C006EBA49 /* nightclear.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFC11A773D6C006EBA49 /* nightclear.html */; };
+		EBDDAFD71A773D6C006EBA49 /* nightclear1.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFC21A773D6C006EBA49 /* nightclear1.html */; };
+		EBDDAFD81A773D6C006EBA49 /* partlycloudyday.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFC31A773D6C006EBA49 /* partlycloudyday.html */; };
+		EBDDAFD91A773D6C006EBA49 /* partlycloudyday1.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFC41A773D6C006EBA49 /* partlycloudyday1.html */; };
+		EBDDAFDA1A773D6C006EBA49 /* partlycloudynight.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFC51A773D6C006EBA49 /* partlycloudynight.html */; };
+		EBDDAFDB1A773D6C006EBA49 /* partlycloudynight1.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFC61A773D6C006EBA49 /* partlycloudynight1.html */; };
+		EBDDAFDC1A773D6C006EBA49 /* rain.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFC71A773D6C006EBA49 /* rain.html */; };
+		EBDDAFDD1A773D6C006EBA49 /* rain1.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFC81A773D6C006EBA49 /* rain1.html */; };
+		EBDDAFDE1A773D6C006EBA49 /* skycons.js in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFC91A773D6C006EBA49 /* skycons.js */; };
+		EBDDAFDF1A773D6C006EBA49 /* sleet.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFCA1A773D6C006EBA49 /* sleet.html */; };
+		EBDDAFE01A773D6C006EBA49 /* sleet1.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFCB1A773D6C006EBA49 /* sleet1.html */; };
+		EBDDAFE11A773D6C006EBA49 /* snow.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFCC1A773D6C006EBA49 /* snow.html */; };
+		EBDDAFE21A773D6C006EBA49 /* snow1.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFCD1A773D6C006EBA49 /* snow1.html */; };
+		EBDDAFE31A773D6C006EBA49 /* sun.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFCE1A773D6C006EBA49 /* sun.html */; };
+		EBDDAFE41A773D6C006EBA49 /* sun1.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFCF1A773D6C006EBA49 /* sun1.html */; };
+		EBDDAFE51A773D6C006EBA49 /* wind.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFD01A773D6C006EBA49 /* wind.html */; };
+		EBDDAFE61A773D6C006EBA49 /* wind1.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFD11A773D6C006EBA49 /* wind1.html */; };
+		EBDDAFE91A773DA1006EBA49 /* WeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAFE81A773DA1006EBA49 /* WeatherData.m */; };
 		EBE2898A17714AB000E0CFB0 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE2898917714AB000E0CFB0 /* MainStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -106,16 +106,6 @@
 		EB3A2D6F1764F56600DC9F71 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		EB3A2DC51765079C00DC9F71 /* UIImage+StackBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+StackBlur.h"; sourceTree = "<group>"; };
 		EB3A2DC61765079D00DC9F71 /* UIImage+StackBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+StackBlur.m"; sourceTree = "<group>"; };
-		EB3FD76A1773732B00237B54 /* nightclear1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = nightclear1.html; sourceTree = "<group>"; };
-		EB3FD76C177373AF00237B54 /* cloudy1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = cloudy1.html; sourceTree = "<group>"; };
-		EB3FD76D177373AF00237B54 /* partlycloudyday1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = partlycloudyday1.html; sourceTree = "<group>"; };
-		EB3FD76E177373AF00237B54 /* rain1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = rain1.html; sourceTree = "<group>"; };
-		EB3FD76F177373AF00237B54 /* sleet1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sleet1.html; sourceTree = "<group>"; };
-		EB3FD771177373B000237B54 /* wind1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = wind1.html; sourceTree = "<group>"; };
-		EB3FD778177373BD00237B54 /* partlycloudynight1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = partlycloudynight1.html; sourceTree = "<group>"; };
-		EB3FD77A177373D600237B54 /* fog1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = fog1.html; sourceTree = "<group>"; };
-		EB3FD77C177373FD00237B54 /* snow1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = snow1.html; sourceTree = "<group>"; };
-		EB3FD77E1773741C00237B54 /* sun1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sun1.html; sourceTree = "<group>"; };
 		EB72367A176414310041BD39 /* Wear Pants.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wear Pants.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB72367D176414310041BD39 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EB72367F176414310041BD39 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -138,17 +128,6 @@
 		EB7D37A31772BA7A00D331C7 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		EB7D37A41772BA7A00D331C7 /* BackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundLayer.m; sourceTree = "<group>"; };
 		EB87E3F41A649824004F6B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		EB8CA017176D1A1300BAD349 /* skycons.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = skycons.js; sourceTree = "<group>"; };
-		EB8CA018176D1A1300BAD349 /* sun.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sun.html; sourceTree = "<group>"; };
-		EBC1C3FB176E949400518D77 /* snow.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = snow.html; sourceTree = "<group>"; };
-		EBC1C3FC176E949400518D77 /* wind.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = wind.html; sourceTree = "<group>"; };
-		EBC1C3FD176E949400518D77 /* fog.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = fog.html; sourceTree = "<group>"; };
-		EBC1C3FE176E949400518D77 /* cloudy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = cloudy.html; sourceTree = "<group>"; };
-		EBC1C3FF176E949400518D77 /* nightclear.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = nightclear.html; sourceTree = "<group>"; };
-		EBC1C400176E949400518D77 /* partlycloudyday.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = partlycloudyday.html; sourceTree = "<group>"; };
-		EBC1C401176E949400518D77 /* partlycloudynight.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = partlycloudynight.html; sourceTree = "<group>"; };
-		EBC1C402176E949400518D77 /* rain.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = rain.html; sourceTree = "<group>"; };
-		EBC1C40B176E994900518D77 /* sleet.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sleet.html; sourceTree = "<group>"; };
 		EBDDAF791A7716A5006EBA49 /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMDrawerBarButtonItem.h; path = "Drawer Classes/MMDrawerBarButtonItem.h"; sourceTree = "<group>"; };
 		EBDDAF7A1A7716A5006EBA49 /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMDrawerBarButtonItem.m; path = "Drawer Classes/MMDrawerBarButtonItem.m"; sourceTree = "<group>"; };
 		EBDDAF7B1A7716A5006EBA49 /* MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMDrawerController.h; path = "Drawer Classes/MMDrawerController.h"; sourceTree = "<group>"; };
@@ -171,8 +150,6 @@
 		EBDDAF8C1A7716A5006EBA49 /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+MMDrawerController.m"; path = "Drawer Classes/UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
 		EBDDAF971A771CBE006EBA49 /* RobotoFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RobotoFont.h; path = "Interface Classes/RobotoFont.h"; sourceTree = "<group>"; };
 		EBDDAF981A771CBE006EBA49 /* RobotoFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RobotoFont.m; path = "Interface Classes/RobotoFont.m"; sourceTree = "<group>"; };
-		EBDDAF9B1A7722F7006EBA49 /* BooleanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BooleanView.h; path = "Interface Classes/BooleanView.h"; sourceTree = "<group>"; };
-		EBDDAF9C1A7722F7006EBA49 /* BooleanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BooleanView.m; path = "Interface Classes/BooleanView.m"; sourceTree = "<group>"; };
 		EBDDAF9E1A772620006EBA49 /* MenuBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuBarButton.h; path = "Interface Classes/MenuBarButton.h"; sourceTree = "<group>"; };
 		EBDDAF9F1A772620006EBA49 /* MenuBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuBarButton.m; path = "Interface Classes/MenuBarButton.m"; sourceTree = "<group>"; };
 		EBDDAFA31A772EDB006EBA49 /* PredictionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PredictionButton.h; path = "Interface Classes/PredictionButton.h"; sourceTree = "<group>"; };
@@ -188,6 +165,29 @@
 		EBDDAFAE1A7737A5006EBA49 /* PredictButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PredictButton@2x.png"; path = "Images/PredictButton@2x.png"; sourceTree = "<group>"; };
 		EBDDAFAF1A7737A5006EBA49 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Light.ttf"; path = "Images/Roboto-Light.ttf"; sourceTree = "<group>"; };
 		EBDDAFB01A7737A5006EBA49 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Medium.ttf"; path = "Images/Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		EBDDAFBD1A773D6C006EBA49 /* cloudy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = cloudy.html; path = Skycons/cloudy.html; sourceTree = "<group>"; };
+		EBDDAFBE1A773D6C006EBA49 /* cloudy1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = cloudy1.html; path = Skycons/cloudy1.html; sourceTree = "<group>"; };
+		EBDDAFBF1A773D6C006EBA49 /* fog.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = fog.html; path = Skycons/fog.html; sourceTree = "<group>"; };
+		EBDDAFC01A773D6C006EBA49 /* fog1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = fog1.html; path = Skycons/fog1.html; sourceTree = "<group>"; };
+		EBDDAFC11A773D6C006EBA49 /* nightclear.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = nightclear.html; path = Skycons/nightclear.html; sourceTree = "<group>"; };
+		EBDDAFC21A773D6C006EBA49 /* nightclear1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = nightclear1.html; path = Skycons/nightclear1.html; sourceTree = "<group>"; };
+		EBDDAFC31A773D6C006EBA49 /* partlycloudyday.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = partlycloudyday.html; path = Skycons/partlycloudyday.html; sourceTree = "<group>"; };
+		EBDDAFC41A773D6C006EBA49 /* partlycloudyday1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = partlycloudyday1.html; path = Skycons/partlycloudyday1.html; sourceTree = "<group>"; };
+		EBDDAFC51A773D6C006EBA49 /* partlycloudynight.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = partlycloudynight.html; path = Skycons/partlycloudynight.html; sourceTree = "<group>"; };
+		EBDDAFC61A773D6C006EBA49 /* partlycloudynight1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = partlycloudynight1.html; path = Skycons/partlycloudynight1.html; sourceTree = "<group>"; };
+		EBDDAFC71A773D6C006EBA49 /* rain.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = rain.html; path = Skycons/rain.html; sourceTree = "<group>"; };
+		EBDDAFC81A773D6C006EBA49 /* rain1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = rain1.html; path = Skycons/rain1.html; sourceTree = "<group>"; };
+		EBDDAFC91A773D6C006EBA49 /* skycons.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = skycons.js; path = Skycons/skycons.js; sourceTree = "<group>"; };
+		EBDDAFCA1A773D6C006EBA49 /* sleet.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = sleet.html; path = Skycons/sleet.html; sourceTree = "<group>"; };
+		EBDDAFCB1A773D6C006EBA49 /* sleet1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = sleet1.html; path = Skycons/sleet1.html; sourceTree = "<group>"; };
+		EBDDAFCC1A773D6C006EBA49 /* snow.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = snow.html; path = Skycons/snow.html; sourceTree = "<group>"; };
+		EBDDAFCD1A773D6C006EBA49 /* snow1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = snow1.html; path = Skycons/snow1.html; sourceTree = "<group>"; };
+		EBDDAFCE1A773D6C006EBA49 /* sun.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = sun.html; path = Skycons/sun.html; sourceTree = "<group>"; };
+		EBDDAFCF1A773D6C006EBA49 /* sun1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = sun1.html; path = Skycons/sun1.html; sourceTree = "<group>"; };
+		EBDDAFD01A773D6C006EBA49 /* wind.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = wind.html; path = Skycons/wind.html; sourceTree = "<group>"; };
+		EBDDAFD11A773D6C006EBA49 /* wind1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = wind1.html; path = Skycons/wind1.html; sourceTree = "<group>"; };
+		EBDDAFE71A773DA1006EBA49 /* WeatherData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherData.h; path = "Data Classes/WeatherData.h"; sourceTree = "<group>"; };
+		EBDDAFE81A773DA1006EBA49 /* WeatherData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherData.m; path = "Data Classes/WeatherData.m"; sourceTree = "<group>"; };
 		EBE2898917714AB000E0CFB0 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,21 +221,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EB136879176784450073F530 /* Other Classes */ = {
-			isa = PBXGroup;
-			children = (
-				EB7D37A31772BA7A00D331C7 /* BackgroundLayer.h */,
-				EB7D37A41772BA7A00D331C7 /* BackgroundLayer.m */,
-				EB3A2DC51765079C00DC9F71 /* UIImage+StackBlur.h */,
-				EB3A2DC61765079D00DC9F71 /* UIImage+StackBlur.m */,
-				EB3A2D621764F51D00DC9F71 /* Reachability.h */,
-				EB3A2D631764F51D00DC9F71 /* Reachability.m */,
-				EB39DE221770D31E00442F3A /* USLocation.h */,
-				EB39DE241770D8BA00442F3A /* USLocation.m */,
-			);
-			name = "Other Classes";
-			sourceTree = "<group>";
-		};
 		EB723671176414310041BD39 = {
 			isa = PBXGroup;
 			children = (
@@ -275,15 +260,9 @@
 		EB723683176414310041BD39 /* Wear Pants */ = {
 			isa = PBXGroup;
 			children = (
-				EBDDAFA21A772D60006EBA49 /* Main Classes */,
+				EBDDAFBC1A7738CB006EBA49 /* Data Classes */,
 				EBDDAF9A1A771CC8006EBA49 /* Interface Classes */,
-				EB39DE2B1770E28600442F3A /* AddCityViewController.h */,
-				EB39DE2C1770E28600442F3A /* AddCityViewController.m */,
-				EBE2898917714AB000E0CFB0 /* MainStoryboard.storyboard */,
-				EB8CA016176D1A0300BAD349 /* Skycons */,
-				EB136879176784450073F530 /* Other Classes */,
-				EB7236BB176414C30041BD39 /* Drawer Classes */,
-				EB87E3F41A649824004F6B9A /* Images.xcassets */,
+				EBDDAFA21A772D60006EBA49 /* Main Classes */,
 				EB723684176414310041BD39 /* Supporting Files */,
 			);
 			path = "Wear Pants";
@@ -292,6 +271,9 @@
 		EB723684176414310041BD39 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EB7236BB176414C30041BD39 /* Drawer Classes */,
+				EB87E3F41A649824004F6B9A /* Images.xcassets */,
+				EBE2898917714AB000E0CFB0 /* MainStoryboard.storyboard */,
 				EB7D378F177248A700D331C7 /* ViewControllerDelegate.h */,
 				EB723685176414310041BD39 /* Wear Pants-Info.plist */,
 				EB723686176414310041BD39 /* InfoPlist.strings */,
@@ -350,27 +332,27 @@
 		EB8CA016176D1A0300BAD349 /* Skycons */ = {
 			isa = PBXGroup;
 			children = (
-				EB8CA017176D1A1300BAD349 /* skycons.js */,
-				EB8CA018176D1A1300BAD349 /* sun.html */,
-				EB3FD77E1773741C00237B54 /* sun1.html */,
-				EBC1C3FF176E949400518D77 /* nightclear.html */,
-				EB3FD76A1773732B00237B54 /* nightclear1.html */,
-				EBC1C400176E949400518D77 /* partlycloudyday.html */,
-				EB3FD76D177373AF00237B54 /* partlycloudyday1.html */,
-				EBC1C401176E949400518D77 /* partlycloudynight.html */,
-				EB3FD778177373BD00237B54 /* partlycloudynight1.html */,
-				EBC1C3FE176E949400518D77 /* cloudy.html */,
-				EB3FD76C177373AF00237B54 /* cloudy1.html */,
-				EBC1C402176E949400518D77 /* rain.html */,
-				EB3FD76E177373AF00237B54 /* rain1.html */,
-				EBC1C3FB176E949400518D77 /* snow.html */,
-				EB3FD77C177373FD00237B54 /* snow1.html */,
-				EBC1C40B176E994900518D77 /* sleet.html */,
-				EB3FD76F177373AF00237B54 /* sleet1.html */,
-				EBC1C3FC176E949400518D77 /* wind.html */,
-				EB3FD771177373B000237B54 /* wind1.html */,
-				EBC1C3FD176E949400518D77 /* fog.html */,
-				EB3FD77A177373D600237B54 /* fog1.html */,
+				EBDDAFBD1A773D6C006EBA49 /* cloudy.html */,
+				EBDDAFBE1A773D6C006EBA49 /* cloudy1.html */,
+				EBDDAFBF1A773D6C006EBA49 /* fog.html */,
+				EBDDAFC01A773D6C006EBA49 /* fog1.html */,
+				EBDDAFC11A773D6C006EBA49 /* nightclear.html */,
+				EBDDAFC21A773D6C006EBA49 /* nightclear1.html */,
+				EBDDAFC31A773D6C006EBA49 /* partlycloudyday.html */,
+				EBDDAFC41A773D6C006EBA49 /* partlycloudyday1.html */,
+				EBDDAFC51A773D6C006EBA49 /* partlycloudynight.html */,
+				EBDDAFC61A773D6C006EBA49 /* partlycloudynight1.html */,
+				EBDDAFC71A773D6C006EBA49 /* rain.html */,
+				EBDDAFC81A773D6C006EBA49 /* rain1.html */,
+				EBDDAFC91A773D6C006EBA49 /* skycons.js */,
+				EBDDAFCA1A773D6C006EBA49 /* sleet.html */,
+				EBDDAFCB1A773D6C006EBA49 /* sleet1.html */,
+				EBDDAFCC1A773D6C006EBA49 /* snow.html */,
+				EBDDAFCD1A773D6C006EBA49 /* snow1.html */,
+				EBDDAFCE1A773D6C006EBA49 /* sun.html */,
+				EBDDAFCF1A773D6C006EBA49 /* sun1.html */,
+				EBDDAFD01A773D6C006EBA49 /* wind.html */,
+				EBDDAFD11A773D6C006EBA49 /* wind1.html */,
 			);
 			name = Skycons;
 			sourceTree = "<group>";
@@ -379,8 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				EBDDAFA11A772CE0006EBA49 /* Images */,
-				EBDDAF9B1A7722F7006EBA49 /* BooleanView.h */,
-				EBDDAF9C1A7722F7006EBA49 /* BooleanView.m */,
+				EB8CA016176D1A0300BAD349 /* Skycons */,
 				EBDDAF9E1A772620006EBA49 /* MenuBarButton.h */,
 				EBDDAF9F1A772620006EBA49 /* MenuBarButton.m */,
 				EBDDAFA31A772EDB006EBA49 /* PredictionButton.h */,
@@ -414,10 +395,29 @@
 			children = (
 				EB72368C176414310041BD39 /* AppDelegate.h */,
 				EB72368D176414310041BD39 /* AppDelegate.m */,
+				EB39DE2B1770E28600442F3A /* AddCityViewController.h */,
+				EB39DE2C1770E28600442F3A /* AddCityViewController.m */,
 				EB723695176414310041BD39 /* ViewController.h */,
 				EB723696176414310041BD39 /* ViewController.m */,
 			);
 			name = "Main Classes";
+			sourceTree = "<group>";
+		};
+		EBDDAFBC1A7738CB006EBA49 /* Data Classes */ = {
+			isa = PBXGroup;
+			children = (
+				EB3A2D621764F51D00DC9F71 /* Reachability.h */,
+				EB3A2D631764F51D00DC9F71 /* Reachability.m */,
+				EBDDAFE71A773DA1006EBA49 /* WeatherData.h */,
+				EBDDAFE81A773DA1006EBA49 /* WeatherData.m */,
+				EB7D37A31772BA7A00D331C7 /* BackgroundLayer.h */,
+				EB7D37A41772BA7A00D331C7 /* BackgroundLayer.m */,
+				EB3A2DC51765079C00DC9F71 /* UIImage+StackBlur.h */,
+				EB3A2DC61765079D00DC9F71 /* UIImage+StackBlur.m */,
+				EB39DE221770D31E00442F3A /* USLocation.h */,
+				EB39DE241770D8BA00442F3A /* USLocation.m */,
+			);
+			name = "Data Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -498,41 +498,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB7D3790177249C600D331C7 /* ViewControllerDelegate.h in Resources */,
+				EBDDAFD51A773D6C006EBA49 /* fog1.html in Resources */,
+				EBDDAFE01A773D6C006EBA49 /* sleet1.html in Resources */,
 				EBDDAFB51A7737A5006EBA49 /* PlusIcon@2x.png in Resources */,
 				EBDDAFB11A7737A5006EBA49 /* DefaultBackground.jpg in Resources */,
-				EB787EF2176E3A0D007BABF0 /* skycons.js in Resources */,
+				EBDDAFE21A773D6C006EBA49 /* snow1.html in Resources */,
+				EBDDAFDD1A773D6C006EBA49 /* rain1.html in Resources */,
 				EBDDAFB61A7737A5006EBA49 /* PredictButton_Selected.png in Resources */,
+				EBDDAFD91A773D6C006EBA49 /* partlycloudyday1.html in Resources */,
+				EBDDAFDE1A773D6C006EBA49 /* skycons.js in Resources */,
+				EBDDAFD81A773D6C006EBA49 /* partlycloudyday.html in Resources */,
 				EB723688176414310041BD39 /* InfoPlist.strings in Resources */,
-				EB8CA01A176D1A1300BAD349 /* sun.html in Resources */,
-				EBC1C403176E949400518D77 /* snow.html in Resources */,
+				EBDDAFD41A773D6C006EBA49 /* fog.html in Resources */,
+				EBDDAFE51A773D6C006EBA49 /* wind.html in Resources */,
 				EBDDAFBB1A7737A5006EBA49 /* Roboto-Medium.ttf in Resources */,
-				EBC1C404176E949400518D77 /* wind.html in Resources */,
+				EBDDAFE31A773D6C006EBA49 /* sun.html in Resources */,
+				EBDDAFE11A773D6C006EBA49 /* snow.html in Resources */,
 				EBDDAFB71A7737A5006EBA49 /* PredictButton_Selected@2x.png in Resources */,
 				EBDDAFB91A7737A5006EBA49 /* PredictButton@2x.png in Resources */,
-				EBC1C405176E949400518D77 /* fog.html in Resources */,
 				EBDDAFB41A7737A5006EBA49 /* PlusIcon.png in Resources */,
+				EBDDAFE61A773D6C006EBA49 /* wind1.html in Resources */,
 				EBDDAFB81A7737A5006EBA49 /* PredictButton.png in Resources */,
-				EBC1C406176E949400518D77 /* cloudy.html in Resources */,
-				EBC1C407176E949400518D77 /* nightclear.html in Resources */,
-				EBC1C408176E949400518D77 /* partlycloudyday.html in Resources */,
-				EBC1C409176E949400518D77 /* partlycloudynight.html in Resources */,
-				EBC1C40A176E949400518D77 /* rain.html in Resources */,
+				EBDDAFD71A773D6C006EBA49 /* nightclear1.html in Resources */,
+				EBDDAFDA1A773D6C006EBA49 /* partlycloudynight.html in Resources */,
 				EBDDAFB21A7737A5006EBA49 /* MenuButton.png in Resources */,
-				EBC1C40C176E994900518D77 /* sleet.html in Resources */,
+				EBDDAFE41A773D6C006EBA49 /* sun1.html in Resources */,
 				EBDDAFB31A7737A5006EBA49 /* MenuButton@2x.png in Resources */,
 				EBE2898A17714AB000E0CFB0 /* MainStoryboard.storyboard in Resources */,
-				EB3FD76B1773732B00237B54 /* nightclear1.html in Resources */,
-				EB3FD772177373B000237B54 /* cloudy1.html in Resources */,
+				EBDDAFD61A773D6C006EBA49 /* nightclear.html in Resources */,
 				EB87E3F51A649824004F6B9A /* Images.xcassets in Resources */,
-				EB3FD773177373B000237B54 /* partlycloudyday1.html in Resources */,
-				EB3FD774177373B000237B54 /* rain1.html in Resources */,
-				EB3FD775177373B000237B54 /* sleet1.html in Resources */,
-				EB3FD777177373B000237B54 /* wind1.html in Resources */,
-				EB3FD779177373BD00237B54 /* partlycloudynight1.html in Resources */,
-				EB3FD77B177373D600237B54 /* fog1.html in Resources */,
+				EBDDAFDF1A773D6C006EBA49 /* sleet.html in Resources */,
+				EBDDAFD21A773D6C006EBA49 /* cloudy.html in Resources */,
+				EBDDAFDC1A773D6C006EBA49 /* rain.html in Resources */,
+				EBDDAFD31A773D6C006EBA49 /* cloudy1.html in Resources */,
 				EBDDAFBA1A7737A5006EBA49 /* Roboto-Light.ttf in Resources */,
-				EB3FD77D177373FD00237B54 /* snow1.html in Resources */,
-				EB3FD77F1773741C00237B54 /* sun1.html in Resources */,
+				EBDDAFDB1A773D6C006EBA49 /* partlycloudynight1.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,9 +574,9 @@
 				EBDDAF931A7716A5006EBA49 /* MMSideDrawerSectionHeaderView.m in Sources */,
 				EBDDAFA01A772620006EBA49 /* MenuBarButton.m in Sources */,
 				EBDDAFA51A772EDB006EBA49 /* PredictionButton.m in Sources */,
+				EBDDAFE91A773DA1006EBA49 /* WeatherData.m in Sources */,
 				EBDDAF8F1A7716A5006EBA49 /* MMDrawerVisualState.m in Sources */,
 				EBDDAF911A7716A5006EBA49 /* MMExampleLeftSideDrawerViewController.m in Sources */,
-				EBDDAF9D1A7722F7006EBA49 /* BooleanView.m in Sources */,
 				EB723697176414310041BD39 /* ViewController.m in Sources */,
 				EBDDAF991A771CBE006EBA49 /* RobotoFont.m in Sources */,
 				EB3A2D641764F51D00DC9F71 /* Reachability.m in Sources */,

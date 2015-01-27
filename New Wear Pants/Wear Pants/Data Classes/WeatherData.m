@@ -1,13 +1,17 @@
 //
-//  BooleanView.h
+//  WeatherData.m
 //  Wear Pants
 //
 //  Created by Sony Theakanath on 1/26/15.
 //  Copyright (c) 2015 Sony Theakanath. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "WeatherData.h"
 
-@interface BooleanView : UIView
+@implementation WeatherData
+
++ (NSString*) getBoundingBox:(NSString*)zipcode {
+    
+}
 
 @end

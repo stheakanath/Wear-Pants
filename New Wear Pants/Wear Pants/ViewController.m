@@ -11,6 +11,7 @@
 #import "RobotoFont.h"
 #import "MenuBarButton.h"
 #import "PredictionButton.h"
+#import "UIImage+StackBlur.h"
 
 @interface ViewController ()
 
@@ -167,7 +168,7 @@ static NSMutableArray* savedLinks = nil;
         NSString *link = [d2 objectAtIndex:0];
         NSURL *imageURL = [NSURL URLWithString:link];
         NSData* imageData = [NSData dataWithContentsOfURL:imageURL];
-        bkgndimage =  [[UIImageView alloc] initWithImage:[[UIImage imageWithData:imageData] stackBlur:0]];
+        bkgndimage =  [[UIImageView alloc] initWithImage:[[UIImage imageWithData:imageData] stackBlur:1]];
     } else {
         back = [UIImage imageNamed:@"DefaultBackground.jpg"];
         bkgndimage =  [[UIImageView alloc] initWithImage:[back stackBlur:1]];
