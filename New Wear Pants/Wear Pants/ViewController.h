@@ -17,7 +17,6 @@
 #import "USLocation.h"
 
 @interface ViewController : UIViewController<CLLocationManagerDelegate, UIAlertViewDelegate, ViewControllerDelegate, UIWebViewDelegate> {
-    NSMutableArray *interfaceArray;
     NSString *city;
     NSString *avgtemp;
     NSString *hum;
@@ -28,8 +27,7 @@
 + (void) deleteCity:(int)index;
 
 @property (nonatomic, retain) NSMutableArray *interfaceArray;
-@property (strong, nonatomic) IBOutlet CLLocationManager *locationManager;
-@property (strong, nonatomic) IBOutlet CLGeocoder *geoCoder;
+
 @property (retain, nonatomic) NSString *zipcode;
 @property (retain, nonatomic) NSString *city;
 @property (retain, nonatomic) NSString *avgtemp;

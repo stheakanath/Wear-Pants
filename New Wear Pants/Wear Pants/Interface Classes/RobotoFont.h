@@ -11,5 +11,6 @@
 @interface RobotoFont : UILabel
 
 - (id) init:(CGRect)frame fontName:(NSString*)font fontSize:(CGFloat)size;
+- (id) initWithWeather:(CGRect)frame setText:(NSString*)text setAlignment:(NSTextAlignment)a;
 
 @end

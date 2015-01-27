@@ -11,8 +11,11 @@
 @implementation WeatherData
 
 static NSString* const BOUNDING_URL = @"http://query.yahooapis.com/v1/public/yql?q=select%20%2A%20from%20geo.places%20where%20text%3D%22";
+
 static NSString* const WEATHER_URL_FIRST = @"https://query.yahooapis.com/v1/public/yql?q=select%20item.forecast%2C%20item.condition.code%2C%20wind%2C%20atmosphere%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22";
+
 static NSString* const WEATHER_URL_LAST = @"%22)%20limit%201&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+
 static NSDictionary* ANIMATION_TYPES = nil;
 
 + (void)initialize {
@@ -45,8 +48,8 @@ static NSDictionary* ANIMATION_TYPES = nil;
     [finalresult setObject:alldata[@"atmosphere"][@"humidity"] forKey:@"humidity"];
     [finalresult setObject:alldata[@"item"][@"forecast"][@"low"] forKey:@"low"];
     [finalresult setObject:alldata[@"item"][@"forecast"][@"high"] forKey:@"high"];
-    NSLog(@"%@", alldata);
     return finalresult;
 }
+
 
 @end

@@ -23,4 +23,11 @@
     return self;
 }
 
+- (id) initWithWeather:(CGRect)frame setText:(NSString*)text setAlignment:(NSTextAlignment)a {
+    self = [self init:frame fontName:@"Roboto-Light" fontSize:16.5];
+    [self setText:text];
+    [self setTextAlignment:a];
+    return self;
+}
+
 @end

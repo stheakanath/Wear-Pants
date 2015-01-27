@@ -13,43 +13,109 @@
 #import "PredictionButton.h"
 #import "UIImage+StackBlur.h"
 #import "WeatherData.h"
+#import "AnimatedWeatherView.h"
+#import "DetailedWeatherReport.h"
 
 @interface ViewController ()
+
+@property (nonatomic, strong) AnimatedWeatherView *animatedView;
+@property (nonatomic, strong) DetailedWeatherReport *reportView;
+@property (nonatomic, strong) PredictionButton *niceButton;
+@property (nonatomic, strong) PredictionButton *badButton;
+@property (nonatomic, strong) RobotoFont *questionLabel;
+@property (nonatomic, strong) RobotoFont *answerLabel;
+@property (strong, nonatomic) IBOutlet CLLocationManager *locationManager;
+@property (strong, nonatomic) IBOutlet CLGeocoder *geoCoder;
 
 @end
 
 static NSMutableArray* savedLinks = nil;
 
 @implementation ViewController
-@synthesize interfaceArray, locationManager, geoCoder, zipcode, city, avgtemp, hum;
+@synthesize zipcode, city, avgtemp, hum;
 
 #pragma mark - Geocoding Data
 
 - (void) setUpLocationServices {
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-    [locationManager startUpdatingLocation];
-    geoCoder = [[CLGeocoder alloc] init];
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    [self.locationManager startUpdatingLocation];
+    self.geoCoder = [[CLGeocoder alloc] init];
     if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)
-        [locationManager requestWhenInUseAuthorization];
+        [self.locationManager requestWhenInUseAuthorization];
     else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled" message:@"To re-enable, please go to Settings and turn on Location Service for this app." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert setTag:0];
         [alert show];
     } else {
-        [locationManager startUpdatingLocation];
+        [self.locationManager startUpdatingLocation];
         [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(getZipCode) userInfo:nil repeats:NO];
     }
 }
 
+#pragma mark - Button/Gesture Handling
+
+-(void)rightDrawerButtonPress:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    AddCityViewController *myVC = (AddCityViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MainNavigationController"];
+    [self presentViewController:myVC animated:YES completion:nil];
+}
+
+-(void)leftDrawerButtonPress:(id)sender {
+    [self.mm_drawerController setDrawerVisualStateBlock:[MMDrawerVisualState swingingDoorVisualStateBlock]];
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
+
+- (void) badPredictionPressed {
+    int value;
+    if([[self.answerLabel text] isEqualToString:@"YES"])
+        value = [[savedLinks objectAtIndex:0] intValue]-1;
+    else
+        value = [[savedLinks objectAtIndex:0] intValue]+1;
+    [savedLinks replaceObjectAtIndex:0 withObject:[NSString stringWithFormat:@"%i", value]];
+    NSString* dataPath = [[NSString alloc] initWithString:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"data.plist"]];
+    NSMutableArray *data = savedLinks;
+    [[NSKeyedArchiver archivedDataWithRootObject:data] writeToFile:dataPath atomically:YES];
+    [self moveScreenToNormal];
+}
+
+#pragma mark - Data Processing
+
+- (void) unarchiveData {
+    NSString* dataPath = [[NSString alloc] initWithString:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"data.plist"]];
+    NSMutableArray *data = [[NSMutableArray alloc] init];
+    if([[[NSFileManager alloc] init] fileExistsAtPath:dataPath])
+        data = [NSKeyedUnarchiver unarchiveObjectWithFile:dataPath];
+    if([data count] == 0) {
+        [data insertObject:@"61" atIndex:0];
+        [data insertObject:@"Current Location, 00000" atIndex:1];
+        [[NSKeyedArchiver archivedDataWithRootObject:data] writeToFile:dataPath atomically:YES];
+    }
+    savedLinks = data;
+}
+
+#pragma mark - Interface Functions
+
 - (void)viewDidLoad {
-    //modifiy code
     [self setUpLocationServices];
-    [self startVariables];
-    [self startInterface];
-    
-    //code below is final
+    [self unarchiveData];
+    [self.view addSubview:[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)]];
+    CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
+    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
+    self.animatedView = [[AnimatedWeatherView alloc] init];
+    [self.view addSubview: self.animatedView];
+    self.reportView = [[DetailedWeatherReport alloc] init];
+    [self.view addSubview:self.reportView];
+    self.niceButton = [[PredictionButton alloc] init:CGRectMake(-150, screenHeight/3+60, 140, 35) setTitle:@"Nice Prediction!" target:self selector:@selector(moveScreenToNormal)];
+    [self.view addSubview:self.niceButton];
+    self.badButton = [[PredictionButton alloc] init:CGRectMake(screenWidth+110, screenHeight/3+60, 140, 35) setTitle:@"Bad Prediction!" target:self selector:@selector(badPredictionPressed)];
+    [self.view addSubview:self.badButton];
+    self.questionLabel = [[RobotoFont alloc] init:CGRectMake(0, screenHeight/6, screenWidth, 50) fontName:@"Roboto-Light" fontSize:20];
+    [self.questionLabel setText:@"Should I Wear Pants Today?"];
+    [self.view addSubview:self.questionLabel];
+    self.answerLabel = [[RobotoFont alloc] init:CGRectMake(0, screenHeight/3-25, screenWidth, 50) fontName:@"Roboto-Medium" fontSize:50];
+    [self.answerLabel setText:@"Checking."];
+    [self.view addSubview:self.answerLabel];
     self.navigationItem.leftBarButtonItem = [[MenuBarButton alloc] init:@"MenuButton" target:self selector:@selector(leftDrawerButtonPress:)];
     self.navigationItem.rightBarButtonItem = [[MenuBarButton alloc] init:@"PlusIcon" target:self selector:@selector(rightDrawerButtonPress:)];
     [self.navigationItem setTitle:@"Searching Location"];
@@ -63,99 +129,29 @@ static NSMutableArray* savedLinks = nil;
 
 
 
-#pragma mark - Interface
 
-- (void)startVariables {
-    CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
-    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
-    interfaceArray = [[NSMutableArray alloc] initWithObjects:
-                      [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)],
-                      [[RobotoFont alloc] init:CGRectMake(0, screenHeight/6, screenWidth, 50) fontName:@"Roboto-Light" fontSize:20],
-                      [[RobotoFont alloc] init:CGRectMake(0, screenHeight/3-25, screenWidth, 50) fontName:@"Roboto-Medium" fontSize:50],
-                      [[PredictionButton alloc] init:CGRectMake(-150, screenHeight/3+60, 140, 35) setTitle:@"Nice Prediction!" target:self selector:@selector(nicePredictionPressed)],
-                      [[PredictionButton alloc] init:CGRectMake(screenWidth+110, screenHeight/3+60, 140, 35) setTitle:@"Bad Prediction!" target:self selector:@selector(badPredictionPressed)],
-                      [[UIWebView alloc] initWithFrame:CGRectMake(screenWidth/2-5, screenHeight/2+55 , 170, 170)],
-                      [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-145, screenHeight/2+80, 150, 20)],
-                      [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-145, screenHeight/2+122.5, 150, 20)],
-                      [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-145, screenHeight/2+165, 150, 20)],
-                      [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-145, screenHeight/2+80, 140, 20)],
-                      [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-145, screenHeight/2+122.5, 140, 20)],
-                      [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-145, screenHeight/2+165, 140, 20)],
-                      nil];
 
-}
 
-- (void)startInterface {
-    [[interfaceArray objectAtIndex:1] setText:@"Should I Wear Pants Today?"];
-    [[interfaceArray objectAtIndex:2] setText:@"Checking."];
-    
-    
-    [[interfaceArray objectAtIndex:5] setBackgroundColor:[UIColor clearColor]];
-    [[interfaceArray objectAtIndex:5] setOpaque:NO];
-    [[interfaceArray objectAtIndex:5] setEnabled:NO];
-    for(int x = 6; x < 12; x++) {
-        [[interfaceArray objectAtIndex:x] setFont:[UIFont fontWithName:@"Roboto-Light" size:16.5]];
-        [[interfaceArray objectAtIndex:x] setTextAlignment:NSTextAlignmentLeft];
-        [[interfaceArray objectAtIndex:x] setBackgroundColor:[UIColor clearColor]];
-        [[interfaceArray objectAtIndex:x] setShadowColor:[UIColor blackColor]];
-        [[interfaceArray objectAtIndex:x] setShadowOffset:CGSizeMake(0.5, 0)];
-        [[interfaceArray objectAtIndex:x] setTextColor:[UIColor whiteColor]];
-    }
-    for(int x = 9; x < 12; x++)
-        [[interfaceArray objectAtIndex:x] setTextAlignment:NSTextAlignmentRight];
-    [[interfaceArray objectAtIndex:6] setText:@"Humidity"];
-    [[interfaceArray objectAtIndex:7] setText:@"Wind Temp"];
-    [[interfaceArray objectAtIndex:8] setText:@"Avg Temp"];
 
-    
-    //Pulling Saved Data
-    NSString* dataPath = [[NSString alloc] initWithString:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"data.plist"]];
-    NSMutableArray *data = [[NSMutableArray alloc] init];
-    if([[[NSFileManager alloc] init] fileExistsAtPath:dataPath])
-        data = [NSKeyedUnarchiver unarchiveObjectWithFile:dataPath];
-    if([data count] == 0) {
-        [data insertObject:@"61" atIndex:0];
-        [data insertObject:@"Current Location, 00000" atIndex:1];
-        [[NSKeyedArchiver archivedDataWithRootObject:data] writeToFile:dataPath atomically:YES];
-    }
-    savedLinks = data;
-    for (UIView *view in interfaceArray)
-        if(![view superview])
-            [[self view] addSubview:view];
-}
+
 
 - (void) moveScreenToNormal {
     CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^ {
-        [[interfaceArray objectAtIndex:3] setFrame:CGRectMake(-150, screenHeight/3+60, 140, 35)];
-        [[interfaceArray objectAtIndex:4] setFrame:CGRectMake(screenWidth+110, screenHeight/3+60, 140, 35)];
+        [self.niceButton setFrame:CGRectMake(-150, screenHeight/3+60, 140, 35)];
+        [self.badButton setFrame:CGRectMake(screenWidth+110, screenHeight/3+60, 140, 35)];
     } completion:^(BOOL finished){
         [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveLinear animations:^ {
-            [[interfaceArray objectAtIndex:1] setFrame:CGRectMake(0, screenHeight/4, screenWidth, 50)];
-            [[interfaceArray objectAtIndex:2] setFrame:CGRectMake(0, screenHeight/2-50, screenWidth, 50)];
+            [self.questionLabel setFrame:CGRectMake(0, screenHeight/4, screenWidth, 50)];
+            [self.answerLabel setFrame:CGRectMake(0, screenHeight/2-50, screenWidth, 50)];
         } completion:^(BOOL finished){
         }];
     }];
 
 }
 
-- (void) nicePredictionPressed {
-    [self moveScreenToNormal];
-}
 
-- (void) badPredictionPressed {
-    int value;
-    if([[[interfaceArray objectAtIndex:2] text] isEqualToString:@"YES"])
-       value = [[savedLinks objectAtIndex:0] intValue]-1;
-    else
-        value = [[savedLinks objectAtIndex:0] intValue]+1;
-    [savedLinks replaceObjectAtIndex:0 withObject:[NSString stringWithFormat:@"%i", value]];
-    NSString* dataPath = [[NSString alloc] initWithString:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"data.plist"]];
-    NSMutableArray *data = savedLinks;
-    [[NSKeyedArchiver archivedDataWithRootObject:data] writeToFile:dataPath atomically:YES];
-    [self moveScreenToNormal];
-}
 
 - (void)setBackground:(NSString *)boundingbox {
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
@@ -190,12 +186,12 @@ static NSMutableArray* savedLinks = nil;
     [self.view insertSubview:bkgndimage atIndex:1];
     [UIView commitAnimations];
     [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveLinear animations:^ {
-        [[interfaceArray objectAtIndex:1] setFrame:CGRectMake(0, screenHeight/6, screenWidth, 50)];
-        [[interfaceArray objectAtIndex:2] setFrame:CGRectMake(0, screenHeight/3-25, screenWidth, 50)];
+        [self.questionLabel setFrame:CGRectMake(0, screenHeight/6, screenWidth, 50)];
+        [self.answerLabel setFrame:CGRectMake(0, screenHeight/3-25, screenWidth, 50)];
     } completion:^(BOOL finished){
         [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveLinear animations:^ {
-            [[interfaceArray objectAtIndex:3] setFrame:CGRectMake(screenWidth/2-145, screenHeight/3+60, 140, 35)];
-            [[interfaceArray objectAtIndex:4] setFrame:CGRectMake(screenWidth/2+5, screenHeight/3+60, 140, 35)];
+            [self.niceButton setFrame:CGRectMake(screenWidth/2-145, screenHeight/3+60, 140, 35)];
+            [self.badButton setFrame:CGRectMake(screenWidth/2+5, screenHeight/3+60, 140, 35)];
         } completion:^(BOOL finished){}];
     }];
 }
@@ -203,8 +199,8 @@ static NSMutableArray* savedLinks = nil;
 - (void)reloadFrame:(NSString*) saveddata {
     NSLog(@"CALLED");
     NSLog(@"-----------");
-    [[interfaceArray objectAtIndex:1] setText:@"Should I Wear Pants Today?"];
-    [[interfaceArray objectAtIndex:2] setFont:[UIFont fontWithName:@"Roboto-Medium" size:50]];
+    [self.questionLabel setText:@"Should I Wear Pants Today?"];
+    [self.answerLabel setFont:[UIFont fontWithName:@"Roboto-Medium" size:50]];
     [self getCurrentTemperature:[[[saveddata componentsSeparatedByString:@","] objectAtIndex:2] stringByReplacingOccurrencesOfString:@" " withString:@""]];
     [self setBackground:[WeatherData getBoundingBox:[NSString stringWithFormat:@"%@%@",[[saveddata componentsSeparatedByString:@","] objectAtIndex:0], [[saveddata componentsSeparatedByString:@","] objectAtIndex:1]]]];
     [self.navigationItem setTitle:[[saveddata componentsSeparatedByString:@","] objectAtIndex:0]];
@@ -216,20 +212,19 @@ static NSMutableArray* savedLinks = nil;
     UIView *v = [self.view viewWithTag:900];
     v.hidden = YES;
     [self.view setBackgroundColor:[UIColor blackColor]];
-    [[interfaceArray objectAtIndex:3] setFrame:CGRectMake(-150, screenHeight/3+60, 140, 35)];
-    [[interfaceArray objectAtIndex:4] setFrame:CGRectMake(screenWidth+110, screenHeight/3+60, 140, 35)];
-    [[interfaceArray objectAtIndex:2] setText:@"Should I Wear Pants Today?"];
-    [[interfaceArray objectAtIndex:2] setText:@"Please Wait"];
-    [[interfaceArray objectAtIndex:9] setText:@"Loading"];
-    [[interfaceArray objectAtIndex:10] setText:@"Loading"];
-    [[interfaceArray objectAtIndex:11] setText:@"Loading"];
+    [self.niceButton setFrame:CGRectMake(-150, screenHeight/3+60, 140, 35)];
+    [self.badButton setFrame:CGRectMake(screenWidth+110, screenHeight/3+60, 140, 35)];
+    [self.answerLabel setText:@"Should I Wear Pants Today?"];
+    [self.answerLabel setText:@"Please Wait"];
+    
+    [self.reportView setData:@[@"Loading", @"Loading", @"Loading"]];
     [self.navigationItem setTitle:@"Loading"];
 }
 
 #pragma mark - Pulling Location Information
 
 -(void) getZipCode {
-    [self.geoCoder reverseGeocodeLocation: locationManager.location completionHandler: ^(NSArray *placemarks, NSError *error) {
+    [self.geoCoder reverseGeocodeLocation: self.locationManager.location completionHandler: ^(NSArray *placemarks, NSError *error) {
         CLPlacemark *placemark = [placemarks objectAtIndex:0];
         NSString* locatedAt = [placemark.addressDictionary valueForKey:@"ZIP"];
         NSString* currcity = [placemark.addressDictionary valueForKey:@"City"];
@@ -250,13 +245,12 @@ static NSMutableArray* savedLinks = nil;
 
 - (void) reloadCurrentLocation {
     if([CLLocationManager authorizationStatus]) {
-        [[interfaceArray objectAtIndex:1] setText:@"Should I Wear Pants Today?"];
-        [[interfaceArray objectAtIndex:2] setFont:[UIFont fontWithName:@"Roboto-Medium" size:50]];
+        [self.questionLabel setText:@"Should I Wear Pants Today?"];
+        [self.answerLabel setFont:[UIFont fontWithName:@"Roboto-Medium" size:50]];
         [self getZipCode];
     } else {
         if(![CLLocationManager authorizationStatus]) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Service Disabled" message:@"To re-enable, please go to Settings and turn on Location Service for this feature." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert setTag:12];
             [alert show];
         }
     }
@@ -265,9 +259,9 @@ static NSMutableArray* savedLinks = nil;
 - (void) setLocationDisabledScreen {
     [self.navigationItem setTitle:@"Feature Unavailable"];
 
-    [[interfaceArray objectAtIndex:1] setText:@"To re-enable current location feature, go to Settings > Privacy."];
-    [[interfaceArray objectAtIndex:2] setText:@"Check Sidebar!"];
-    [[interfaceArray objectAtIndex:2] setFont:[UIFont fontWithName:@"Roboto-Medium" size:40]];
+    [self.questionLabel setText:@"To re-enable current location feature, go to Settings > Privacy."];
+    [self.answerLabel setText:@"Check Sidebar!"];
+    [self.answerLabel setFont:[UIFont fontWithName:@"Roboto-Medium" size:40]];
 }
 
 - (BOOL)connectedToInternet {
@@ -298,26 +292,10 @@ static NSMutableArray* savedLinks = nil;
 
 - (void) getCurrentTemperature: (NSString*)desiredcity {
     if([self connectedToInternet]) {
-        [[interfaceArray objectAtIndex:5] loadHTMLString:@"" baseURL:nil];
-
-       // NSLog(@"%@", city);
-        NSURL* url = [NSURL URLWithString: [NSString stringWithFormat:@"%@%@", @"http://xml.weather.yahoo.com/forecastrss?p=", desiredcity]];
-        NSLog(@"Pulling Temperature URL: %@", url);
-        NSString *blork = [[NSString alloc] initWithData:[NSData dataWithContentsOfURL:url] encoding: NSASCIIStringEncoding];
-        NSString *typeofweather = [[[[[[[blork componentsSeparatedByString:@"<yweather:forecast"] objectAtIndex:1] componentsSeparatedByString:@"code=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-        //NSLog(typeofweather);
         NSMutableDictionary *data = [WeatherData getTemperatureData:desiredcity];
-        
         NSString *filepath = [data objectForKey:@"code"];
-
-        if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0)) {
-            filepath = [filepath stringByAppendingString:@"1"];
-            [[[interfaceArray objectAtIndex:5] scrollView] setMinimumZoomScale:0.5];
-            [[[interfaceArray objectAtIndex:5] scrollView] setMaximumZoomScale:0.5];
-            [[[interfaceArray objectAtIndex:5] scrollView] setZoomScale:0.5];
-        }
-        NSString *finalpath = [[NSBundle mainBundle] pathForResource:filepath ofType: @"html"];
-        [[interfaceArray objectAtIndex:5] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:finalpath]]];
+        [self.animatedView loadFile:filepath];
+        
 
         //Pulling Data
         int windtemperature = [[data objectForKey:@"chill"] intValue];
@@ -332,16 +310,13 @@ static NSMutableArray* savedLinks = nil;
         NSLog(@"Heat Index: %f", heatindex);
         //Measu ring and Relaying Information
         if(heatindex < [[savedLinks objectAtIndex:0] intValue]) {
-            [[interfaceArray objectAtIndex:2] setText:@"YES"];
+            [self.answerLabel setText:@"YES"];
             [self.view setBackgroundColor:[UIColor whiteColor]];
         } else {
-            [[interfaceArray objectAtIndex:2] setText:@"NO"];
+            [self.answerLabel setText:@"NO"];
             [self.view setBackgroundColor:[UIColor blackColor]];
         }
-        [[interfaceArray objectAtIndex:9] setText:hum];
-        [[interfaceArray objectAtIndex:10] setText:[NSString stringWithFormat:@"%i %@", windtemperature, @"F"]];
-        [[interfaceArray objectAtIndex:11] setText:avgtemp];
-
+        [self.reportView setData:@[hum, [NSString stringWithFormat:@"%i %@", windtemperature, @"F"], avgtemp]];
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!" message:@"Not Connected to the Internet!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
@@ -353,46 +328,6 @@ static NSMutableArray* savedLinks = nil;
     return savedLinks;
 }
 
-#pragma mark - Button/Gesture Handling
 
--(void)rightDrawerButtonPress:(id)sender {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    AddCityViewController *myVC = (AddCityViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MainNavigationController"];
-    [self presentViewController:myVC animated:YES completion:nil];
-}
-
--(void)leftDrawerButtonPress:(id)sender {
-    [self.mm_drawerController setDrawerVisualStateBlock:[MMDrawerVisualState swingingDoorVisualStateBlock]];
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-}
-
-
-#pragma mark - Other
-
-
-
-
-- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
-  //  NSLog(@"%@", [CLLocationManager authorizationStatus]);
-    NSLog(@"Test");
-    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse) {
-        [locationManager startUpdatingLocation];
-        [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(getZipCode) userInfo:nil repeats:NO];
-    } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
-         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled" message:@"To re-enable, please go to Settings and turn on Location Service for this app." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert setTag:0];
-       [alert show];
-    }
-}
-
-- (void) viewDidUnload {
-    [self setLocationManager:nil];
-    [self setGeoCoder:nil];
-    [super viewDidUnload];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
 
 @end

@@ -78,6 +78,8 @@
 		EBDDAFE51A773D6C006EBA49 /* wind.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFD01A773D6C006EBA49 /* wind.html */; };
 		EBDDAFE61A773D6C006EBA49 /* wind1.html in Resources */ = {isa = PBXBuildFile; fileRef = EBDDAFD11A773D6C006EBA49 /* wind1.html */; };
 		EBDDAFE91A773DA1006EBA49 /* WeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAFE81A773DA1006EBA49 /* WeatherData.m */; };
+		EBDDAFEC1A777672006EBA49 /* AnimatedWeatherView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAFEB1A777672006EBA49 /* AnimatedWeatherView.m */; };
+		EBDDAFEF1A777934006EBA49 /* DetailedWeatherReport.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAFEE1A777934006EBA49 /* DetailedWeatherReport.m */; };
 		EBE2898A17714AB000E0CFB0 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE2898917714AB000E0CFB0 /* MainStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -188,6 +190,10 @@
 		EBDDAFD11A773D6C006EBA49 /* wind1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = wind1.html; path = Skycons/wind1.html; sourceTree = "<group>"; };
 		EBDDAFE71A773DA1006EBA49 /* WeatherData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherData.h; path = "Data Classes/WeatherData.h"; sourceTree = "<group>"; };
 		EBDDAFE81A773DA1006EBA49 /* WeatherData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherData.m; path = "Data Classes/WeatherData.m"; sourceTree = "<group>"; };
+		EBDDAFEA1A777672006EBA49 /* AnimatedWeatherView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatedWeatherView.h; path = "Interface Classes/AnimatedWeatherView.h"; sourceTree = "<group>"; };
+		EBDDAFEB1A777672006EBA49 /* AnimatedWeatherView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimatedWeatherView.m; path = "Interface Classes/AnimatedWeatherView.m"; sourceTree = "<group>"; };
+		EBDDAFED1A777934006EBA49 /* DetailedWeatherReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailedWeatherReport.h; path = "Interface Classes/DetailedWeatherReport.h"; sourceTree = "<group>"; };
+		EBDDAFEE1A777934006EBA49 /* DetailedWeatherReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailedWeatherReport.m; path = "Interface Classes/DetailedWeatherReport.m"; sourceTree = "<group>"; };
 		EBE2898917714AB000E0CFB0 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -362,6 +368,10 @@
 			children = (
 				EBDDAFA11A772CE0006EBA49 /* Images */,
 				EB8CA016176D1A0300BAD349 /* Skycons */,
+				EBDDAFEA1A777672006EBA49 /* AnimatedWeatherView.h */,
+				EBDDAFEB1A777672006EBA49 /* AnimatedWeatherView.m */,
+				EBDDAFED1A777934006EBA49 /* DetailedWeatherReport.h */,
+				EBDDAFEE1A777934006EBA49 /* DetailedWeatherReport.m */,
 				EBDDAF9E1A772620006EBA49 /* MenuBarButton.h */,
 				EBDDAF9F1A772620006EBA49 /* MenuBarButton.m */,
 				EBDDAFA31A772EDB006EBA49 /* PredictionButton.h */,
@@ -568,6 +578,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB72368A176414310041BD39 /* main.m in Sources */,
+				EBDDAFEC1A777672006EBA49 /* AnimatedWeatherView.m in Sources */,
+				EBDDAFEF1A777934006EBA49 /* DetailedWeatherReport.m in Sources */,
 				EBDDAF921A7716A5006EBA49 /* MMExampleSideDrawerViewController.m in Sources */,
 				EBDDAF901A7716A5006EBA49 /* MMExampleDrawerVisualStateManager.m in Sources */,
 				EB72368E176414310041BD39 /* AppDelegate.m in Sources */,
