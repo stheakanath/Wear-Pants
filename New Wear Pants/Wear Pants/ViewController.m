@@ -12,6 +12,7 @@
 #import "MenuBarButton.h"
 #import "PredictionButton.h"
 #import "UIImage+StackBlur.h"
+#import "WeatherData.h"
 
 @interface ViewController ()
 
@@ -200,11 +201,12 @@ static NSMutableArray* savedLinks = nil;
 }
 
 - (void)reloadFrame:(NSString*) saveddata {
+    NSLog(@"CALLED");
     NSLog(@"-----------");
     [[interfaceArray objectAtIndex:1] setText:@"Should I Wear Pants Today?"];
     [[interfaceArray objectAtIndex:2] setFont:[UIFont fontWithName:@"Roboto-Medium" size:50]];
     int type = [self getCurrentTemperature:[[[saveddata componentsSeparatedByString:@","] objectAtIndex:2] stringByReplacingOccurrencesOfString:@" " withString:@""]];
-    [self setBackground:[self getBoundingBox:[NSString stringWithFormat:@"%@%@",[[saveddata componentsSeparatedByString:@","] objectAtIndex:0], [[saveddata componentsSeparatedByString:@","] objectAtIndex:1]]] intofweather:type];
+    [self setBackground:[WeatherData getBoundingBox:[NSString stringWithFormat:@"%@%@",[[saveddata componentsSeparatedByString:@","] objectAtIndex:0], [[saveddata componentsSeparatedByString:@","] objectAtIndex:1]]] intofweather:type];
     [self.navigationItem setTitle:[[saveddata componentsSeparatedByString:@","] objectAtIndex:0]];
 }
 
@@ -227,7 +229,6 @@ static NSMutableArray* savedLinks = nil;
 #pragma mark - Pulling Location Information
 
 -(void) getZipCode {
-    __block BOOL finished = NO;
     [self.geoCoder reverseGeocodeLocation: locationManager.location completionHandler: ^(NSArray *placemarks, NSError *error) {
         CLPlacemark *placemark = [placemarks objectAtIndex:0];
         NSString* locatedAt = [placemark.addressDictionary valueForKey:@"ZIP"];
@@ -235,40 +236,16 @@ static NSMutableArray* savedLinks = nil;
         NSString* currstate = [placemark.addressDictionary valueForKey:@"State"];
         city = currcity;
         self.zipcode = locatedAt;
-        finished = YES;
-        if(finished == YES) {
-            if([CLLocationManager authorizationStatus]) {
-                int type = [self getCurrentTemperature:zipcode];
-                [self setBackground:[self getBoundingBox:[NSString stringWithFormat:@"%@ %@", city, currstate]] intofweather:type];
-                [self.navigationItem setTitle:city];
-            } else {
-                if(![CLLocationManager authorizationStatus]) {
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Service Disabled" message:@"To re-enable, please go to Settings and turn on Location Service for this app." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                    [alert setTag:12];
-                    [alert show];
-                }
-            }
-        }
+        int type = [self getCurrentTemperature:zipcode];
+        [self setBackground:[WeatherData getBoundingBox:[NSString stringWithFormat:@"%@ %@", city, currstate]] intofweather:type];
+        [self.navigationItem setTitle:city];
+
     }];
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if ([alertView tag] == 12) {
-        if (buttonIndex != 123) {
-           [self setLocationDisabledScreen];
-        }
-    } else if ([alertView tag] == 0) {
+    if ([alertView tag] == 0)
         [self setLocationDisabledScreen];
-    }
-}
-
-- (NSString*) getBoundingBox:(NSString *)localzipcode {
-    NSArray *basecutstring = [[[[[[[NSString alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: [NSString stringWithFormat:@"%@%@%@", @"http://query.yahooapis.com/v1/public/yql?q=select%20%2A%20from%20geo.places%20where%20text%3D%22", [localzipcode stringByReplacingOccurrencesOfString:@" " withString:@"%20"], @"%22&format=xml"]]] encoding: NSASCIIStringEncoding] componentsSeparatedByString:@"<boundingBox><southWest>"] objectAtIndex:1] componentsSeparatedByString:@"</boundingBox>"] objectAtIndex:0] componentsSeparatedByString:@"<latitude>"];
-    NSString *southwestlatitude = [[[basecutstring objectAtIndex:1] componentsSeparatedByString:@"</latitude>"] objectAtIndex:0];
-    NSString *southwestlongitude = [[[[[[[basecutstring objectAtIndex:1] componentsSeparatedByString:@"</latitude>"] objectAtIndex:1] componentsSeparatedByString:@"<longitude>"] objectAtIndex:1] componentsSeparatedByString:@"</longitude>"] objectAtIndex:0];
-    NSString *northeastlatitude = [[[basecutstring objectAtIndex:2] componentsSeparatedByString:@"</latitude>"] objectAtIndex:0];
-    NSString *northeastlongitude = [[[[[[[basecutstring objectAtIndex:2] componentsSeparatedByString:@"</latitude>"] objectAtIndex:1] componentsSeparatedByString:@"<longitude>"] objectAtIndex:1] componentsSeparatedByString:@"</longitude>"] objectAtIndex:0];
-    return [NSString stringWithFormat:@"%@,%@,%@,%@", southwestlongitude, southwestlatitude, northeastlongitude, northeastlatitude];
 }
 
 - (void) reloadCurrentLocation {
