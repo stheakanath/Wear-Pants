@@ -14,7 +14,12 @@ static NSString* const BOUNDING_URL = @"http://query.yahooapis.com/v1/public/yql
 
 + (NSString*) getBoundingBox:(NSString*)zipcode {
     NSData *data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@", BOUNDING_URL, [zipcode stringByReplacingOccurrencesOfString:@" " withString:@"%20"], @"%22&format=json"]]];
-    NSDictionary *boundingBox = [[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil] mutableCopy][@"query"][@"results"][@"place"][@"boundingBox"];
+    NSDictionary *places = [[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil] mutableCopy][@"query"][@"results"][@"place"];
+    NSDictionary *boundingBox;
+    if ([places isKindOfClass:[NSArray class]])
+        boundingBox = [places mutableCopy][0][@"boundingBox"];
+    else
+        boundingBox = places[@"boundingBox"];
     return [NSString stringWithFormat:@"%@,%@,%@,%@", boundingBox[@"southWest"][@"longitude"], boundingBox[@"southWest"][@"latitude"], boundingBox[@"northEast"][@"longitude"], boundingBox[@"northEast"][@"latitude"]];
 }
 
