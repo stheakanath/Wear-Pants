@@ -10,7 +10,6 @@
 		EB13687C17678E020073F530 /* MMExampleLeftSideDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB723712176416710041BD39 /* MMExampleLeftSideDrawerViewController.m */; };
 		EB13687D17678E020073F530 /* MMExampleDrawerVisualStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB72370A176416710041BD39 /* MMExampleDrawerVisualStateManager.m */; };
 		EB13687E17678E1B0073F530 /* MMExampleSideDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB723710176416710041BD39 /* MMExampleSideDrawerViewController.m */; };
-		EB13688017678E1B0073F530 /* MMSideDrawerSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB72371C176416710041BD39 /* MMSideDrawerSectionHeaderView.m */; };
 		EB13688117678E1B0073F530 /* MMSideDrawerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB723718176416710041BD39 /* MMSideDrawerTableViewCell.m */; };
 		EB39DE251770D8BA00442F3A /* USLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = EB39DE241770D8BA00442F3A /* USLocation.m */; };
 		EB39DE2D1770E28600442F3A /* AddCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB39DE2C1770E28600442F3A /* AddCityViewController.m */; };
@@ -47,8 +46,6 @@
 		EB72368E176414310041BD39 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EB72368D176414310041BD39 /* AppDelegate.m */; };
 		EB723694176414310041BD39 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB723693176414310041BD39 /* Default-568h@2x.png */; };
 		EB723697176414310041BD39 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB723696176414310041BD39 /* ViewController.m */; };
-		EB72369A176414310041BD39 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB723698176414310041BD39 /* ViewController_iPhone.xib */; };
-		EB72369D176414310041BD39 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB72369B176414310041BD39 /* ViewController_iPad.xib */; };
 		EB7236A6176414310041BD39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB72367D176414310041BD39 /* UIKit.framework */; };
 		EB7236A7176414310041BD39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB72367F176414310041BD39 /* Foundation.framework */; };
 		EB7236AF176414310041BD39 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB7236AD176414310041BD39 /* InfoPlist.strings */; };
@@ -66,7 +63,6 @@
 		EB723720176416710041BD39 /* MMExampleSideDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB723710176416710041BD39 /* MMExampleSideDrawerViewController.m */; };
 		EB723721176416710041BD39 /* MMExampleLeftSideDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB723712176416710041BD39 /* MMExampleLeftSideDrawerViewController.m */; };
 		EB723724176416710041BD39 /* MMSideDrawerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB723718176416710041BD39 /* MMSideDrawerTableViewCell.m */; };
-		EB723726176416710041BD39 /* MMSideDrawerSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB72371C176416710041BD39 /* MMSideDrawerSectionHeaderView.m */; };
 		EB787EF2176E3A0D007BABF0 /* skycons.js in Resources */ = {isa = PBXBuildFile; fileRef = EB8CA017176D1A1300BAD349 /* skycons.js */; };
 		EB7D378E17722C5000D331C7 /* MMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7D378D17722C4F00D331C7 /* MMTableViewCell.m */; };
 		EB7D3790177249C600D331C7 /* ViewControllerDelegate.h in Resources */ = {isa = PBXBuildFile; fileRef = EB7D378F177248A700D331C7 /* ViewControllerDelegate.h */; };
@@ -90,6 +86,7 @@
 		EBD0218D177407CB00FED304 /* MenuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD0218C177407CB00FED304 /* MenuButton.png */; };
 		EBD0218F1774081B00FED304 /* PredictButton_Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD0218E1774081B00FED304 /* PredictButton_Selected.png */; };
 		EBD021911774082900FED304 /* PredictButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD021901774082900FED304 /* PredictButton.png */; };
+		EBDDAF781A770EDB006EBA49 /* MMSideDrawerSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF771A770EDB006EBA49 /* MMSideDrawerSectionHeaderView.m */; };
 		EBE2898A17714AB000E0CFB0 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE2898917714AB000E0CFB0 /* MainStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -149,8 +146,6 @@
 		EB723693176414310041BD39 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		EB723695176414310041BD39 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		EB723696176414310041BD39 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		EB723699176414310041BD39 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
-		EB72369C176414310041BD39 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
 		EB7236A3176414310041BD39 /* Wear PantsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wear PantsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB7236AC176414310041BD39 /* Wear PantsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Wear PantsTests-Info.plist"; sourceTree = "<group>"; };
 		EB7236AE176414310041BD39 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -173,8 +168,6 @@
 		EB723712176416710041BD39 /* MMExampleLeftSideDrawerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMExampleLeftSideDrawerViewController.m; sourceTree = "<group>"; };
 		EB723717176416710041BD39 /* MMSideDrawerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSideDrawerTableViewCell.h; sourceTree = "<group>"; };
 		EB723718176416710041BD39 /* MMSideDrawerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSideDrawerTableViewCell.m; sourceTree = "<group>"; };
-		EB72371B176416710041BD39 /* MMSideDrawerSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSideDrawerSectionHeaderView.h; sourceTree = "<group>"; };
-		EB72371C176416710041BD39 /* MMSideDrawerSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSideDrawerSectionHeaderView.m; sourceTree = "<group>"; };
 		EB7D378C17722C4F00D331C7 /* MMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableViewCell.h; sourceTree = "<group>"; };
 		EB7D378D17722C4F00D331C7 /* MMTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTableViewCell.m; sourceTree = "<group>"; };
 		EB7D378F177248A700D331C7 /* ViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewControllerDelegate.h; path = ../ViewControllerDelegate.h; sourceTree = "<group>"; };
@@ -199,6 +192,8 @@
 		EBD0218C177407CB00FED304 /* MenuButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuButton.png; sourceTree = "<group>"; };
 		EBD0218E1774081B00FED304 /* PredictButton_Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PredictButton_Selected.png; sourceTree = "<group>"; };
 		EBD021901774082900FED304 /* PredictButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PredictButton.png; sourceTree = "<group>"; };
+		EBDDAF761A770EDB006EBA49 /* MMSideDrawerSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSideDrawerSectionHeaderView.h; sourceTree = "<group>"; };
+		EBDDAF771A770EDB006EBA49 /* MMSideDrawerSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSideDrawerSectionHeaderView.m; sourceTree = "<group>"; };
 		EBE2898917714AB000E0CFB0 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -316,17 +311,11 @@
 				EB723696176414310041BD39 /* ViewController.m */,
 				EB39DE2B1770E28600442F3A /* AddCityViewController.h */,
 				EB39DE2C1770E28600442F3A /* AddCityViewController.m */,
-				EB72370F176416710041BD39 /* MMExampleSideDrawerViewController.h */,
-				EB723710176416710041BD39 /* MMExampleSideDrawerViewController.m */,
-				EB723711176416710041BD39 /* MMExampleLeftSideDrawerViewController.h */,
-				EB723712176416710041BD39 /* MMExampleLeftSideDrawerViewController.m */,
-				EB723698176414310041BD39 /* ViewController_iPhone.xib */,
-				EB72369B176414310041BD39 /* ViewController_iPad.xib */,
 				EBE2898917714AB000E0CFB0 /* MainStoryboard.storyboard */,
 				EB8CA016176D1A0300BAD349 /* Skycons */,
 				EB136879176784450073F530 /* Other Classes */,
 				EB136878176784300073F530 /* Images+Fonts */,
-				EB7236BB176414C30041BD39 /* DrawerClasses */,
+				EB7236BB176414C30041BD39 /* Drawer Classes */,
 				EB87E3F41A649824004F6B9A /* Images.xcassets */,
 				EB723684176414310041BD39 /* Supporting Files */,
 			);
@@ -363,7 +352,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		EB7236BB176414C30041BD39 /* DrawerClasses */ = {
+		EB7236BB176414C30041BD39 /* Drawer Classes */ = {
 			isa = PBXGroup;
 			children = (
 				EB7236FD176416670041BD39 /* MMDrawerBarButtonItem.h */,
@@ -374,8 +363,12 @@
 				EB7D378D17722C4F00D331C7 /* MMTableViewCell.m */,
 				EB7236FB176416670041BD39 /* UIViewController+MMDrawerController.h */,
 				EB7236FC176416670041BD39 /* UIViewController+MMDrawerController.m */,
-				EB72371B176416710041BD39 /* MMSideDrawerSectionHeaderView.h */,
-				EB72371C176416710041BD39 /* MMSideDrawerSectionHeaderView.m */,
+				EB72370F176416710041BD39 /* MMExampleSideDrawerViewController.h */,
+				EB723710176416710041BD39 /* MMExampleSideDrawerViewController.m */,
+				EB723711176416710041BD39 /* MMExampleLeftSideDrawerViewController.h */,
+				EB723712176416710041BD39 /* MMExampleLeftSideDrawerViewController.m */,
+				EBDDAF761A770EDB006EBA49 /* MMSideDrawerSectionHeaderView.h */,
+				EBDDAF771A770EDB006EBA49 /* MMSideDrawerSectionHeaderView.m */,
 				EB723717176416710041BD39 /* MMSideDrawerTableViewCell.h */,
 				EB723718176416710041BD39 /* MMSideDrawerTableViewCell.m */,
 				EB7236FF176416670041BD39 /* MMDrawerVisualState.h */,
@@ -383,7 +376,7 @@
 				EB723709176416710041BD39 /* MMExampleDrawerVisualStateManager.h */,
 				EB72370A176416710041BD39 /* MMExampleDrawerVisualStateManager.m */,
 			);
-			name = DrawerClasses;
+			name = "Drawer Classes";
 			sourceTree = "<group>";
 		};
 		EB8CA016176D1A0300BAD349 /* Skycons */ = {
@@ -495,8 +488,6 @@
 				EB787EF2176E3A0D007BABF0 /* skycons.js in Resources */,
 				EB723688176414310041BD39 /* InfoPlist.strings in Resources */,
 				EB723694176414310041BD39 /* Default-568h@2x.png in Resources */,
-				EB72369A176414310041BD39 /* ViewController_iPhone.xib in Resources */,
-				EB72369D176414310041BD39 /* ViewController_iPad.xib in Resources */,
 				EB3A2D751764FF5100DC9F71 /* Roboto-Light.ttf in Resources */,
 				EB3A2D761764FF5100DC9F71 /* Roboto-Medium.ttf in Resources */,
 				EB3A2DC21765055600DC9F71 /* MenuButton@2x.png in Resources */,
@@ -569,13 +560,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB13687E17678E1B0073F530 /* MMExampleSideDrawerViewController.m in Sources */,
-				EB13688017678E1B0073F530 /* MMSideDrawerSectionHeaderView.m in Sources */,
 				EB13688117678E1B0073F530 /* MMSideDrawerTableViewCell.m in Sources */,
 				EB13687C17678E020073F530 /* MMExampleLeftSideDrawerViewController.m in Sources */,
 				EB13687D17678E020073F530 /* MMExampleDrawerVisualStateManager.m in Sources */,
 				EB72368A176414310041BD39 /* main.m in Sources */,
 				EB72368E176414310041BD39 /* AppDelegate.m in Sources */,
 				EB723697176414310041BD39 /* ViewController.m in Sources */,
+				EBDDAF781A770EDB006EBA49 /* MMSideDrawerSectionHeaderView.m in Sources */,
 				EB723701176416670041BD39 /* MMDrawerController.m in Sources */,
 				EB723703176416670041BD39 /* UIViewController+MMDrawerController.m in Sources */,
 				EB723705176416670041BD39 /* MMDrawerBarButtonItem.m in Sources */,
@@ -602,7 +593,6 @@
 				EB723720176416710041BD39 /* MMExampleSideDrawerViewController.m in Sources */,
 				EB723721176416710041BD39 /* MMExampleLeftSideDrawerViewController.m in Sources */,
 				EB723724176416710041BD39 /* MMSideDrawerTableViewCell.m in Sources */,
-				EB723726176416710041BD39 /* MMSideDrawerSectionHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,22 +613,6 @@
 				EB723687176414310041BD39 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		EB723698176414310041BD39 /* ViewController_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EB723699176414310041BD39 /* en */,
-			);
-			name = ViewController_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		EB72369B176414310041BD39 /* ViewController_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EB72369C176414310041BD39 /* en */,
-			);
-			name = ViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
 		EB7236AD176414310041BD39 /* InfoPlist.strings */ = {
@@ -723,7 +697,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wear Pants/Wear Pants-Prefix.pch";
 				INFOPLIST_FILE = "Wear Pants/Wear Pants-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -740,7 +714,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wear Pants/Wear Pants-Prefix.pch";
 				INFOPLIST_FILE = "Wear Pants/Wear Pants-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

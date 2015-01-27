@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewController.h"
+#import "MMExampleLeftSideDrawerViewController.h"
+#import "MMExampleDrawerVisualStateManager.h"
 
 @class ViewController;
 

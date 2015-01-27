@@ -17,6 +17,29 @@ static NSMutableArray* savedLinks = nil;
 @implementation ViewController
 @synthesize interfaceArray, locationManager, geoCoder, zipcode, city, avgtemp, hum;
 
+#pragma mark - Geocoding Data
+
+- (void) setUpLocationServices {
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    [locationManager startUpdatingLocation];
+    geoCoder = [[CLGeocoder alloc] init];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #pragma mark - Interface
 
 - (void)startVariables {
@@ -36,6 +59,7 @@ static NSMutableArray* savedLinks = nil;
                       [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-145, screenHeight/2+122.5, 140, 20)],
                       [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-145, screenHeight/2+165, 140, 20)],
                       nil];
+    [self setUpLocationServices];
 }
 
 - (void)startInterface {
