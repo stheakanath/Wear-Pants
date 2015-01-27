@@ -11,6 +11,6 @@
 @interface WeatherData : NSObject
 
 + (NSString*) getBoundingBox:(NSString*)zipcode;
-+ (void) getTemperatureData:(NSString*)city withZipCode:(NSString*)zipcode;
++ (NSMutableDictionary*) getTemperatureData:(NSString*)zipcode;
 
 @end

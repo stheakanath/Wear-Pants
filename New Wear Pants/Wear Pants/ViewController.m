@@ -302,47 +302,14 @@ static NSMutableArray* savedLinks = nil;
 
        // NSLog(@"%@", city);
         NSURL* url = [NSURL URLWithString: [NSString stringWithFormat:@"%@%@", @"http://xml.weather.yahoo.com/forecastrss?p=", desiredcity]];
-        //NSLog(@"Pulling Temperature URL: %@", url);
+        NSLog(@"Pulling Temperature URL: %@", url);
         NSString *blork = [[NSString alloc] initWithData:[NSData dataWithContentsOfURL:url] encoding: NSASCIIStringEncoding];
         NSString *typeofweather = [[[[[[[blork componentsSeparatedByString:@"<yweather:forecast"] objectAtIndex:1] componentsSeparatedByString:@"code=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
         //NSLog(typeofweather);
-        [WeatherData getTemperatureData:city withZipCode:zipcode];
+        NSMutableDictionary *data = [WeatherData getTemperatureData:desiredcity];
         
-        NSString *filepath;
-        if([typeofweather isEqualToString:@"32"] || [typeofweather isEqualToString:@"34"] || [typeofweather isEqualToString:@"36"] || [typeofweather isEqualToString:@"3200"]) {
-            filepath = @"sun";
+        NSString *filepath = [data objectForKey:@"code"];
 
-        } else if ([typeofweather isEqualToString:@"31"] || [typeofweather isEqualToString:@"33"]  ) {
-            filepath = @"nightclear";
-
-        } else if ([typeofweather isEqualToString:@"28"] || [typeofweather isEqualToString:@"30"]  ||  [typeofweather isEqualToString:@"44"]) {
-            filepath = @"partlycloudyday";
- 
-        } else if ([typeofweather isEqualToString:@"27"] || [typeofweather isEqualToString:@"29"]) {
-            filepath = @"partlycloudynight";
-
-        } else if ([typeofweather isEqualToString:@"26"]) {
-            filepath = @"cloudy";
-
-        } else if ([typeofweather isEqualToString:@"5"] || [typeofweather isEqualToString:@"6"] || [typeofweather isEqualToString:@"8"] || [typeofweather isEqualToString:@"9"] || [typeofweather isEqualToString:@"11"] || [typeofweather isEqualToString:@"12"]|| [typeofweather isEqualToString:@"40"]|| [typeofweather isEqualToString:@"4"]|| [typeofweather isEqualToString:@"45"]|| [typeofweather isEqualToString:@"47"]) {
-            filepath = @"rain";
-       
-        } else if ([typeofweather isEqualToString:@"7"] || [typeofweather isEqualToString:@"10"] || [typeofweather isEqualToString:@"35"] || [typeofweather isEqualToString:@"37"] || [typeofweather isEqualToString:@"17"] || [typeofweather isEqualToString:@"18"]|| [typeofweather isEqualToString:@"38"]|| [typeofweather isEqualToString:@"39"]) {
-            filepath = @"sleet";
-          
-        } else if ([typeofweather isEqualToString:@"13"] || [typeofweather isEqualToString:@"14"] || [typeofweather isEqualToString:@"15"] || [typeofweather isEqualToString:@"16"] || [typeofweather isEqualToString:@"41"] || [typeofweather isEqualToString:@"42"]|| [typeofweather isEqualToString:@"43"] || [typeofweather isEqualToString:@"46"]) {
-            filepath = @"snow";
-  
-        } else if ([typeofweather isEqualToString:@"0"] || [typeofweather isEqualToString:@"1"] || [typeofweather isEqualToString:@"2"] || [typeofweather isEqualToString:@"3"] || [typeofweather isEqualToString:@"19"] || [typeofweather isEqualToString:@"23"] || [typeofweather isEqualToString:@"24"] || [typeofweather isEqualToString:@"25"]) {
-            filepath = @"wind";
-     
-        } else if ([typeofweather isEqualToString:@"20"] || [typeofweather isEqualToString:@"21"] || [typeofweather isEqualToString:@"22"]) {
-            filepath = @"fog";
-         
-        } else {
-            filepath = @"sun";
-      
-        }
         if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0)) {
             filepath = [filepath stringByAppendingString:@"1"];
             [[[interfaceArray objectAtIndex:5] scrollView] setMinimumZoomScale:0.5];
@@ -353,13 +320,12 @@ static NSMutableArray* savedLinks = nil;
         [[interfaceArray objectAtIndex:5] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:finalpath]]];
 
         //Pulling Data
-        int windtemperature = [[[[[[[[[blork componentsSeparatedByString:@"<yweather:wind"] objectAtIndex:1] componentsSeparatedByString:@"/>"] objectAtIndex:0] componentsSeparatedByString:@"chill=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] intValue];
-        double humidity = [[[[[[[[[blork componentsSeparatedByString:@"<yweather:atmosphere"] objectAtIndex:1] componentsSeparatedByString:@"/>"] objectAtIndex:0]componentsSeparatedByString:@"humidity=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] intValue]/100;
-        int integerhumdity = (int)[[[[[[[[[blork componentsSeparatedByString:@"<yweather:atmosphere"] objectAtIndex:1] componentsSeparatedByString:@"/>"] objectAtIndex:0]componentsSeparatedByString:@"humidity=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] intValue];
-        hum = [NSString stringWithFormat:@"%i%@", integerhumdity, @"%"];
-        //int windspeed = [[[[[[[[[blork componentsSeparatedByString:@"<yweather:wind"] objectAtIndex:1] componentsSeparatedByString:@"/>"] objectAtIndex:0] componentsSeparatedByString:@"speed=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] intValue];
-        int lowtemp = [[[[[[[[[blork componentsSeparatedByString:@"<yweather:forecast"] objectAtIndex:1] componentsSeparatedByString:@"/>"] objectAtIndex:0] componentsSeparatedByString:@"low=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] intValue];
-        int hightemp = [[[[[[[[[blork componentsSeparatedByString:@"<yweather:forecast"] objectAtIndex:1] componentsSeparatedByString:@"/>"] objectAtIndex:0] componentsSeparatedByString:@"high=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0] intValue];
+        int windtemperature = [[data objectForKey:@"chill"] intValue];
+        int humi = [[data objectForKey:@"humidity"] doubleValue];
+        hum = [NSString stringWithFormat:@"%i%@", humi, @"%"];
+        double humidity = humi/100;
+        int hightemp = [[data objectForKey:@"high"] intValue];
+        int lowtemp = [[data objectForKey:@"low"] intValue];
         double averagetemp = (hightemp+lowtemp)/2;
         self.avgtemp = [NSString stringWithFormat:@"%i%@", (int)averagetemp, @" F"];
         double heatindex = -42.379 + 2.04901523*averagetemp + 10.14333127*humidity - 0.22475541*averagetemp*humidity - .00683783* pow(averagetemp, 2) - .05481717*pow(humidity, 2) + 1.22874*pow(10, -3)*pow(averagetemp, 2)*humidity + 8.5282*pow(humidity, 2)*pow(10, -4)*averagetemp - 1.99*pow(10, -6)*pow(humidity, 2)*pow(averagetemp, 2);
