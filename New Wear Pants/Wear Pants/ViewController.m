@@ -8,6 +8,7 @@
 
 
 #import "ViewController.h"
+#import "RobotoFont.h"
 
 @interface ViewController ()
 @end
@@ -47,8 +48,8 @@ static NSMutableArray* savedLinks = nil;
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
     interfaceArray = [[NSMutableArray alloc] initWithObjects:
                       [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)],
-                      [[UILabel alloc] initWithFrame:CGRectMake(0, screenHeight/6, screenWidth, 50)],
-                      [[UILabel alloc] initWithFrame:CGRectMake(0, screenHeight/3-25, screenWidth, 50)],
+                      [[RobotoFont alloc] init:CGRectMake(0, screenHeight/6, screenWidth, 50) fontName:@"Roboto-Light" fontSize:20],
+                      [[RobotoFont alloc] init:CGRectMake(0, screenHeight/3-25, screenWidth, 50) fontName:@"Roboto-Medium" fontSize:50],
                       [UIButton buttonWithType:UIButtonTypeCustom],
                       [UIButton buttonWithType:UIButtonTypeCustom],
                       [[UIWebView alloc] initWithFrame:CGRectMake(screenWidth/2-5, screenHeight/2+55 , 170, 170)],
@@ -65,22 +66,8 @@ static NSMutableArray* savedLinks = nil;
 - (void)startInterface {
     CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
-    [[interfaceArray objectAtIndex:1] setFont:[UIFont fontWithName:@"Roboto-Light" size:20]];
-    [[interfaceArray objectAtIndex:1] setBackgroundColor:[UIColor clearColor]];
     [[interfaceArray objectAtIndex:1] setText:@"Should I Wear Pants Today?"];
-    [[interfaceArray objectAtIndex:1] setTextAlignment:NSTextAlignmentCenter];
-    [[interfaceArray objectAtIndex:1] setLineBreakMode:NSLineBreakByWordWrapping];
-    [[interfaceArray objectAtIndex:1] setNumberOfLines:0];
-    [[interfaceArray objectAtIndex:1] setShadowColor:[UIColor blackColor]];
-    [[interfaceArray objectAtIndex:1] setShadowOffset:CGSizeMake(0.5, 0)];
-    [[interfaceArray objectAtIndex:1] setTextColor:[UIColor whiteColor]];
-    [[interfaceArray objectAtIndex:2] setFont:[UIFont fontWithName:@"Roboto-Medium" size:50]];
-    [[interfaceArray objectAtIndex:2] setBackgroundColor:[UIColor clearColor]];
     [[interfaceArray objectAtIndex:2] setText:@"Checking."];
-    [[interfaceArray objectAtIndex:2] setTextAlignment:NSTextAlignmentCenter];
-    [[interfaceArray objectAtIndex:2] setShadowColor:[UIColor blackColor]];
-    [[interfaceArray objectAtIndex:2] setTextColor:[UIColor whiteColor]];
-    [[interfaceArray objectAtIndex:2] setShadowOffset:CGSizeMake(0.5, 0)];
     for(int x = 0; x < 2; x++) {
         [[interfaceArray objectAtIndex:3+x] setFont:[UIFont fontWithName:@"Roboto-Light" size:16]];
         [[interfaceArray objectAtIndex:3+x] setBackgroundColor:[UIColor clearColor]];

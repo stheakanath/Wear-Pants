@@ -21,5 +21,5 @@
 
 #import "MMExampleSideDrawerViewController.h"
 
-@interface MMExampleLeftSideDrawerViewController : MMExampleSideDrawerViewController <ViewControllerDelegate>
+@interface MMExampleLeftSideDrawerViewController : MMExampleSideDrawerViewController
 @end
