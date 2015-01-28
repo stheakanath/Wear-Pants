@@ -13,7 +13,6 @@
 		EB3A2D661764F54E00DC9F71 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3A2D651764F54E00DC9F71 /* AVFoundation.framework */; };
 		EB3A2D681764F55400DC9F71 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3A2D671764F55400DC9F71 /* MobileCoreServices.framework */; };
 		EB3A2D6A1764F55800DC9F71 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3A2D691764F55800DC9F71 /* SystemConfiguration.framework */; };
-		EB3A2D6C1764F55C00DC9F71 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3A2D6B1764F55C00DC9F71 /* MapKit.framework */; };
 		EB3A2D6E1764F56200DC9F71 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3A2D6D1764F56200DC9F71 /* CoreLocation.framework */; };
 		EB3A2D701764F56600DC9F71 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3A2D6F1764F56600DC9F71 /* AddressBookUI.framework */; };
 		EB3A2DC71765079D00DC9F71 /* UIImage+StackBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3A2DC61765079D00DC9F71 /* UIImage+StackBlur.m */; };
@@ -205,7 +204,6 @@
 				EB3A2D681764F55400DC9F71 /* MobileCoreServices.framework in Frameworks */,
 				EB3A2D701764F56600DC9F71 /* AddressBookUI.framework in Frameworks */,
 				EB3A2D6E1764F56200DC9F71 /* CoreLocation.framework in Frameworks */,
-				EB3A2D6C1764F55C00DC9F71 /* MapKit.framework in Frameworks */,
 				EB3A2D6A1764F55800DC9F71 /* SystemConfiguration.framework in Frameworks */,
 				EB3A2D661764F54E00DC9F71 /* AVFoundation.framework in Frameworks */,
 				EB7236F5176415230041BD39 /* QuartzCore.framework in Frameworks */,

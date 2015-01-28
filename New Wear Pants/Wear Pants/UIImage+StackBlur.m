@@ -2,26 +2,16 @@
 //  UIImage+StackBlur.m
 //  stackBlur
 //
-//  Created by Thomas on 07/02/12.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Created by Sony Theakanath on 1/26/15.
+//  Copyright (c) 2015 Sony Theakanath. All rights reserved.
 //
-/*
-Copyright (c) 2012, T.LANDSPURG
- All rights reserved.
- 
- */
+
 #import "UIImage+StackBlur.h"
 
 #define SQUARE(i) ((i)*(i))
 inline static void zeroClearInt(int* p, size_t count) { memset(p, 0, sizeof(int) * count); }
 
 @implementation  UIImage (StackBlur)
-
-
-// Stackblur algorithm
-// from
-// http://incubator.quasimondo.com/processing/fast_blur_deluxe.php
-// by  Mario Klingemann
 
 - (UIImage*) stackBlur:(NSUInteger)inradius
 {	

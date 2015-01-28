@@ -2,8 +2,8 @@
 //  BackgroundLayer.h
 //  BrokerTestApp
 //
-//  Created by  on 2/02/12.
-//  Copyright (c) 2012 AFG. All rights reserved.
+//  Created by Sony Theakanath on 1/26/15.
+//  Copyright (c) 2015 Sony Theakanath. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

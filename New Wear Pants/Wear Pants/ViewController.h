@@ -2,8 +2,8 @@
 //  ViewController.h
 //  Wear Pants
 //
-//  Created by Sony Theakanath on 6/8/13.
-//  Copyright (c) 2013 Sony Theakanath. All rights reserved.
+//  Created by Sony Theakanath on 1/26/15.
+//  Copyright (c) 2015 Sony Theakanath. All rights reserved.
 //
 
 #import <CoreLocation/CoreLocation.h>
@@ -12,25 +12,18 @@
 #import "AddCityViewController.h"
 #import "UIViewController+MMDrawerController.h"
 #import "MMDrawerVisualState.h"
-#import "BackgroundLayer.h"
 #import "Reachability.h"
-#import "USLocation.h"
+#import "RobotoFont.h"
+#import "MenuBarButton.h"
+#import "PredictionButton.h"
+#import "WeatherData.h"
+#import "AnimatedWeatherView.h"
+#import "DetailedWeatherReport.h"
 
-@interface ViewController : UIViewController<CLLocationManagerDelegate, UIAlertViewDelegate, ViewControllerDelegate, UIWebViewDelegate> {
-    NSString *city;
-    NSString *avgtemp;
-    NSString *hum;
-}
+@interface ViewController : UIViewController<CLLocationManagerDelegate, UIAlertViewDelegate, ViewControllerDelegate>
 
 + (NSMutableArray*) saveddata;
 + (void) addNewCity:(NSString*) newcitydata;
 + (void) deleteCity:(int)index;
-
-@property (nonatomic, retain) NSMutableArray *interfaceArray;
-
-@property (retain, nonatomic) NSString *zipcode;
-@property (retain, nonatomic) NSString *city;
-@property (retain, nonatomic) NSString *avgtemp;
-@property (retain, nonatomic) NSString* hum;
 
 @end

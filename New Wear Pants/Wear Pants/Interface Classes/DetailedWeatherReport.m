@@ -25,7 +25,6 @@
 }
 
 - (void) setData:(NSArray*)data {
-    NSLog(@"%@", data);
     [self.humidity setText:[data objectAtIndex:0]];
     [self.windTemp setText:[data objectAtIndex:1]];
     [self.avgTemp setText:[data objectAtIndex:2]];
