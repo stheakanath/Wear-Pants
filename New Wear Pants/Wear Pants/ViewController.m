@@ -9,7 +9,6 @@
 
 #import "ViewController.h"
 
-
 @interface ViewController ()
 
 @property (nonatomic, strong) AnimatedWeatherView *animatedView;
@@ -28,7 +27,7 @@ static NSMutableArray* savedLinks = nil;
 
 @implementation ViewController
 
-#pragma mark - Geocoding Data
+# pragma mark - Geocoding Data
 
 - (void) setUpLocationServices {
     self.locationManager = [[CLLocationManager alloc] init];
@@ -53,7 +52,7 @@ static NSMutableArray* savedLinks = nil;
     return !(networkStatus == NotReachable);
 }
 
-#pragma mark - Button/Gesture Handling
+# pragma mark - Button/Gesture Handling
 
 -(void)rightDrawerButtonPress:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
@@ -79,7 +78,7 @@ static NSMutableArray* savedLinks = nil;
     [self moveAnimations:TRUE];
 }
 
-#pragma mark - Data Processing
+# pragma mark - Data Processing
 
 - (void) unarchiveData {
     NSString* dataPath = [[NSString alloc] initWithString:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"data.plist"]];
@@ -111,7 +110,7 @@ static NSMutableArray* savedLinks = nil;
     }
 }
 
-#pragma mark - Interface Functions
+# pragma mark - Interface Functions
 
 - (void)viewDidLoad {
     [self setUpLocationServices];
@@ -207,7 +206,7 @@ static NSMutableArray* savedLinks = nil;
     [self.navigationItem setTitle:@"Loading"];
 }
 
-#pragma mark - Pulling Location Information
+# pragma mark - Pulling Location Information
 
 -(void) getZipCode {
     [self.geoCoder reverseGeocodeLocation: self.locationManager.location completionHandler: ^(NSArray *placemarks, NSError *error) {
@@ -229,14 +228,12 @@ static NSMutableArray* savedLinks = nil;
         [self.answerLabel setFont:[UIFont fontWithName:@"Roboto-Medium" size:50]];
         [self getZipCode];
     } else {
-        if(![CLLocationManager authorizationStatus]) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Service Disabled" message:@"To re-enable, please go to Settings and turn on Location Service for this feature." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-        }
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Service Disabled" message:@"To re-enable, please go to Settings and turn on Location Service for this feature." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
     }
 }
 
-# pragma arguments - Public Functions
+# pragma mark - Public Functions
 
 + (void) addNewCity:(NSString*) newcitydata {
     NSString* dataPath = [[NSString alloc] initWithString:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"data.plist"]];

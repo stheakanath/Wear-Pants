@@ -29,7 +29,6 @@
 		EB7236B2176414310041BD39 /* Wear_PantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7236B1176414310041BD39 /* Wear_PantsTests.m */; };
 		EB7236F5176415230041BD39 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7236F4176415230041BD39 /* QuartzCore.framework */; };
 		EB7D3790177249C600D331C7 /* ViewControllerDelegate.h in Resources */ = {isa = PBXBuildFile; fileRef = EB7D378F177248A700D331C7 /* ViewControllerDelegate.h */; };
-		EB7D37A51772BA7A00D331C7 /* BackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7D37A41772BA7A00D331C7 /* BackgroundLayer.m */; };
 		EB87E3F51A649824004F6B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB87E3F41A649824004F6B9A /* Images.xcassets */; };
 		EBDDAF8D1A7716A5006EBA49 /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF7A1A7716A5006EBA49 /* MMDrawerBarButtonItem.m */; };
 		EBDDAF8E1A7716A5006EBA49 /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDDAF7C1A7716A5006EBA49 /* MMDrawerController.m */; };
@@ -126,8 +125,6 @@
 		EB7236B1176414310041BD39 /* Wear_PantsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Wear_PantsTests.m; sourceTree = "<group>"; };
 		EB7236F4176415230041BD39 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EB7D378F177248A700D331C7 /* ViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewControllerDelegate.h; path = ../ViewControllerDelegate.h; sourceTree = "<group>"; };
-		EB7D37A31772BA7A00D331C7 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
-		EB7D37A41772BA7A00D331C7 /* BackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundLayer.m; sourceTree = "<group>"; };
 		EB87E3F41A649824004F6B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EBDDAF791A7716A5006EBA49 /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMDrawerBarButtonItem.h; path = "Drawer Classes/MMDrawerBarButtonItem.h"; sourceTree = "<group>"; };
 		EBDDAF7A1A7716A5006EBA49 /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMDrawerBarButtonItem.m; path = "Drawer Classes/MMDrawerBarButtonItem.m"; sourceTree = "<group>"; };
@@ -418,8 +415,6 @@
 				EB3A2D631764F51D00DC9F71 /* Reachability.m */,
 				EBDDAFE71A773DA1006EBA49 /* WeatherData.h */,
 				EBDDAFE81A773DA1006EBA49 /* WeatherData.m */,
-				EB7D37A31772BA7A00D331C7 /* BackgroundLayer.h */,
-				EB7D37A41772BA7A00D331C7 /* BackgroundLayer.m */,
 				EB3A2DC51765079C00DC9F71 /* UIImage+StackBlur.h */,
 				EB3A2DC61765079D00DC9F71 /* UIImage+StackBlur.m */,
 				EB39DE221770D31E00442F3A /* USLocation.h */,
@@ -598,7 +593,6 @@
 				EBDDAF941A7716A5006EBA49 /* MMSideDrawerTableViewCell.m in Sources */,
 				EBDDAF961A7716A5006EBA49 /* UIViewController+MMDrawerController.m in Sources */,
 				EB39DE2D1770E28600442F3A /* AddCityViewController.m in Sources */,
-				EB7D37A51772BA7A00D331C7 /* BackgroundLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

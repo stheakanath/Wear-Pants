@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UIImage+StackBlur.h"
 
 @interface WeatherData : NSObject
 

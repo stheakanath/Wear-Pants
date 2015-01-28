@@ -9,22 +9,16 @@
 #import "UIImage+StackBlur.h"
 
 #define SQUARE(i) ((i)*(i))
+
 inline static void zeroClearInt(int* p, size_t count) { memset(p, 0, sizeof(int) * count); }
 
 @implementation  UIImage (StackBlur)
 
-- (UIImage*) stackBlur:(NSUInteger)inradius
-{	
-	if (inradius < 1){
+- (UIImage*) stackBlur:(NSUInteger)inradius {
+	if (inradius < 1)
 		return self;
-	}
-    // Suggestion xidew to prevent crash if size is null
-	if (CGSizeEqualToSize(self.size, CGSizeZero)) {
+	if (CGSizeEqualToSize(self.size, CGSizeZero))
         return self;
-    }
-
-    //	return [other applyBlendFilter:filterOverlay  other:self context:nil];
-	// First get the image into your data buffer
     CGImageRef inImage = self.CGImage;
     int nbPerCompt = (int)CGImageGetBitsPerPixel(inImage);
     if(nbPerCompt != 32){
@@ -32,17 +26,10 @@ inline static void zeroClearInt(int* p, size_t count) { memset(p, 0, sizeof(int)
         inImage = tmpImage.CGImage;
     }
     CFMutableDataRef m_DataRef = CFDataCreateMutableCopy(0, 0, CGDataProviderCopyData(CGImageGetDataProvider(inImage)));    
-    UInt8 * m_PixelBuf=malloc(CFDataGetLength(m_DataRef));
-    CFDataGetBytes(m_DataRef,
-                   CFRangeMake(0,CFDataGetLength(m_DataRef)) ,
-                   m_PixelBuf);
+    UInt8 *m_PixelBuf = malloc(CFDataGetLength(m_DataRef));
+    CFDataGetBytes(m_DataRef, CFRangeMake(0,CFDataGetLength(m_DataRef)), m_PixelBuf);
 	
-	CGContextRef ctx = CGBitmapContextCreate(m_PixelBuf,  
-											 CGImageGetWidth(inImage),  
-											 CGImageGetHeight(inImage),  
-											 CGImageGetBitsPerComponent(inImage),
-											 CGImageGetBytesPerRow(inImage),  
-											 CGImageGetColorSpace(inImage),  
+	CGContextRef ctx = CGBitmapContextCreate(m_PixelBuf, CGImageGetWidth(inImage), CGImageGetHeight(inImage), CGImageGetBitsPerComponent(inImage), CGImageGetBytesPerRow(inImage), CGImageGetColorSpace(inImage),  
 											 CGImageGetBitmapInfo(inImage) 
 											 );
 	
