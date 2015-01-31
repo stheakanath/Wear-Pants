@@ -8,6 +8,10 @@
 
 #import "AnimatedWeatherView.h"
 
+const NSString* HTML_FIRST = @"<!DOCTYPE html><html><head><title></title></head><body><canvas id=\"clear-day\" width=\"300\" height=\"300\"></canvas><script src=\"skycons.js\"></script><script>var icons = new Skycons({\"color\": \"white\"});icons.set(\"clear-day\", Skycons.";
+
+const NSString* HTML_LAST = @");icons.play();</script></body></html>";
+
 @implementation AnimatedWeatherView
 
 - (id) init {
@@ -23,11 +27,9 @@
     return self;
 }
 
-- (void)loadFile: (NSString*)file {
-    [self loadHTMLString:@"" baseURL:nil];
-    if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0))
-        file = [file stringByAppendingString:@"1"];
-    [self loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:file ofType: @"html"]]]];
+- (void)loadFile:(NSString*)animationtype {
+    NSString *fulllink = [NSString stringWithFormat:@"%@%@%@", HTML_FIRST, animationtype, HTML_LAST];
+    [self loadHTMLString: fulllink baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
 }
 
 @end

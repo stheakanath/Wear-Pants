@@ -13,6 +13,7 @@
 
 + (NSString*) getBoundingBox:(NSString*)zipcode;
 + (NSMutableDictionary*) getTemperatureData:(NSString*)zipcode;
-+ (UIImageView*) getFlickrBackground:(NSString*) zipcode;
++ (UIImage*) getFlickrBackground:(NSString*) zipcode;
++ (CAGradientLayer*) greyGradient;
 
 @end

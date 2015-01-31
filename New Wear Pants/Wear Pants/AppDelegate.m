@@ -10,6 +10,8 @@
 
 @implementation AppDelegate
 
+static NSString *kGeoNamesAccountName = @"stheakanath";
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIViewController *centerViewController = [[ViewController alloc] init];
     MMExampleLeftSideDrawerViewController *leftside = [[MMExampleLeftSideDrawerViewController alloc] init];

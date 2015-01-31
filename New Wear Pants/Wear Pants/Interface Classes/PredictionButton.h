@@ -10,6 +10,6 @@
 
 @interface PredictionButton : UIButton
 
--(id) init:(CGRect)frame setTitle:(NSString*)title target:(id)target selector:(SEL)sel;
+- (id)init:(CGRect)frame setTitle:(NSString*)title target:(id)target selector:(SEL)sel;
 
 @end

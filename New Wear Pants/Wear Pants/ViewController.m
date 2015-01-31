@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Sony Theakanath. All rights reserved.
 //
 
-
 #import "ViewController.h"
 
 @interface ViewController ()
@@ -17,6 +16,7 @@
 @property (nonatomic, strong) PredictionButton *badButton;
 @property (nonatomic, strong) RobotoFont *questionLabel;
 @property (nonatomic, strong) RobotoFont *answerLabel;
+@property (nonatomic, strong) UIView *loadingTintView;
 @property (nonatomic, strong) UIImageView *flickrImage;
 @property (nonatomic, strong) IBOutlet CLLocationManager *locationManager;
 @property (nonatomic, strong) IBOutlet CLGeocoder *geoCoder;
@@ -35,9 +35,11 @@ static NSMutableArray* savedLinks = nil;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     [self.locationManager startUpdatingLocation];
     self.geoCoder = [[CLGeocoder alloc] init];
-    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)
+    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
         [self.locationManager requestWhenInUseAuthorization];
-    else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled" message:@"To re-enable, please go to Settings and turn on Location Service for this app." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled" message:@"To re-enable, please go to Settings and turn on Location Service for this app." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     } else {
@@ -55,9 +57,14 @@ static NSMutableArray* savedLinks = nil;
 # pragma mark - Button/Gesture Handling
 
 -(void)rightDrawerButtonPress:(id)sender {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    AddCityViewController *myVC = (AddCityViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MainNavigationController"];
-    [self presentViewController:myVC animated:YES completion:nil];
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.3f;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFade;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    AddScreen *vc = [[AddScreen alloc] init];
+    [vc setBackground:self.flickrImage.image];
+    [self.navigationController pushViewController:vc animated:NO];
 }
 
 -(void)leftDrawerButtonPress:(id)sender {
@@ -96,8 +103,8 @@ static NSMutableArray* savedLinks = nil;
 - (void) getCurrentTemperature:(NSString*)desiredcity {
     if([self connectedToInternet]) {
         NSMutableDictionary *data = [WeatherData getTemperatureData:desiredcity];
-        NSString *filepath = [data objectForKey:@"code"];
-        [self.animatedView loadFile:filepath];
+        NSString *animationtype = [data objectForKey:@"animationtype"];
+        [self.animatedView loadFile:animationtype];
         double heatindex =[[data objectForKey:@"heatindex"] doubleValue];
         if(heatindex < [[savedLinks objectAtIndex:0] intValue])
             [self.answerLabel setText:@"YES"];
@@ -115,53 +122,70 @@ static NSMutableArray* savedLinks = nil;
 - (void)viewDidLoad {
     [self setUpLocationServices];
     [self unarchiveData];
-    [self.view addSubview:[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)]];
     CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
+    self.flickrImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
+    CAGradientLayer *bgLayer = [WeatherData greyGradient];
+    [bgLayer setFrame:[[UIScreen mainScreen] bounds]];
+    [self.flickrImage.layer insertSublayer:bgLayer atIndex:0];
+    [self.flickrImage setContentMode:UIViewContentModeScaleAspectFill];
+    [self.flickrImage setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
+    self.flickrImage.image = [UIImage imageNamed:@"DefaultBackground.jpg"];
+    [self.view addSubview:self.flickrImage];
     self.animatedView = [[AnimatedWeatherView alloc] init];
     [self.view addSubview:self.animatedView];
     self.reportView = [[DetailedWeatherReport alloc] init];
     [self.view addSubview:self.reportView];
-    self.niceButton = [[PredictionButton alloc] init:CGRectMake(-150, screenHeight/3+60, 140, 35) setTitle:@"Nice Prediction!" target:self selector:@selector(moveScreenToNormal)];
+    [self.reportView setAlpha:0];
+    self.niceButton = [[PredictionButton alloc] init:CGRectMake(-150, screenHeight/3+60, 140, 35) setTitle:@"Nice Prediction!" target:self selector:@selector(didSelectNiceButton)];
+    self.loadingTintView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
+    [self.loadingTintView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
+    [self.loadingTintView setAlpha:0];
+    [self.flickrImage addSubview:self.loadingTintView];
     [self.view addSubview:self.niceButton];
     self.badButton = [[PredictionButton alloc] init:CGRectMake(screenWidth+110, screenHeight/3+60, 140, 35) setTitle:@"Bad Prediction!" target:self selector:@selector(badPredictionPressed)];
     [self.view addSubview:self.badButton];
     self.questionLabel = [[RobotoFont alloc] init:CGRectMake(0, screenHeight/6, screenWidth, 50) fontName:@"Roboto-Light" fontSize:20];
     [self.questionLabel setText:@"Should I Wear Pants Today?"];
+    [self.questionLabel setAlpha:0];
     [self.view addSubview:self.questionLabel];
     self.answerLabel = [[RobotoFont alloc] init:CGRectMake(0, screenHeight/3-25, screenWidth, 50) fontName:@"Roboto-Medium" fontSize:50];
-    [self.answerLabel setText:@"Checking."];
     [self.view addSubview:self.answerLabel];
-    self.flickrImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
-    [self.view insertSubview:self.flickrImage atIndex:1];
     self.navigationItem.leftBarButtonItem = [[MenuBarButton alloc] init:@"MenuButton" target:self selector:@selector(leftDrawerButtonPress:)];
     self.navigationItem.rightBarButtonItem = [[MenuBarButton alloc] init:@"PlusIcon" target:self selector:@selector(rightDrawerButtonPress:)];
     [self.navigationItem setTitle:@"Searching Location"];
     [super viewDidLoad];
+    [self setLoadingView];
 }
 
 - (void) setLocationDisabledScreen {
     [self.navigationItem setTitle:@"Feature Unavailable"];
     [self.questionLabel setText:@"To re-enable current location feature, go to Settings > Privacy."];
+    [self.questionLabel setAlpha:1];
     [self.answerLabel setText:@"Check Sidebar!"];
+    [self.answerLabel setAlpha:1];
     [self.answerLabel setFont:[UIFont fontWithName:@"Roboto-Medium" size:40]];
+}
+
+- (void) didSelectNiceButton {
+    [self moveAnimations:TRUE];
 }
 
 - (void) moveAnimations:(BOOL)isNormal {
     CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
     if (isNormal) {
-        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^ {
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^ {
             [self.niceButton setFrame:CGRectMake(-150, screenHeight/3+60, 140, 35)];
             [self.badButton setFrame:CGRectMake(screenWidth+110, screenHeight/3+60, 140, 35)];
         } completion:^(BOOL finished){
-            [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveLinear animations:^ {
+            [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^ {
                 [self.questionLabel setFrame:CGRectMake(0, screenHeight/4, screenWidth, 50)];
                 [self.answerLabel setFrame:CGRectMake(0, screenHeight/2-50, screenWidth, 50)];
             } completion:^(BOOL finished){}];
         }];
     } else {
-        [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveLinear animations:^ {
+        [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^ {
             [self.questionLabel setFrame:CGRectMake(0, screenHeight/6, screenWidth, 50)];
             [self.answerLabel setFrame:CGRectMake(0, screenHeight/3-25, screenWidth, 50)];
         } completion:^(BOOL finished){
@@ -174,46 +198,64 @@ static NSMutableArray* savedLinks = nil;
 }
 
 - (void)setBackground:(NSString *)boundingbox {
-    UIImageView *bkgndimage = [WeatherData getFlickrBackground:boundingbox];
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.7];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.view cache:YES];
-    self.flickrImage = bkgndimage;
-    [self.view insertSubview:self.flickrImage atIndex:1];
-    [UIView commitAnimations];
+    UIImage *bkgndimage = [WeatherData getFlickrBackground:boundingbox];
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.3f;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFade;
+    [self.flickrImage.layer addAnimation:transition forKey:nil];
+    self.flickrImage.image = bkgndimage;
     [self moveAnimations:FALSE];
+    [self setLoadedView];
 }
 
 - (void)reloadFrame:(NSString*) saveddata {
     [self.questionLabel setText:@"Should I Wear Pants Today?"];
     [self.answerLabel setFont:[UIFont fontWithName:@"Roboto-Medium" size:50]];
-    [self getCurrentTemperature:[[[saveddata componentsSeparatedByString:@","] objectAtIndex:2] stringByReplacingOccurrencesOfString:@" " withString:@""]];
-    [self setBackground:[NSString stringWithFormat:@"%@%@",[[saveddata componentsSeparatedByString:@","] objectAtIndex:0], [[saveddata componentsSeparatedByString:@","] objectAtIndex:1]]];
+    NSString *convertedString = [[NSString stringWithFormat:@"%@,%@", [[saveddata componentsSeparatedByString:@","] objectAtIndex:0], [[saveddata componentsSeparatedByString:@","] objectAtIndex:1]] stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    [self getCurrentTemperature:convertedString];
+    [self setBackground:convertedString];
     [self.navigationItem setTitle:[[saveddata componentsSeparatedByString:@","] objectAtIndex:0]];
 }
+
+
 
 - (void) setLoadingView {
     CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
-    UIView *v = [self.view viewWithTag:900];
-    v.hidden = YES;
-    [self.view setBackgroundColor:[UIColor blackColor]];
     [self.niceButton setFrame:CGRectMake(-150, screenHeight/3+60, 140, 35)];
     [self.badButton setFrame:CGRectMake(screenWidth+110, screenHeight/3+60, 140, 35)];
-    [self.answerLabel setText:@"Should I Wear Pants Today?"];
-    [self.answerLabel setText:@"Please Wait"];
-    [self.reportView setData:@[@"Loading", @"Loading", @"Loading"]];
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^ {
+        [self.answerLabel setAlpha:0];
+        [self.questionLabel setAlpha:0];
+        [self.reportView setAlpha:0];
+        [self.animatedView setAlpha:0];
+        [self.loadingTintView setAlpha:1];
+    } completion:^(BOOL finished){}];
     [self.navigationItem setTitle:@"Loading"];
+}
+
+- (void) setLoadedView {
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^ {
+        [self.answerLabel setAlpha:1];
+        [self.questionLabel setAlpha:1];
+        [self.reportView setAlpha:1];
+        [self.animatedView setAlpha:1];
+        [self.loadingTintView setAlpha:0];
+    } completion:^(BOOL finished){}];
 }
 
 # pragma mark - Pulling Location Information
 
 -(void) getZipCode {
     [self.geoCoder reverseGeocodeLocation: self.locationManager.location completionHandler: ^(NSArray *placemarks, NSError *error) {
-        CLPlacemark *placemark = [placemarks objectAtIndex:0];
-        [self getCurrentTemperature:[placemark.addressDictionary valueForKey:@"ZIP"]];
-        [self setBackground:[NSString stringWithFormat:@"%@ %@", [placemark.addressDictionary valueForKey:@"City"], [placemark.addressDictionary valueForKey:@"State"]]];
-        [self.navigationItem setTitle:[placemark.addressDictionary valueForKey:@"City"]];
+        if (!error) {
+            CLPlacemark *placemark = [placemarks objectAtIndex:0];
+            [self getCurrentTemperature:[placemark.addressDictionary valueForKey:@"ZIP"]];
+            [self setBackground:[NSString stringWithFormat:@"%@ %@", [placemark.addressDictionary valueForKey:@"City"], [placemark.addressDictionary valueForKey:@"State"]]];
+            [self.navigationItem setTitle:[placemark.addressDictionary valueForKey:@"City"]];
+        } else
+            NSLog(@"%@", error);
     }];
 }
 
@@ -252,6 +294,7 @@ static NSMutableArray* savedLinks = nil;
     [[NSKeyedArchiver archivedDataWithRootObject:newarray] writeToFile:dataPath atomically:YES];
     savedLinks = newarray;
 }
+
 
 + (NSMutableArray*) saveddata {
     return savedLinks;

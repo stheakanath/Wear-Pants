@@ -14,11 +14,11 @@
 		<string>https://github.com/stheakanath/Wear-Pants.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Wear Pants.xcodeproj</string>
+	<string>Old Wear Pants/Wear Pants.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>81558ACCC352BAD3BB5026229419EBC2B7F2300A</key>
-		<string>../..</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/stheakanath/Wear-Pants.git</string>

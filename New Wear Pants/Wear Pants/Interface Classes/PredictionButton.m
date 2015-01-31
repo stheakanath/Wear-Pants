@@ -10,7 +10,7 @@
 
 @implementation PredictionButton
 
--(id) init:(CGRect)frame setTitle:(NSString*)title target:(id)target selector:(SEL)sel {
+- (id) init:(CGRect)frame setTitle:(NSString*)title target:(id)target selector:(SEL)sel {
     self = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.titleLabel setFont:[UIFont fontWithName:@"Roboto-Light" size:16]];
     [self setBackgroundColor:[UIColor clearColor]];
